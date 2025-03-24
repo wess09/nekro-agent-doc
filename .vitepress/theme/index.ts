@@ -1,7 +1,8 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
-import MyLayout from './components/MyLayout.vue'
 import DefaultTheme from 'vitepress/theme'
+import MyLayout from './components/switch.vue'
+
 import './css/background.css'
 import './css/text.css'
 import './css/brand.css'
