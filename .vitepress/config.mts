@@ -49,11 +49,8 @@ export default defineConfig({
       ]
     },
     {
-      text: '插件文档 & 插件列表',
-      collapsed: true,
-      items: [
-        { text: '警告', link: '/docs/extensions_docs/后续有文档请删除这个文件' }
-      ]
+      text: '常见错误排查指南',
+      link: '/docs/CommonErrors'
     },
     {
       text: '常见问题',
