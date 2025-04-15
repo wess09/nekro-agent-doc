@@ -1,7 +1,7 @@
 # Nekro Agent 文档站
 
 <div align="center">
-  <img src="https://img.picui.cn/free/2025/03/10/67cec9bbb40cb.png" width="200" alt="Nekro Agent Logo">
+  <img src="https://oss.nekro.ai/nekro_agent_logo.png" width="200" alt="Nekro Agent Logo">
   <h3>安全、高效、优雅的智能交互体验</h3>
 </div>
 
