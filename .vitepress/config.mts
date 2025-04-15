@@ -15,7 +15,7 @@ export default defineConfig({
   ],
   
   sitemap: {
-    hostname: 'https://doc.nekro.cloud'
+    hostname: 'https://doc.nekro.ai'
   },
   
   themeConfig: {
@@ -45,6 +45,7 @@ export default defineConfig({
           text: '快速开始',
           collapsed: false,
           items: [
+            { text: '快速开始', link: '/docs/guide/quickstart' },
             { 
               text: '快速部署',
               collapsed: true,

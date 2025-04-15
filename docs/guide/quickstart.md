@@ -49,8 +49,6 @@
 完成基础配置后，您可以探索更多高级功能：
 
 - [模型组配置](/docs/advanced/model-config) - 配置多种模型组合
-- [人设技巧](/docs/advanced/persona-tips) - 优化 AI 人设
-- [插件使用](/docs/advanced/plugin-principles) - 使用功能插件扩展能力
 
 ## 快速参考
 

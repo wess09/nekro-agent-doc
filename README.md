@@ -9,7 +9,7 @@
 
 Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提供全面、清晰的 Nekro Agent 使用指南。通过这个文档站，用户可以轻松了解 Nekro Agent 的部署方法、配置选项、进阶功能和插件开发等内容。
 
-🔗 在线访问：[https://doc.nekro.cloud](https://doc.nekro.cloud)
+🔗 在线访问：[https://doc.nekro.ai](https://doc.nekro.ai)
 
 ## 🗂️ 文档结构
 
@@ -26,32 +26,24 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 ### 环境要求
 
 - Node.js 16.x 或更高版本
-- npm 或 pnpm (推荐)
+- npm
 
 ### 开发步骤
 
 1. 克隆本仓库
    ```bash
-   git clone https://github.com/your-username/nekro-agent-doc.git
+   git clone https://github.com/KroMiose/nekro-agent-doc.git
    cd nekro-agent-doc
    ```
 
 2. 安装依赖
    ```bash
-   # 使用 npm
    npm install
-   
-   # 或使用 pnpm（推荐）
-   pnpm install
    ```
 
 3. 启动开发服务器
    ```bash
-   # 使用 npm
-   npm run dev
-   
-   # 或使用 pnpm
-   pnpm dev
+   npm run docs:dev
    ```
 
 4. 在浏览器中访问 `http://localhost:5173` 预览文档站
@@ -59,11 +51,7 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 ### 构建文档
 
 ```bash
-# 使用 npm
-npm run build
-
-# 或使用 pnpm
-pnpm build
+npm run docs:build
 ```
 
 构建后的文件将生成在 `.vitepress/dist` 目录中
@@ -92,15 +80,14 @@ nekro-agent-doc/
 │   ├── config.mts      # 主配置文件
 │   └── theme/          # 主题配置
 │       └── style.css   # 全局 CSS 样式
-├── docs/               # 文档内容
-│   ├── intro/          # 快速了解
-│   ├── guide/          # 快速开始
-│   ├── advanced/       # 进阶指南
-│   ├── plugin-dev/     # 插件开发
-│   └── troubleshooting/# 故障排除
-├── images/             # 图片资源
 ├── public/             # 静态资源
+├── images/             # 图片资源
 ├── index.md            # 首页
+├── intro/              # 快速了解
+├── guide/              # 快速开始
+├── advanced/           # 进阶指南
+├── plugin-dev/         # 插件开发
+├── troubleshooting/    # 故障排除
 └── package.json        # 项目依赖
 ```
 
