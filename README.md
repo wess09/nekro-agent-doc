@@ -31,17 +31,20 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 ### 开发步骤
 
 1. 克隆本仓库
+
    ```bash
    git clone https://github.com/KroMiose/nekro-agent-doc.git
    cd nekro-agent-doc
    ```
 
 2. 安装依赖
+
    ```bash
    npm install
    ```
 
 3. 启动开发服务器
+
    ```bash
    npm run docs:dev
    ```
@@ -91,12 +94,7 @@ nekro-agent-doc/
 └── package.json        # 项目依赖
 ```
 
-## 📄 许可证
-
-本项目采用 [MIT 许可证](LICENSE)。
-
 ## 📱 联系我们
 
 - QQ 交流群: 636925153
 - GitHub: [https://github.com/KroMiose/nekro-agent](https://github.com/KroMiose/nekro-agent)
-
