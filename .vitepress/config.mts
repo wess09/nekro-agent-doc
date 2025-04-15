@@ -22,26 +22,119 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '部署文档', link: '/docs_zh/Deploy/Quick_Start' },
-      { text: '开发文档', link: '/docs_zh/Dev/Dev_deploy_linux' },
+      { text: '快速了解', link: '/docs/intro/overview' },
+      { text: '快速开始', link: '/docs/guide/quickstart' },
+      { text: '进阶指南', link: '/docs/advanced/model-config' },
+      { text: '插件开发', link: '/docs/plugin-dev/concepts' },
       { text: '加入社群', link: 'https://qm.qq.com/q/eT30LxDcSA' }
     ],
     
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: '开始了解 Nekro Agent', link: '/docs_zh/home' },
-          { text: '快速开始', link: '/docs_zh/Deploy/Quick_Start' },
-          { text: '升级Nekro Agent', link: '/docs_zh/updata' },
-          { text: '基础命令', link: '/docs_zh/command' },
-          { text: '常见问题', link: '/docs_zh/QA' },
-          { text: '贡献列表', link: '/docs_zh/Contribution_list' },
-          { text: '开发部署', link: '/docs_zh/Dev/Dev_deploy_linux' },
-          { text: '开发部署 for Windows', link: '/docs_zh/Dev/Dev_deploy_win' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/docs/': [
+        {
+          text: '快速了解',
+          collapsed: false,
+          items: [
+            { text: '能力展示', link: '/docs/intro/overview' },
+            { text: '多人互动', link: '/docs/intro/multiplayer' },
+            { text: '沙盒复杂指令与Agent迭代', link: '/docs/intro/sandbox' },
+            { text: '插件系统与云服务', link: '/docs/intro/plugin-system' }
+          ]
+        },
+        {
+          text: '快速开始',
+          collapsed: false,
+          items: [
+            { 
+              text: '快速部署',
+              collapsed: true,
+              items: [
+                { text: 'Linux 部署教程', link: '/docs/guide/deploy/linux' },
+                { text: 'Windows 部署教程', link: '/docs/guide/deploy/windows' },
+                { text: 'MacOS 部署教程', link: '/docs/guide/deploy/macos' }
+              ] 
+            },
+            { 
+              text: '基本配置', 
+              collapsed: true,
+              items: [
+                { text: '协议端配置', link: '/docs/guide/config/protocol' },
+                { text: '系统配置', link: '/docs/guide/config/system' },
+                { text: '应用更新', link: '/docs/guide/config/update' }
+              ] 
+            }
+          ]
+        },
+        {
+          text: '进阶指南',
+          collapsed: false,
+          items: [
+            { text: '模型组配置', link: '/docs/advanced/model-config' },
+            { text: '人设技巧', link: '/docs/advanced/persona-tips' },
+            { text: '会话独立人设', link: '/docs/advanced/session-persona' },
+            { text: '用户管理', link: '/docs/advanced/user-management' },
+            { text: '沙盒日志', link: '/docs/advanced/sandbox-logs' },
+            { text: '插件使用原则', link: '/docs/advanced/plugin-principles' },
+            { text: '插件生成器', link: '/docs/advanced/plugin-generator' },
+            { text: '单机多实例部署', link: '/docs/advanced/multi-instance' },
+            { text: '异常邮件通知', link: '/docs/advanced/email-notification' },
+            { text: '实践案例', link: '/docs/advanced/case-studies' },
+            { 
+              text: '云服务', 
+              collapsed: true,
+              items: [
+                { text: '插件共享', link: '/docs/advanced/cloud/plugin-sharing' },
+                { text: '人设共享', link: '/docs/advanced/cloud/persona-sharing' }
+              ] 
+            }
+          ]
+        },
+        {
+          text: '插件开发',
+          collapsed: false,
+          items: [
+            { 
+              text: '基本概念', 
+              collapsed: true,
+              items: [
+                { text: '通信架构', link: '/docs/plugin-dev/concepts/architecture' },
+                { text: '响应周期', link: '/docs/plugin-dev/concepts/lifecycle' },
+                { text: '沙盒方法', link: '/docs/plugin-dev/concepts/sandbox-methods' },
+                { text: '插件类型', link: '/docs/plugin-dev/concepts/plugin-types' }
+              ] 
+            },
+            { 
+              text: '事件回调', 
+              collapsed: true,
+              items: [
+                { text: '初始化', link: '/docs/plugin-dev/events/init' },
+                { text: '提示词注入', link: '/docs/plugin-dev/events/prompt-injection' },
+                { text: '沙盒方法', link: '/docs/plugin-dev/events/sandbox-methods' },
+                { text: '清理环境', link: '/docs/plugin-dev/events/cleanup' }
+              ] 
+            },
+            { 
+              text: '最佳实践', 
+              collapsed: true,
+              items: [
+                { text: '插件共享市场', link: '/docs/plugin-dev/best-practices/marketplace' },
+                { text: '文件交互', link: '/docs/plugin-dev/best-practices/file-interaction' },
+                { text: '提示词工程', link: '/docs/plugin-dev/best-practices/prompt-engineering' }
+              ] 
+            },
+            { text: '系统 API', link: '/docs/plugin-dev/system-api' }
+          ]
+        },
+        {
+          text: '故障排除',
+          collapsed: false,
+          items: [
+            { text: '常见错误与处理', link: '/docs/troubleshooting/common-errors' },
+            { text: '常见问题解答', link: '/docs/troubleshooting/faq' }
+          ]
+        }
+      ]
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/KroMiose/nekro-agent' }
     ]
