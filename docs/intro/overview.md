@@ -1,8 +1,8 @@
 # Nekro Agent 能力展示
 
 <div align="center">
-  <img src="/images/home/NA_logo.png" width="1024" alt="NekroAgentLogo">
-  <p><img src="/images/home/NoneBotPlugin.svg" width="240" alt="NoneBotPluginText"></p>
+  <img src="/docs/images/home/NA_logo.png" width="1024" alt="NekroAgentLogo">
+  <p><img src="/docs/images/home/NoneBotPlugin.svg" width="240" alt="NoneBotPluginText"></p>
 </div>
 
 <div align="center">
@@ -27,7 +27,7 @@
 
 > `[Debug]` 前缀的消息为调试信息，默认关闭输出
 
-![demo](/images/home/demo_py_code.png)
+![demo](/docs/images/home/demo_py_code.png)
 
 ## 💡 功能列表
 

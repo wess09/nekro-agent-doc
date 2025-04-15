@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://v2.nonebot.dev/store"><img src="./images/home/NA_logo.png" width="1024" alt="NoneBotPluginLogo"></a><br>
-  <p><img src="./images/home/NoneBotPlugin.svg" width="240" alt="NoneBotPluginText"></p>
+  <a href="https://v2.nonebot.dev/store"><img src="/docs/images/home/NA_logo.png" width="1024" alt="NoneBotPluginLogo"></a><br>
+  <p><img src="./docs/images/home/NoneBotPlugin.svg" width="240" alt="NoneBotPluginText"></p>
 </div>
 <div align="center">🎉新一代 AI 代理框架，安全、高效、优雅的智能交互体验🎉<br/>
   🎉 <a href="https://github.com/KroMiose/nonebot_plugin_naturel_gpt">源自 Naturel GPT</a> 的 Agent 升级续作 🌈<br/>
@@ -36,7 +36,7 @@
 
 > `[Debug]` 前缀的消息为调试信息，默认关闭输出
 
-![demo](./images/home/demo_py_code.png)
+![demo](./docs/images/home/demo_py_code.png)
 
 ## 💡 功能列表
 
