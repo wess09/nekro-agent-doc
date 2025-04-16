@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 QQ 交流群
+    url: https://jq.qq.com/?_wv=1027&k=71t9iCT7
+    about: 加入 QQ 群（636925153）获取即时帮助
+  - name: 📝 文档反馈
+    url: https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml
+    about: 报告文档问题或提出改进建议

@@ -1,13 +1,13 @@
 :root {
     --vp-button-brand-border: transparent;
     --vp-button-brand-text: var(--vp-c-white);
-    --vp-button-brand-bg: #EA5252;
+    --vp-button-brand-bg: #e25252;
     --vp-button-brand-hover-border: transparent;
     --vp-button-brand-hover-text: var(--vp-c-white);
-    --vp-button-brand-hover-bg: #bd4141;
+    --vp-button-brand-hover-bg: #ca3a3a;
     --vp-button-brand-active-border: transparent;
     --vp-button-brand-active-text: var(--vp-c-white);
-    --vp-button-brand-active-bg: #ff5959;
+    --vp-button-brand-active-bg: #f37070;
   }
   /**
    * alt按钮白色
@@ -29,7 +29,7 @@
     --vp-button-alt-active-bg: #555555;
   }
   .VPButton.brand:hover {
-    box-shadow: 0 4px 12px rgba(234, 82, 82, 0.3);
+    box-shadow: 0 4px 12px rgba(226, 82, 82, 0.3);
   }
   
   .dark .VPButton {
@@ -41,5 +41,5 @@
   }
   
   .dark .VPButton.brand:hover {
-    box-shadow: 0 4px 12px rgba(234, 82, 82, 0.4);
+    box-shadow: 0 4px 12px rgba(226, 82, 82, 0.4);
   }

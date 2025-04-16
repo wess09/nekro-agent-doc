@@ -54,6 +54,7 @@ export default defineConfig({
       { text: "快速开始", link: "/docs/guide/quickstart" },
       { text: "进阶指南", link: "/docs/advanced/model-config" },
       { text: "插件开发", link: "/docs/plugin-dev/concepts" },
+      { text: "贡献文档", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
       { text: "加入社群", link: "https://qm.qq.com/q/eT30LxDcSA" },
     ],
 
@@ -61,7 +62,7 @@ export default defineConfig({
       "/docs/": [
         {
           text: "快速了解",
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: "能力展示", link: "/docs/intro/overview" },
             { text: "多人互动", link: "/docs/intro/multiplayer" },
@@ -71,7 +72,7 @@ export default defineConfig({
         },
         {
           text: "快速开始",
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: "快速开始", link: "/docs/guide/quickstart" },
             {
@@ -99,7 +100,7 @@ export default defineConfig({
         },
         {
           text: "进阶指南",
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: "模型组配置", link: "/docs/advanced/model-config" },
             { text: "人设技巧", link: "/docs/advanced/persona-tips" },
@@ -129,7 +130,7 @@ export default defineConfig({
         },
         {
           text: "插件开发",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               text: "基本概念",
@@ -192,7 +193,7 @@ export default defineConfig({
         },
         {
           text: "故障排除",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               text: "常见错误与处理",

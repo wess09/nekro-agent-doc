@@ -63,7 +63,7 @@ npm run docs:build
 
 我们非常欢迎社区成员为 Nekro Agent 文档做出贡献！您可以通过以下方式参与：
 
-1. **提交问题**：如果您发现文档中的错误或有改进建议，请提交 Issue
+1. **提交问题**：如果您发现文档中的错误或有改进建议，请[提交 Issue](https://github.com/KroMiose/nekro-agent-doc/issues/new/choose)
 2. **完善文档**：您可以帮助我们完善现有文档或添加新的内容
 3. **翻译文档**：帮助将文档翻译成其他语言
 

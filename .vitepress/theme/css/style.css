@@ -16,3 +16,107 @@
     opacity: 0;
   }
 }
+
+:root {
+  /* 设置全局主题色 */
+  --vp-c-brand: #e25252;
+  --vp-c-brand-light: #f37070;
+  --vp-c-brand-lighter: #ff9292;
+  --vp-c-brand-dark: #ca3a3a;
+  --vp-c-brand-darker: #b02e2e;
+
+  /* 按钮颜色 */
+  --vp-button-brand-bg: var(--vp-c-brand);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-dark);
+  --vp-button-brand-active-bg: var(--vp-c-brand-darker);
+
+  /* 自定义块颜色 */
+  --vp-custom-block-tip-bg: rgba(226, 82, 82, 0.1);
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+}
+
+.dark {
+  /* 暗色模式下的主题色 */
+  --vp-c-brand: #e25252;
+  --vp-c-brand-light: #f37070;
+  --vp-c-brand-lighter: #ff9292;
+  --vp-c-brand-dark: #ca3a3a;
+  --vp-c-brand-darker: #b02e2e;
+}
+
+/* 导航栏链接悬浮颜色 */
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuGroup .text:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 导航栏激活项 */
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 导航栏下拉菜单激活项 */
+.VPMenu .VPLink.active {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 社交链接悬浮颜色 */
+.VPSocialLink:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 侧边栏激活项颜色 */
+.VPSidebarItem.is-active .link span,
+.VPSidebarItem.is-active .text {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 侧边栏链接悬浮颜色 */
+.VPSidebarItem .link:hover span,
+.VPSidebarItem .link:hover .text {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 右侧大纲导航激活项 */
+.VPDocOutlineItem.active .link {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 右侧大纲导航悬浮项 */
+.VPDocOutlineItem .link:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 移动端菜单激活项 */
+.VPFlyout .VPMenuLink.active .link {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 移动端侧边栏切换按钮 */
+.VPNavBarHamburger:hover .container {
+  background-color: var(--vp-c-brand-light) !important;
+}
+
+/* 自定义块引用样式 */
+.custom-block.tip {
+  border-color: var(--vp-c-brand) !important;
+}
+
+/* 代码块复制按钮悬浮颜色 */
+.vp-copy-code-button:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 搜索框激活样式 */
+.DocSearch-Button:hover {
+  border-color: var(--vp-c-brand) !important;
+}
+
+/* 设置右下角悬浮按钮颜色 */
+.float-button {
+  background-color: var(--vp-c-brand) !important;
+}
+
+.float-button:hover {
+  background-color: var(--vp-c-brand-dark) !important;
+}
