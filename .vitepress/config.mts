@@ -50,10 +50,6 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "主页", link: "/" },
-      { text: "快速了解", link: "/docs/intro/overview" },
-      { text: "快速开始", link: "/docs/guide/quickstart" },
-      { text: "进阶指南", link: "/docs/advanced/model-config" },
-      { text: "插件开发", link: "/docs/plugin-dev/concepts" },
       { text: "贡献文档", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
       { text: "加入社群", link: "https://qm.qq.com/q/eT30LxDcSA" },
     ],
@@ -64,10 +60,7 @@ export default defineConfig({
           text: "快速了解",
           collapsed: true,
           items: [
-            { text: "能力展示", link: "/docs/intro/overview" },
-            { text: "多人互动", link: "/docs/intro/multiplayer" },
-            { text: "沙盒复杂指令与Agent迭代", link: "/docs/intro/sandbox" },
-            { text: "插件系统与云服务", link: "/docs/intro/plugin-system" },
+            { text: "概览", link: "/docs/intro/overview" },
           ],
         },
         {
