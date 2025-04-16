@@ -10,10 +10,10 @@ hero:
       text: 了解 NekroAgent
       link: /docs/intro/overview
     - theme: alt
-      text: 快速开始
+      text: 快速开始 (建设中)
       link: /docs/guide/quickstart
     - theme: alt
-      text: 插件开发
+      text: 插件开发 (建设中)
       link: /docs/plugin-dev/concepts
   image:
     src: "https://oss.nekro.ai/nekro_agent_logo.png"
