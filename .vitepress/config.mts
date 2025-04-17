@@ -50,7 +50,10 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "主页", link: "/" },
-      { text: "贡献文档", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
+      {
+        text: "贡献文档",
+        link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose",
+      },
       { text: "加入社群", link: "https://qm.qq.com/q/eT30LxDcSA" },
     ],
 
@@ -59,9 +62,7 @@ export default defineConfig({
         {
           text: "快速了解",
           collapsed: true,
-          items: [
-            { text: "概览", link: "/docs/intro/overview" },
-          ],
+          items: [{ text: "概览", link: "/docs/intro/overview" }],
         },
         {
           text: "快速开始",
@@ -99,26 +100,8 @@ export default defineConfig({
             { text: "人设技巧", link: "/docs/advanced/persona-tips" },
             { text: "会话独立人设", link: "/docs/advanced/session-persona" },
             { text: "用户管理", link: "/docs/advanced/user-management" },
-            { text: "沙盒日志", link: "/docs/advanced/sandbox-logs" },
-            { text: "插件使用原则", link: "/docs/advanced/plugin-principles" },
+            { text: "插件用例", link: "/docs/advanced/plugin-usage" },
             { text: "插件生成器", link: "/docs/advanced/plugin-generator" },
-            { text: "单机多实例部署", link: "/docs/advanced/multi-instance" },
-            { text: "异常邮件通知", link: "/docs/advanced/email-notification" },
-            { text: "实践案例", link: "/docs/advanced/case-studies" },
-            {
-              text: "云服务",
-              collapsed: true,
-              items: [
-                {
-                  text: "插件共享",
-                  link: "/docs/advanced/cloud/plugin-sharing",
-                },
-                {
-                  text: "人设共享",
-                  link: "/docs/advanced/cloud/persona-sharing",
-                },
-              ],
-            },
           ],
         },
         {
