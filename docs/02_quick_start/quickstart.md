@@ -64,7 +64,7 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 完成基础配置后，您可以探索更多高级功能：
 
-- [模型组配置](/docs/03_advanced/model-config) - 配置多种模型组合
+- [模型组配置](/docs/03_advanced/model_config) - 配置多种模型组合
 
 ## 快速参考
 
