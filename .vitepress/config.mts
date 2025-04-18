@@ -62,32 +62,50 @@ export default defineConfig({
         {
           text: "快速了解",
           collapsed: true,
-          items: [{ text: "概览", link: "/docs/intro/overview" }],
+          items: [
+            { text: "概览", link: "/docs/01_intro/overview" },
+            { text: "应用场景", link: "/docs/01_intro/application_scenarios" },
+          ],
         },
         {
           text: "快速开始",
           collapsed: true,
           items: [
-            { text: "快速开始", link: "/docs/guide/quickstart" },
+            { text: "快速开始", link: "/docs/02_quick_start/quickstart" },
             {
               text: "快速部署",
               collapsed: true,
               items: [
-                { text: "Linux 部署教程", link: "/docs/guide/deploy/linux" },
+                {
+                  text: "Linux 部署教程",
+                  link: "/docs/02_quick_start/deploy/linux",
+                },
                 {
                   text: "Windows 部署教程",
-                  link: "/docs/guide/deploy/windows",
+                  link: "/docs/02_quick_start/deploy/windows",
                 },
-                { text: "MacOS 部署教程", link: "/docs/guide/deploy/macos" },
+                {
+                  text: "MacOS 部署教程",
+                  link: "/docs/02_quick_start/deploy/macos",
+                },
               ],
             },
             {
               text: "基本配置",
               collapsed: true,
               items: [
-                { text: "协议端配置", link: "/docs/guide/config/protocol" },
-                { text: "系统配置", link: "/docs/guide/config/system" },
-                { text: "应用更新", link: "/docs/guide/config/update" },
+                {
+                  text: "协议端配置",
+                  link: "/docs/02_quick_start/config/protocol",
+                },
+                {
+                  text: "系统配置",
+                  link: "/docs/02_quick_start/config/system",
+                },
+                {
+                  text: "应用更新",
+                  link: "/docs/02_quick_start/config/update",
+                },
               ],
             },
           ],
@@ -96,12 +114,12 @@ export default defineConfig({
           text: "进阶指南",
           collapsed: true,
           items: [
-            { text: "模型组配置", link: "/docs/advanced/model-config" },
-            { text: "人设技巧", link: "/docs/advanced/persona-tips" },
-            { text: "会话独立人设", link: "/docs/advanced/session-persona" },
-            { text: "用户管理", link: "/docs/advanced/user-management" },
-            { text: "插件用例", link: "/docs/advanced/plugin-usage" },
-            { text: "插件生成器", link: "/docs/advanced/plugin-generator" },
+            { text: "模型组配置", link: "/docs/03_advanced/model_config" },
+            { text: "人设技巧", link: "/docs/03_advanced/persona_tips" },
+            { text: "会话独立人设", link: "/docs/03_advanced/session_persona" },
+            { text: "用户管理", link: "/docs/03_advanced/user_management" },
+            { text: "插件用例", link: "/docs/03_advanced/plugin_usage" },
+            { text: "插件生成器", link: "/docs/03_advanced/plugin_generator" },
           ],
         },
         {
@@ -114,19 +132,19 @@ export default defineConfig({
               items: [
                 {
                   text: "通信架构",
-                  link: "/docs/plugin-dev/concepts/architecture",
+                  link: "/docs/04_plugin_dev/01_concepts/architecture",
                 },
                 {
                   text: "响应周期",
-                  link: "/docs/plugin-dev/concepts/lifecycle",
+                  link: "/docs/04_plugin_dev/01_concepts/lifecycle",
                 },
                 {
                   text: "沙盒方法",
-                  link: "/docs/plugin-dev/concepts/sandbox-methods",
+                  link: "/docs/04_plugin_dev/01_concepts/sandbox-methods",
                 },
                 {
                   text: "插件类型",
-                  link: "/docs/plugin-dev/concepts/plugin-types",
+                  link: "/docs/04_plugin_dev/01_concepts/plugin-types",
                 },
               ],
             },
@@ -134,16 +152,19 @@ export default defineConfig({
               text: "事件回调",
               collapsed: true,
               items: [
-                { text: "初始化", link: "/docs/plugin-dev/events/init" },
+                { text: "初始化", link: "/docs/04_plugin_dev/02_events/init" },
                 {
                   text: "提示词注入",
-                  link: "/docs/plugin-dev/events/prompt-injection",
+                  link: "/docs/04_plugin_dev/02_events/prompt-injection",
                 },
                 {
                   text: "沙盒方法",
-                  link: "/docs/plugin-dev/events/sandbox-methods",
+                  link: "/docs/04_plugin_dev/02_events/sandbox-methods",
                 },
-                { text: "清理环境", link: "/docs/plugin-dev/events/cleanup" },
+                {
+                  text: "清理环境",
+                  link: "/docs/04_plugin_dev/02_events/cleanup",
+                },
               ],
             },
             {
@@ -152,19 +173,37 @@ export default defineConfig({
               items: [
                 {
                   text: "插件共享市场",
-                  link: "/docs/plugin-dev/best-practices/marketplace",
+                  link: "/docs/04_plugin_dev/03_best_practices/marketplace",
                 },
                 {
                   text: "文件交互",
-                  link: "/docs/plugin-dev/best-practices/file-interaction",
+                  link: "/docs/04_plugin_dev/03_best_practices/file-interaction",
                 },
                 {
                   text: "提示词工程",
-                  link: "/docs/plugin-dev/best-practices/prompt-engineering",
+                  link: "/docs/04_plugin_dev/03_best_practices/prompt-engineering",
                 },
               ],
             },
-            { text: "系统 API", link: "/docs/plugin-dev/system-api" },
+            { text: "系统 API", link: "/docs/04_plugin_dev/04_system_api" },
+          ],
+        },
+        {
+          text: "应用开发",
+          collapsed: true,
+          items: [
+            {
+              text: "Linux 开发环境准备",
+              link: "/docs/05_app_dev/dev_linux",
+            },
+            {
+              text: "Windows 开发环境准备",
+              link: "/docs/05_app_dev/dev_win",
+            },
+            {
+              text: "MacOS 开发环境准备",
+              link: "/docs/05_app_dev/dev_macos",
+            },
           ],
         },
         {
@@ -173,9 +212,9 @@ export default defineConfig({
           items: [
             {
               text: "常见错误与处理",
-              link: "/docs/troubleshooting/common-errors",
+              link: "/docs/06_troubleshooting/common-errors",
             },
-            { text: "常见问题解答", link: "/docs/troubleshooting/faq" },
+            { text: "常见问题解答", link: "/docs/06_troubleshooting/faq" },
           ],
         },
       ],
