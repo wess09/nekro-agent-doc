@@ -17,14 +17,28 @@ Nekro Agent 提供了简便的编排更新命令，当新版本发布时，你�
 
 :::
 
+### 进入数据目录
+
 ```bash
-# 设置数据目录
-export NEKRO_DATA_DIR=${HOME}/srv/nekro_agent
-# 更新 `nekro-agent` 镜像并重启容器
-cd ${NEKRO_DATA_DIR} && \
- sudo docker-compose --env-file .env pull && \
- sudo docker-compose --env-file .env down && \
- sudo docker-compose --env-file .env up --build -d
+# 如果修改了数据目录，请根据实际情况设置
+export NEKRO_DATA_DIR=${HOME}/srv/nekro_agent && \
+cd ${NEKRO_DATA_DIR}
+```
+
+### 仅更新 Nekro Agent 镜像 (推荐)
+
+```bash
+sudo docker-compose --env-file .env pull nekro-agent
+sudo docker-compose --env-file .env up --build -d nekro-agent
+```
+
+### 更新所有镜像并重启容器 (如果需要同时更新 NapCat 或其他数据支持服务)
+
+> 该命令会更新 `nekro-agent` 镜像和所有依赖的镜像，可能导致 Bot 掉线需要重新登录
+
+```bash
+sudo docker-compose --env-file .env pull && \
+sudo docker-compose --env-file .env up --build -d
 ```
 
 ## 📝 更新日志

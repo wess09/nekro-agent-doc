@@ -71,17 +71,14 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 ### 常用管理命令
 
 ```bash
-# 启动服务
-docker-compose up -d
+# 查看 NA 容器日志
+sudo docker logs -f nekro_agent
 
-# 停止服务
-docker-compose down
-
-# 查看日志
-docker-compose logs -f nekro_agent
+# 查看 NapCat 容器日志
+sudo docker logs -f nekro_napcat
 
 # 重启服务
-docker-compose restart nekro_agent
+sudo docker restart nekro_agent
 ```
 
 ### 常用聊天指令
