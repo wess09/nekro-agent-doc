@@ -32,6 +32,36 @@ docker-compose logs -f nekro_agent
 3. 服务器安全组设置是否允许该端口访问
 4. 尝试使用不同的浏览器访问
 
+### Q: 出现 `Cannot connect to the Docker daemon` 错误
+
+**A**: Docker 服务未启动或用户权限问题。
+
+```bash
+# 启动 Docker 服务
+sudo systemctl start docker
+```
+
+### Q: 出现 `port is already allocated` 错误
+
+**A**: 指定的端口已被其他程序占用。
+
+```bash
+# 查看占用端口的进程
+sudo lsof -i :8021
+
+# 修改 .env 文件中的端口配置
+vim .env
+# 修改 NEKRO_AGENT_PORT 或 NAPCAT_PORT 为其他未占用端口
+```
+
+### Q: 出现 `Failed to pull image` 错误
+
+**A**: 网络连接问题或 Docker Hub 访问受限。解决方法：配置 Docker 镜像加速。
+
+### Q: 如何在同一设备上部署多个 NekroAgent 实例?
+
+**A**: 请先使用 `export NEKRO_DATA_DIR=<你的目录>` 设置好不冲突的目录，然后运行安装脚本并按提示修改 `.env` 文件，设置合适的前缀以避免容器名冲突，设置合适的端口以避免端口冲突，继续完成部署即可
+
 ## 配置相关
 
 ### Q: 如何更改默认端口？
@@ -56,6 +86,20 @@ NAPCAT_PORT=6099       # 如果使用 NapCat，也可以修改该端口
 
 ## 功能相关
 
+### Q: 为什么我的机器人无法发送 文字/图片 以外的文件内容?
+
+**A**: 请检查你的协议实现是否支持文件发送，如果支持，请继续
+
+由于 OneBot V11 协议的限制，发送文件时需要协议端能够直接访问到该文件的路径，因此你需要根据实际部署情况设为 NekroAgent 配置文件访问基准路径，以下是一个示例:
+
+假设你的协议端部署在容器中，你需要先挂载 NekroAgent 的数据目录到协议端容器中，即 `${HOME}/srv/nekro_agent:/app/nekro_agent_data`，然后为 NekroAgent 配置文件访问基准路径:
+
+```
+SANDBOX_ONEBOT_SERVER_MOUNT_DIR: "/app/nekro_agent_data"
+```
+
+这样 NekroAgent 就可以访问到协议实现端的数据目录，从而发送文件内容了
+
 ### Q: AI 不响应我的消息怎么办？
 
 **A**: 可能的原因包括：
@@ -66,9 +110,7 @@ NAPCAT_PORT=6099       # 如果使用 NapCat，也可以修改该端口
 
 ### Q: 如何切换 AI 人设？
 
-**A**: 有以下几种方式：
-
-1. 在 WebUI 的「人设管理」中设置好人设信息，在「会话管理」中选择人设
+**A**: 在 WebUI 的「人设管理」中设置好人设信息，在「会话管理」中选择人设
 
 ### Q: 沙盒执行代码超时怎么办？
 
@@ -98,6 +140,15 @@ docker volume rm nekro_qdrant_data
 cd ..
 rm -rf <安装目录>
 ```
+
 ### Q: 为什么文档站主页色彩有断层？
 
-**A**: 火狐 和其他 非Chrome 浏览器 可能存在一些兼容性问题，成因未知
+**A**: 火狐和其他非Chrome浏览器可能存在一些兼容性问题，成因未知
+
+## 获取支持
+
+如果以上方法无法解决您的问题，可以通过以下渠道获取支持：
+
+1. 查阅 [GitHub Issues](https://github.com/KroMiose/nekro-agent/issues)
+2. 加入官方 QQ 群: 636925153
+3. 提交新的 Issue 描述您的问题

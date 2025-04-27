@@ -210,10 +210,6 @@ export default defineConfig({
           text: "故障排除",
           collapsed: true,
           items: [
-            {
-              text: "常见错误与处理",
-              link: "/docs/06_troubleshooting/common-errors",
-            },
             { text: "常见问题解答", link: "/docs/06_troubleshooting/faq" },
           ],
         },
