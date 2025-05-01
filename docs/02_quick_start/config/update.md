@@ -28,8 +28,8 @@ cd ${NEKRO_DATA_DIR}
 ### 仅更新 Nekro Agent 镜像 (推荐)
 
 ```bash
-sudo docker-compose --env-file .env pull nekro-agent
-sudo docker-compose --env-file .env up --build -d nekro-agent
+sudo docker-compose --env-file .env pull nekro_agent && \
+sudo docker-compose --env-file .env up --build -d nekro_agent
 ```
 
 ### 更新所有镜像并重启容器 (如果需要同时更新 NapCat 或其他数据支持服务)
