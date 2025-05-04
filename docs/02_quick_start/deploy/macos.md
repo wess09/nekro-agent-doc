@@ -72,6 +72,14 @@ orb -m ubuntu ls
 sudo -E bash -c "$(curl -fsSL https://raw.githubusercontent.com/KroMiose/nekro-agent/main/docker/quick_start_x_napcat.sh)"
 ```
 
+如果部署过程出现网络问题无法正确下载脚本，可使用国内 GitCode 加速部署命令：
+
+> 注意: GitCode 加速的部署方式依赖于 GitCode 同步速度，可能无法及时同步最新版本，如有条件尽量使用 Github 脚本部署
+
+```bash
+sudo -E bash -c "$(curl -fsSL https://raw.gitcode.com/gh_mirrors/ne/nekro-agent/raw/main/docker/quick_start_x_napcat.sh)" - -g
+```
+
 ::: warning 注意事项
 
 - 默认安装目录：`~/srv/nekro_agent`
