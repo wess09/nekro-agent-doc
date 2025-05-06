@@ -126,24 +126,20 @@ SANDBOX_RUNTIME_LIMIT: 60 # 调整为更大的值，单位为秒
 
 ```bash
 # 停止并删除容器
-cd <安装目录>
-docker-compose down
+cd <你的安装目录>
+sudo docker-compose down
+
+# 删除挂载卷 (如果安装时设置了实例前缀，以下挂载卷需要添加上对应的前缀)
+sudo docker volume rm nekro_postgres_data
+sudo docker volume rm nekro_qdrant_data
 
 # 可选：删除镜像
-docker rmi kromiose/nekro-agent kromiose/napcat
-
-# 删除挂载卷
-docker volume rm nekro_agent_data
-docker volume rm nekro_qdrant_data
+sudo docker rmi kromiose/nekro-agent kromiose/nekro-agent-sandbox
 
 # 删除安装目录
 cd ..
 rm -rf <安装目录>
 ```
-
-### Q: 为什么文档站主页色彩有断层？
-
-**A**: 火狐和其他非Chrome浏览器可能存在一些兼容性问题，成因未知
 
 ## 获取支持
 
