@@ -115,6 +115,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: "模型组配置", link: "/docs/03_advanced/model_config" },
+            { text: "模型选择", link: "/docs/03_advanced/model_usage" },
             { text: "人设技巧", link: "/docs/03_advanced/persona_tips" },
             { text: "会话独立人设", link: "/docs/03_advanced/session_persona" },
             { text: "用户管理", link: "/docs/03_advanced/user_management" },
