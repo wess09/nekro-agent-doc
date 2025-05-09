@@ -166,6 +166,14 @@ export default defineConfig({
                   text: "清理环境",
                   link: "/docs/04_plugin_dev/02_events/cleanup",
                 },
+                {
+                  text: "插件存储",
+                  link: "/docs/04_plugin_dev/02_events/plugin-store",
+                },
+                {
+                  text: "Webhook 接入点",
+                  link: "/docs/04_plugin_dev/02_events/webhook",
+                },
               ],
             },
             {
@@ -183,6 +191,10 @@ export default defineConfig({
                 {
                   text: "提示词工程",
                   link: "/docs/04_plugin_dev/03_best_practices/prompt-engineering",
+                },
+                {
+                  text: "插件配置",
+                  link: "/docs/04_plugin_dev/03_best_practices/plugin-configuration",
                 },
               ],
             },
