@@ -14,7 +14,7 @@ hero:
       link: /docs/02_quick_start/quickstart
     - theme: alt
       text: 插件开发
-      link: /docs/04_plugin_dev/concepts
+      link: /docs/04_plugin_dev/02_plugin_basics/2.1_plugin_instance
     - theme: alt
       text: 开源仓库
       link: https://github.com/KroMiose/nekro-agent
