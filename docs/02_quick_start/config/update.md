@@ -28,7 +28,7 @@ cd ${NEKRO_DATA_DIR}
 ### 仅更新 Nekro Agent 和沙盒镜像 (推荐)
 
 ```bash
-sudo docker pull nekro-agent-sandbox && \
+sudo docker pull kromiose/nekro-agent-sandbox && \
 sudo docker-compose --env-file .env pull nekro_agent && \
 sudo docker-compose --env-file .env up --build -d nekro_agent
 ```
