@@ -9,7 +9,7 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 
 ## NapCat 集成部署 (推荐)
 
-[NapCatQQQQ](https://github.com/NapNeko/NapCatQQ) NapCatQQ 是现代化的基于 NTQQ 的 Bot 协议端实现，如果你使用了包含 NapCat 部署的一键脚本，请直接跳转至第 4 步，使用 Token 登录 NapCat 按照步骤配置好 Websocket 客户端即可
+[NapCat](https://github.com/NapNeko/NapCatQQ) NapCat 是现代化的基于 QQNT 的 Bot 协议端实现，如果你使用了包含 NapCat 部署的一键脚本，请直接跳转至第 4 步，使用 Token 登录 NapCat 按照步骤配置好 Websocket 客户端即可
 
 #### 配置步骤
 
@@ -28,7 +28,7 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
    - 在「协议端」→「NapCat」→「容器日志」获取 NapCat 登录 Token (新版本 NapCat 默认登陆 Token 为 `napcat` 请在登陆后及时修改！)
    - 在「协议端」→「NapCat」→「WebUI」使用 Token 登录并登陆需要作为 Bot 的 QQ 帐号
    - 在「网络配置」中添加 Websocket 客户端：
-     - 添加 URL：`ws://nekro_agent:8021/onebot/v11/ws`
+     - 添加 URL：`ws://nekro_agent:8021/onebot/v11/ws` (URL 走容器网络通信方式，不论是否修改了端口都使用此地址)
      - 配置 OneBot 访问密钥，即本页面上方显示的 `OneBot 访问密钥`
      - 打开「启用」开关并保存
 
@@ -39,9 +39,7 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 如果你使用了其他协议端，请将其反向 WebSocket 地址配置为：`ws://<你的服务ip>:8021/onebot/v11/ws`，即可连接 NekroAgent 开始使用
 
 :::warning
-
 使用其他协议端需要自行配置 NekroAgent 数据挂载目录，否则可能无法正常收发图片、文件等资源
-
 :::
 
 ## 故障排除
