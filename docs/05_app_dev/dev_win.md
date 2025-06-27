@@ -180,7 +180,7 @@ pnpm config set registry https://registry.npmmirror.com
 cd frontend
 
 # 安装依赖
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 ### 4. 启动前端

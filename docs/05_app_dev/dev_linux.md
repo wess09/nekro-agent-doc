@@ -84,13 +84,18 @@ sudo bash sandbox.sh --pull
 ### 6. 运行 Bot
 
 ::: warning 注意
-由于插件工作时需要动态使用 Docker 创建沙盒执行环境以及设定容器共享目录权限等，为了确保有足够的权限运行，建议使用 `sudo` 运行 Bot
+由于插件工作时需要动态使用 Docker 创建沙盒执行环境以及设定容器共享目录权限等，建议将当前用户添加到 `docker` 组中，并重启 shell 以生效
+
+```bash
+sudo usermod -aG docker $USER
+```
+
 :::
 
 ```bash
-sudo nb run
+nb run
 # 开发调试模式下启用重载监视并排除动态扩展目录
-sudo nb run --reload --reload-excludes ext_workdir
+nb run --reload --reload-excludes ext_workdir
 ```
 
 ### 7. OneBot 配置
@@ -108,3 +113,55 @@ ws://127.0.0.1:8021/onebot/v11/ws
 ### 8. 调试模式
 
 项目中包含 `.vscode/launch.json` 文件，可以直接使用 VSCode 进行调试，使用其内置的调试启动配置即可。
+
+## 前端开发（可选）
+
+如需开发前端页面，可按以下步骤进行：
+
+### 1. 安装 Node.js
+
+推荐使用 `nvm` (Node Version Manager) 来管理 Node.js 版本。
+
+1.  安装 `nvm`:
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    ```
+2.  安装完成后，根据提示将 `nvm` 的加载命令添加到你的 shell 配置文件中 (例如 `~/.bashrc`, `~/.zshrc`) 并重启终端。
+3.  安装 Node.js 20:
+    ```bash
+    nvm install 20
+    nvm use 20
+    ```
+    你也可以通过系统的包管理器安装，但请确保版本是 20.x。
+
+### 2. 配置 pnpm
+```bash
+# 全局安装 pnpm
+npm install -g pnpm
+
+# 设置镜像加速
+pnpm config set registry https://registry.npmmirror.com
+```
+
+### 3. 安装前端依赖
+```bash
+cd frontend
+
+# 安装依赖
+pnpm install --frozen-lockfile
+```
+
+### 4. 启动前端
+```bash
+cd ./frontend
+pnpm dev
+```
+
+当看到如下日志时，即可在浏览器访问：
+```
+VITE vx.x.x  ready in xxx ms
+
+➜  Local:   http://localhost:xxxx/ <-这里是端口号
+➜  Network: use --host to expose
+➜  press h + enter to show help
+```
