@@ -5,81 +5,123 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
 
 # Windows 部署教程
 
-本文档将指导您在 Windows 系统上部署 Nekro Agent。
+将指导您在 Windows 系统上部署 Nekro Agent。
 
-## 🌈 环境准备
+## 请选择部署方式
 
-由于 Nekro Agent 基于 Docker 运行，我们需要先在 Windows 上安装 WSL2（Windows Subsystem for Linux 2）。
+<div class="deploy-container">
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/hyperv">
+    <div class="option-header hyperv">
+      <span class="option-icon">🚀</span>
+      <span class="option-title">Hyper-V 部署教程</span>
+    </div>
+    <div class="option-desc">性能优异，可跟随计算机一起启动</div>
+  </a>
+  
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/wsl">
+    <div class="option-header wsl">
+      <span class="option-icon">🐧</span>
+      <span class="option-title">WSL2 部署教程</span>
+    </div>
+    <div class="option-desc">性能优异，与 Windows 深度集成</div>
+  </a>
+  
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/iso">
+    <div class="option-header iso">
+      <span class="option-icon">💿</span>
+      <span class="option-title">完整系统镜像</span>
+    </div>
+    <div class="option-desc">部署简单，快捷</div>
+  </a>
+  
+  <a class="deploy-option disabled">
+    <div class="option-header vmware">
+      <span class="option-icon">⏳</span>
+      <span class="option-title">VMware 部署教程</span>
+    </div>
+    <div class="option-desc">敬请期待</div>
+  </a>
+</div>
 
-### 安装 WSL2
+<style>
+.deploy-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
 
-1. 以管理员身份打开 PowerShell，执行以下命令启用 WSL 功能：
+.deploy-option {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
 
-```powershell
-wsl --install
-```
+.deploy-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--vp-c-brand-light);
+}
 
-2. 重启电脑完成安装
-3. 启动 Ubuntu（默认安装的发行版），设置用户名和密码
-4. 确认 WSL2 安装成功：
+.option-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  color: #fff;
+  font-weight: 600;
+}
 
-```powershell
-wsl -l -v
-```
+.option-header.hyperv {
+  background: linear-gradient(135deg, var(--vp-c-brand-light), var(--vp-c-brand-dark));
+}
 
-输出应显示 VERSION 为 2
+.option-header.wsl {
+  background: linear-gradient(135deg, var(--vp-c-brand), var(--vp-c-brand-darker));
+}
 
-### 安装 Docker Desktop（可选但推荐）
+.option-header.iso {
+  background: linear-gradient(135deg, var(--vp-c-brand-lighter), var(--vp-c-brand));
+}
 
-1. 访问 [Docker Desktop 官网](https://www.docker.com/products/docker-desktop/) 下载最新版本
-2. 安装时确保勾选"Use WSL 2 instead of Hyper-V"选项
-3. 安装完成后启动 Docker Desktop
-4. 在设置中确认已启用 WSL2 集成
+.option-header.vmware {
+  background: linear-gradient(135deg, #9e9e9e, #616161);
+}
 
-## 🚀 部署方式
+.option-icon {
+  font-size: 1.5rem;
+  margin-right: 12px;
+}
 
-在 WSL2 的 Ubuntu 终端中进行以下操作：
+.option-title {
+  font-size: 1.1rem;
+}
 
-### 方式一：标准部署（推荐）
+.option-desc {
+  padding: 16px;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  border-top: none;
+  margin: 0;
+}
 
-集成 Napcat 协议端的自动化部署版本，一键完成所有服务组件与协议端部署
+.deploy-option.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
-```bash
-sudo -E bash -c "$(curl -fsSL https://raw.githubusercontent.com/KroMiose/nekro-agent/main/docker/quick_start_x_napcat.sh)"
-```
+.deploy-option.disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-color: var(--vp-c-divider);
+}
+</style>
 
-如果部署过程出现网络问题无法正确下载脚本，可使用国内 GitCode 加速部署命令：
-
-> 注意: GitCode 加速的部署方式依赖于 GitCode 同步速度，可能无法及时同步最新版本，如有条件尽量使用 Github 脚本部署
-
-```bash
-sudo -E bash -c "$(curl -fsSL https://raw.gitcode.com/gh_mirrors/ne/nekro-agent/raw/main/docker/quick_start_x_napcat.sh)" - -g
-```
-
-::: warning 注意事项
-
-- 默认安装目录：`~/srv/nekro_agent`
-- 如需修改安装目录：执行 `export NEKRO_DATA_DIR=<你的目录>`
-- 本地部署需放行端口：
-  - 8021：NekroAgent 主服务
-  - 6099：Napcat 服务
-- 请注意保存安装脚本中提供的面板登陆信息，以便后续配置使用
-- 如有防火墙提示，请允许访问
-
-:::
-
-按照提示完成部署后，按照[协议端配置](/docs/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档说明完成配置
-
-### 方式二：核心部署
-
-仅部署 NekroAgent 核心服务组件，需要自行配置 OneBot V11 协议端。
-
-```bash
-sudo -E bash -c "$(curl -fsSL https://raw.githubusercontent.com/KroMiose/nekro-agent/main/docker/quick_start.sh)"
-```
-
-监听的协议端连接地址：`ws://<你的服务ip>:8021/onebot/v11/ws`
-
-### 部署后配置
-
-前往[协议端配置](/docs/02_quick_start/config/protocol)文档，根据文档说明完成配置。
