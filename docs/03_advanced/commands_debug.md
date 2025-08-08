@@ -250,7 +250,7 @@ conf_save
 
 ### model_test / model-test
 
-**功能**：测试模型的可达性和性能
+**功能**：测试模型的可用性和性能
 
 **语法**：`model_test [options] <model_names...>`
 
@@ -379,26 +379,6 @@ log_chat_test 3 --stream             # 流式模式测试
 
 ```
 clear_sandbox_cache
-```
-
-### telemetry_report / telemetry-report
-
-**功能**：手动触发遥测数据提交
-
-**语法**：`telemetry_report`
-
-**权限要求**：超级管理员
-
-**功能描述**：
-
-- 上报上一小时的使用数据
-- 用于调试遥测功能
-- 验证数据上报状态
-
-**使用示例**：
-
-```
-telemetry_report
 ```
 
 ### github_stars_check / github-stars-check

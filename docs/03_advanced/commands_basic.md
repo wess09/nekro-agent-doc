@@ -87,11 +87,11 @@ inspect group_123456789  # 查看指定聊天信息
 **使用示例**：
 
 ```
-na_on                    # 开启当前聊天功能
-na_on *                  # 开启所有聊天功能
-na_on private_*          # 开启所有私聊功能
-na_on group_*            # 开启所有群聊功能
-na_on group_123456789    # 开启指定群聊功能
+na_on                    # 开启当前频道聊天
+na_on *                  # 开启所有频道聊天
+na_on private_*          # 开启所有私聊频道聊天
+na_on group_*            # 开启所有群聊频道聊天
+na_on group_123456789    # 开启指定群聊频道聊天
 ```
 
 ### na_off / na-off
@@ -107,11 +107,11 @@ na_on group_123456789    # 开启指定群聊功能
 **使用示例**：
 
 ```
-na_off                   # 关闭当前聊天功能
-na_off *                 # 关闭所有聊天功能
-na_off private_*         # 关闭所有私聊功能
-na_off group_*           # 关闭所有群聊功能
-na_off group_123456789   # 关闭指定群聊功能
+na_off                   # 关闭当前频道聊天
+na_off *                 # 关闭所有频道聊天
+na_off private_*         # 关闭所有私聊频道聊天
+na_off group_*           # 关闭所有群聊频道聊天
+na_off group_123456789   # 关闭指定群聊频道聊天
 ```
 
 ## 系统信息命令
@@ -211,8 +211,8 @@ na_plugins
 **使用示例**：
 
 ```
-plugin_info meme         # 查看表情包插件信息
-plugin_info drawing      # 查看绘图插件信息
+plugin_info emotion      # 查看表情包插件信息
+plugin_info draw         # 查看绘图插件信息
 ```
 
 ### reset_plugin / reset-plugin
@@ -238,8 +238,8 @@ plugin_info drawing      # 查看绘图插件信息
 **使用示例**：
 
 ```
-reset_plugin meme        # 重置表情包插件配置
-reset_plugin drawing     # 重置绘图插件配置
+reset_plugin emotion     # 重置表情包插件配置
+reset_plugin draw        # 重置绘图插件配置
 ```
 
 ## 注意事项
