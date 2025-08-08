@@ -131,6 +131,8 @@ export default defineConfig({
             { text: "用户管理", link: "/docs/03_advanced/user_management" },
             { text: "插件用例", link: "/docs/03_advanced/plugin_usage" },
             { text: "插件生成器", link: "/docs/03_advanced/plugin_generator" },
+            { text: "基础命令指南", link: "/docs/03_advanced/commands_basic" },
+            { text: "调试命令指南", link: "/docs/03_advanced/commands_debug" },
           ],
         },
         {
