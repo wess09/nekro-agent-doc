@@ -151,6 +151,7 @@ export default defineConfig({
                 { text: "插件配置", link: "/docs/04_plugin_dev/02_plugin_basics/2.3_configuration" },
                 { text: "数据存储", link: "/docs/04_plugin_dev/02_plugin_basics/2.4_storage" },
                 { text: "提示词注入", link: "/docs/04_plugin_dev/02_plugin_basics/2.5_prompt_injection" },
+                { text: "上下文对象", link: "/docs/04_plugin_dev/02_plugin_basics/2.6_agent_context" },
               ],
             },
             {
@@ -158,9 +159,10 @@ export default defineConfig({
               link: "/docs/04_plugin_dev/03_advanced_features",
               collapsed: true,
               items: [
-                { text: "Webhook 接入点", link: "/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
+                { text: "Webhook 接入点（弃用）", link: "/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
                 { text: "文件交互", link: "/docs/04_plugin_dev/03_advanced_features/3.2_file_interaction" },
                 { text: "使用向量数据库", link: "/docs/04_plugin_dev/03_advanced_features/3.3_vector_database" },
+                { text: "动态路由", link: "/docs/04_plugin_dev/03_advanced_features/3.4_dynamic_router" },
               ],
             },
             { text: "系统 API 参考", link: "/docs/04_plugin_dev/04_system_api_reference" },

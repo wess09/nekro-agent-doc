@@ -14,5 +14,6 @@ description: 深入了解 Nekro Agent 插件的核心组成部分，包括插件
 3.  **[插件配置](./02_plugin_basics/2.3_configuration.md)**：了解如何为你的插件添加可由用户自定义的配置项，并通过 WebUI 进行管理。
 4.  **[数据存储](./02_plugin_basics/2.4_storage.md)**：学习如何使用插件存储来持久化数据，无论是会话相关的还是全局的。
 5.  **[提示词注入](./02_plugin_basics/2.5_prompt_injection.md)**：探索如何通过向 AI 注入提示词来影响其行为和提供上下文信息。
+6.  **[Agent 上下文 (AgentCtx)](./02_plugin_basics/2.6_agent_context.md)**：深入了解插件开发中的核心上下文对象，包括文件系统、消息发送、配置访问等功能。
 
 让我们逐一开始吧！ 
