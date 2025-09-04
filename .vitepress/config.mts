@@ -18,7 +18,7 @@ export default defineConfig({
       "link",
       {
         rel: "icon",
-        href: "https://img.picui.cn/free/2025/03/10/67ce9955d9600.png",
+        href: "nekro_agent_logo.webp",
       },
     ],
     [
@@ -57,6 +57,9 @@ export default defineConfig({
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: "主页", link: "/" },
       {

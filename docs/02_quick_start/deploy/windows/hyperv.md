@@ -7,6 +7,14 @@ description: 在 Windows 系统上使用 Hyper-V 部署 Nekro Agent 的详细步
 
 本文档将指导您在 Windows 系统上部署 Nekro Agent。
 
+:::tip 给初次使用 Hyper-V 快速创建者的提示
+- 快速创建 Ubuntu 22.04 时，不要勾选“自动登录”，选择“密码登录”，否则未知原因无法启用增强会话。
+- 快速创建的是 Azure Linux 内核，不支持 Hyper-V 内存回收，设定最大多少内存就全部占满。如需内存回收，切换成 Generic 内核。
+- Hyper-V 扩展分配的空间记得使用磁盘管理工具启用。
+- 擅自更新前多创建检查点。
+:::
+
+
 ## 🌈 环境准备
 
 由于 Nekro Agent 基于 Docker 运行，我们需要先在 Windows 上安装 Hyper-V。
@@ -44,7 +52,7 @@ CPU 支持 VM 监视器模式扩展（Intel CPU 上的 VT-c）。
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
-![enable-hyper-v-powershell](/assets/windows/enable-hyper-v-powershell.png)
+![enable-hyper-v-powershell](/assets/windows/enable-hyper-v-powershell.webp)
 
 2.输入 Y ，让计算机重启以完成安装。
 
@@ -62,7 +70,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```powershell
 DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 ```
-![enable-hyper-v-dism](/assets/windows/enable-hyper-v-dism.png)
+![enable-hyper-v-dism](/assets/windows/enable-hyper-v-dism.webp)
 
 4.可以看到该功能已启用，并且“操作已成功完成”。
 
@@ -86,7 +94,7 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 2.选择 “打开或关闭 Windows 功能”。
 
 3.选择 Hyper-V ，然后选择“ 确定”。
-![enable-hyper-v](/assets/windows/enable-hyper-v.png)
+![enable-hyper-v](/assets/windows/enable-hyper-v.webp)
 
 安装完成后，系统会提示重启计算机。
 
