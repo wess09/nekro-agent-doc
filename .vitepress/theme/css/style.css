@@ -36,8 +36,6 @@
   --vp-badge-tip-bg: var(--vp-c-brand-soft);
 }
 
-.dark {}
-
 /* 导航栏链接悬浮颜色 */
 .VPNavBarMenuLink:hover,
 .VPNavBarMenuGroup .text:hover {

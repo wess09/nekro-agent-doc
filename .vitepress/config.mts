@@ -1,7 +1,6 @@
 import { defineConfig } from "vitepress";
 import markdownItVideo from "@vrcd-community/markdown-it-video";
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   markdown: {
     config: (md) => {
