@@ -9,8 +9,7 @@
   --vp-local-search-highlight-text: var(--vp-c-bg);
 }
 
-.dark {
-}
+.dark {}
 
 /* 搜索弹窗中的品牌色元素 */
 .VPLocalSearchBox .search-bar:focus-within {

@@ -62,32 +62,40 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
 
 <template>
   <div class="router-wrapper">
-    <transition 
-      :name="transitionName"
-      mode="out-in"
-      @before-leave="beforeLeave"
-      @after-enter="afterEnter"
-    >
+    <transition :name="transitionName" mode="out-in" @before-leave="beforeLeave" @after-enter="afterEnter">
       <div :key="route.path">
         <Layout />
         <div class="doc-footer" v-if="route.path.includes('/docs/')">
           <div class="container">
             <div class="doc-footer-content">
               <span>发现文档问题？</span>
-              <a href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" class="doc-footer-link">报告问题</a>
+              <a href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml"
+                target="_blank" class="doc-footer-link">报告问题</a>
             </div>
           </div>
         </div>
       </div>
     </transition>
-    
+
     <!-- 悬浮按钮区域 -->
     <div class="float-buttons" v-if="route.path.includes('/docs/')">
       <button class="float-button" @click="scrollToTop" title="返回顶部">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-arrow-up">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
       </button>
-      <a class="float-button" href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" title="反馈问题">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      <a class="float-button" href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml"
+        target="_blank" title="反馈问题">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-message-circle">
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+          </path>
+        </svg>
       </a>
     </div>
   </div>
@@ -106,6 +114,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
     transform: scale(0.98);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -113,8 +122,13 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* 暗黑模式切换相关样式 */

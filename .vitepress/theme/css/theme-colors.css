@@ -5,7 +5,7 @@
   --vp-c-brand-lighter: color(display-p3 1 0.573 0.573);
   --vp-c-brand-dark: color(display-p3 0.792 0.227 0.227);
   --vp-c-brand-darker: color(display-p3 0.69 0.18 0.18);
-  
+
   /* 品牌色变体 */
   --vp-c-brand-1: var(--vp-c-brand);
   --vp-c-brand-2: var(--vp-c-brand-dark);
@@ -20,7 +20,7 @@
   --vp-c-brand-lighter: color(display-p3 1 0.573 0.573);
   --vp-c-brand-dark: color(display-p3 0.792 0.227 0.227);
   --vp-c-brand-darker: color(display-p3 0.69 0.18 0.18);
-  
+
   /* 暗色模式下的品牌色变体 */
   --vp-c-brand-1: var(--vp-c-brand);
   --vp-c-brand-2: var(--vp-c-brand-dark);

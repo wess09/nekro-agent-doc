@@ -25,7 +25,7 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // 注册全局组件
     app.component("Confetti", Confetti)
-    
+
     // 仅在浏览器环境下执行
     if (inBrowser) {
       router.onAfterRouteChanged = () => {
@@ -34,6 +34,6 @@ export default {
     }
   },
   Layout() {
-    return h(MyLayout) 
+    return h(MyLayout)
   },
 } as Theme

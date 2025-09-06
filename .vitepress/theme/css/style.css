@@ -23,21 +23,20 @@
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-  
+
   /* 代码颜色 */
   --vp-code-color: var(--vp-c-brand-1);
   --vp-code-link-color: var(--vp-c-brand-1);
   --vp-code-link-hover-color: var(--vp-c-brand-2);
   --vp-code-tab-active-bar-color: var(--vp-c-brand-1);
-  
+
   /* 徽章颜色 */
   --vp-badge-tip-border: transparent;
   --vp-badge-tip-text: var(--vp-c-brand-1);
   --vp-badge-tip-bg: var(--vp-c-brand-soft);
 }
 
-.dark {
-}
+.dark {}
 
 /* 导航栏链接悬浮颜色 */
 .VPNavBarMenuLink:hover,
