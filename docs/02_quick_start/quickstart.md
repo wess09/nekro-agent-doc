@@ -28,8 +28,13 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 ## 社区部署方案
 
-- [Nekro-Agent-Toolkit 跨平台部署](/docs/community/nekro-agent-toolkit) 
+- [Nekro-Agent-Toolkit](/docs/community/nekro-agent-toolkit) 跨平台部署 Cli 工具
+
   - **跨平台**部署方案和便捷式的**安装、备份、恢复**NekroAgent 的方案。
+
+- [1Panel 应用部署](https://github.com/lgc2333/nekro-agent-deploy-1panel)
+
+  - 基于 **1Panel 面板**的开箱即用一键部署方案，支持纯界面部署操作和 OpenResty 反向代理配置，自动配置 NapCat 协议端。
 
 ## 基本配置
 
@@ -41,9 +46,10 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 ::: warning ⚠ 重要安全信息 ⚠
 为安全起见，请务必阅读以下信息:
-1. 务必修改协议端默认密码：公网 WebUI 必须使用强密码（建议12位以上，含数字、字母、符号）
+
+1. 务必修改协议端默认密码：公网 WebUI 必须使用强密码（建议 12 位以上，含数字、字母、符号）
 2. 为安全起见，请避免使用默认端口
-:::
+   :::
 
 详细配置说明请参考以下文档：
 
