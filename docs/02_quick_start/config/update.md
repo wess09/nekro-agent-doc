@@ -28,7 +28,7 @@ cd ${NEKRO_DATA_DIR}
 ### 仅更新 Nekro Agent 和沙盒镜像 (推荐)
 
 ```bash
-sudo docker pull kromiose/nekro-agent-sandbox && \
+sudo docker pull kromiose/nekro-agent-sandbox:latest && \
 sudo docker-compose --env-file .env pull nekro_agent && \
 sudo docker-compose --env-file .env up --build -d nekro_agent
 ```
@@ -38,6 +38,7 @@ sudo docker-compose --env-file .env up --build -d nekro_agent
 > 该命令会更新 `nekro-agent` 镜像和所有依赖的镜像，可能导致 Bot 掉线需要重新登录
 
 ```bash
+sudo docker pull kromiose/nekro-agent-sandbox:latest && \
 sudo docker-compose --env-file .env pull && \
 sudo docker-compose --env-file .env up --build -d
 ```

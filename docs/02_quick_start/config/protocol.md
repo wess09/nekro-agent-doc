@@ -13,8 +13,8 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 
 ::: warning 警告！
 
-1. 务必修改NapCat默认密码：公网WebU 必须使用强密码（建议12位以上，含数字、字母、符号）
-2. 务必使用Token验证：OneBot服务务必设置有效 Token，避免空Token或弱口令
+1. 务必修改 NapCat 默认密码：公网 WebU 必须使用强密码（建议 12 位以上，含数字、字母、符号）
+2. 务必使用 Token 验证：OneBot 服务务必设置有效 Token，避免空 Token 或弱口令
 3. 为安全起见，请避免使用默认端口
 
 :::
@@ -33,11 +33,10 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 3. 配置 NapCat：
 
    - 默认情况下 NapCat WebUI 地址应当为 `http://<你的服务ip>:6099/webui` (可在 「系统配置」→「基本配置」中修改)
-   - 在「协议端」→「NapCat」→「容器日志」获取 NapCat 登录 Token (NapCat 登陆 Token 在容器日志顶部，请自行查找)
-   - 在「协议端」→「NapCat」→「WebUI」使用 Token 登录并登陆需要作为 Bot 的 QQ 帐号
+   - 在「协议端」→「NapCat」→「WebUI」使用页面上方呈现的 Token 登录并登陆需要作为 Bot 的 QQ 帐号
    - 在「网络配置」中添加 Websocket 客户端：
      - 添加 URL：`ws://nekro_agent:8021/onebot/v11/ws` (URL 走容器网络通信方式，不论是否修改了端口都使用此地址)
-     - 配置 OneBot 访问密钥，即本页面上方显示的 `OneBot 访问密钥` ，请填入 Token 
+     - 配置 OneBot 访问密钥，即本页面上方显示的 `OneBot 访问密钥` ，复制填入即可
      - 打开「启用」开关并保存
 
 配置完成后，请参考[系统配置指南](/docs/02_quick_start/config/system.html)文档继续基本应用配置即可开始使用
