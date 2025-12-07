@@ -1,9 +1,9 @@
 // .vitepress/theme/index.ts
+// 自定义主题入口文件
 
-import { h, onMounted } from 'vue' // 1. 导入 onMounted
+import { h, onMounted } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import MyLayout from './components/switch.vue'
 
 // 导入所有样式文件
 import './css/base/colors.css'
@@ -15,23 +15,31 @@ import './css/components/search.css'
 import './css/layout/blur.css'
 import './css/base/overrides.css'
 
+// 导入第三方库和组件
 import { inBrowser } from "vitepress"
 import busuanzi from "busuanzi.pure.js"
-import Confetti from "./components/Confetti.vue"
+import Confetti from "./components/vue/Confetti.vue"
+import MyLayout from './components/vue/switch.vue'
+import LayoutComponent from './components/vue/layout.vue'
 
-// 2. 导入我们的通知脚本
-import { showAestheticNotice } from './notice.js'
+// 导入3D倾斜效果
+import { init3DTiltEffect } from './components/js/feature.js'
 
-/**
- * 自定义主题
- */
+// 导入自定义通知脚本
+import { showAestheticNotice } from './components/js/notice.js'
+
 export default {
   extends: DefaultTheme,
+
+  Layout: () => {
+    return h(LayoutComponent)
+  },
 
   enhanceApp({ app, router, siteData }) {
     // 注册全局组件
     app.component("Confetti", Confetti)
-    
+    app.component("LayoutComponent", LayoutComponent)
+
     // 仅在浏览器环境下执行
     if (inBrowser) {
       router.onAfterRouteChanged = () => {
@@ -40,17 +48,15 @@ export default {
     }
   },
   
-  // 3. 使用 setup() 函数来集成 onMounted 钩子
   setup() {
     onMounted(() => {
       if (inBrowser) {
         // 在页面挂载后调用通知函数
         showAestheticNotice();
+        
+        // 初始化3D倾斜效果
+        init3DTiltEffect();
       }
     });
-  },
-
-  Layout() {
-    return h(MyLayout) 
-  },
+  }
 } as Theme

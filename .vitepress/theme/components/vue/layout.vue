@@ -1,14 +1,18 @@
+<!-- .vitepress/theme/components/vue/layout.vue -->
+<!-- 自定义布局组件，包含路由过渡动画和浮动按钮 -->
+
 <script setup>
 import { useRouter, useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import { ref, watch, nextTick, provide } from "vue";
+import { ref, watch } from "vue";
 
 const { Layout } = DefaultTheme;
 const { route } = useRouter();
-const { isDark } = useData();
 const transitionName = ref('scale-in');
 
-// 滚动到顶部函数
+/**
+ * 滚动到页面顶部
+ */
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -16,6 +20,9 @@ const scrollToTop = () => {
   });
 };
 
+/**
+ * 监听路由变化，设置过渡动画名称
+ */
 watch(
   route,
   (newRoute, oldRoute) => {
@@ -24,52 +31,19 @@ watch(
     transitionName.value = newIndex > oldIndex ? 'scale-in' : 'scale-out'
   }
 );
-
-// 暗黑模式切换相关代码
-const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
-
-provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
-  if (!enableTransitions()) {
-    isDark.value = !isDark.value
-    return
-  }
-
-  const clipPath = [
-    `circle(0px at ${x}px ${y}px)`,
-    `circle(${Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`
-  ]
-
-  await document.startViewTransition(async () => {
-    isDark.value = !isDark.value
-    await nextTick()
-  }).ready
-
-  document.documentElement.animate(
-    { clipPath: isDark.value ? clipPath.reverse() : clipPath },
-    {
-      duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
-    }
-  )
-})
 </script>
 
 <template>
   <div class="router-wrapper">
+    <!-- 页面过渡动画 -->
     <transition 
       :name="transitionName"
       mode="out-in"
-      @before-leave="beforeLeave"
-      @after-enter="afterEnter"
     >
       <div :key="route.path">
         <Layout />
+        
+        <!-- 文档页脚 -->
         <div class="doc-footer" v-if="route.path.includes('/docs/')">
           <div class="container">
             <div class="doc-footer-content">
@@ -100,7 +74,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   min-height: 100vh;
 }
 
-
+/* 页面进入动画 */
 @keyframes scaleIn {
   0% {
     transform: scale(0.98);
@@ -112,34 +86,10 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   }
 }
 
+/* 页面离开动画 */
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
-}
-
-/* 暗黑模式切换相关样式 */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root),
-.dark::view-transition-new(root) {
-  z-index: 1;
-}
-
-::view-transition-new(root),
-.dark::view-transition-old(root) {
-  z-index: 2;
-}
-
-.VPSwitchAppearance {
-  width: 22px !important;
-}
-
-.VPSwitchAppearance .check {
-  transform: none !important;
 }
 
 /* 文档页脚样式 */
@@ -197,13 +147,5 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   background-color: var(--vp-c-brand-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.dark .float-button {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dark .float-button:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 </style>
