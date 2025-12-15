@@ -125,28 +125,6 @@ This will guide you through deploying Nekro Agent on Windows systems.
   color: var(--vp-c-text-1);
 }
 
-.option-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  font-size: 26px;
-  border-radius: 14px;
-  margin-right: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  /* 为图标也添加硬件加速 */
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-/* 图标颜色 */
-.hyperv .option-icon { background: linear-gradient(135deg, #0078d4, #00bcf2); color: #fff; }
-.wsl .option-icon    { background: linear-gradient(135deg, #ea580c, #f97316); color: #fff; }
-.iso .option-icon    { background: linear-gradient(135deg, #3b82f6, #6366f1); color: #fff; }
-.vmware .option-icon { background: linear-gradient(135deg, #64748b, #94a3b8); color: #fff; }
-
 .option-title {
   font-size: 1.15rem;
   font-weight: 700;
