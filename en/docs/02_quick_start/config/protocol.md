@@ -39,7 +39,7 @@ Nekro Agent supports multiple OneBot V11 compatible protocol endpoint connection
      - Configure OneBot access key, which is the `OneBot Access Key` displayed at the top of this page, just copy and fill it in
      - Turn on the "Enable" switch and save
 
-After configuration is complete, please refer to the [System Configuration Guide](/docs/en/02_quick_start/config/system.html) document to continue with basic application configuration and start using
+After configuration is complete, please refer to the [System Configuration Guide](/en/docs/02_quick_start/config/system.html) document to continue with basic application configuration and start using
 
 ### Other Protocol Endpoints
 

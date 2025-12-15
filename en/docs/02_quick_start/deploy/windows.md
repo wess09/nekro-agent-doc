@@ -11,7 +11,7 @@ This will guide you through deploying Nekro Agent on Windows systems.
 
 <div class="deploy-container">
   <!-- Hyper-V -->
-  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/hyperv">
+  <a class="deploy-option" href="/en/docs/02_quick_start/deploy/windows/hyperv">
     <div class="option-header hyperv"> <!-- The class name here is used to locate child element icon colors -->
       <span class="option-icon">🚀</span>
       <span class="option-title">Hyper-V Deployment</span>
@@ -20,7 +20,7 @@ This will guide you through deploying Nekro Agent on Windows systems.
   </a>
   
   <!-- WSL2 -->
-  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/wsl">
+  <a class="deploy-option" href="/en/docs/02_quick_start/deploy/windows/wsl">
     <div class="option-header wsl">
       <span class="option-icon">🐧</span>
       <span class="option-title">WSL2 Deployment</span>
@@ -29,7 +29,7 @@ This will guide you through deploying Nekro Agent on Windows systems.
   </a>
   
   <!-- ISO -->
-  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/iso">
+  <a class="deploy-option" href="/en/docs/02_quick_start/deploy/windows/iso">
     <div class="option-header iso">
       <span class="option-icon">💿</span>
       <span class="option-title">Complete Image Deployment</span>

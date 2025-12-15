@@ -55,4 +55,4 @@ To facilitate users' quick configuration, the system has preset three types of m
 
 ### More Models
 
-Please go to [Model Selection Guide](/docs/en/03_advanced/model_usage) to view more multi-dimensional tests and recommendations for models
+Please go to [Model Selection Guide](/en/docs/03_advanced/model_usage) to view more multi-dimensional tests and recommendations for models

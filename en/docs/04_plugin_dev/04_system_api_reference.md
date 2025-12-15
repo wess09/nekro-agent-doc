@@ -21,7 +21,7 @@ The `core` module provides some basic and core tools and services.
 *   **Qdrant Vector Database Client**
     *   `core.get_qdrant_client() -> Optional[QdrantClient]` (async): Get the global Qdrant client instance.
     *   `core.get_qdrant_config() -> Optional[dict]` (async): Get Qdrant connection configuration.
-    *   See the [Using Vector Database](/docs/en/04_plugin_dev/03_advanced_features/3.3_vector_database.md) chapter for details.
+    *   See the [Using Vector Database](/en/docs/04_plugin_dev/03_advanced_features/3.3_vector_database.md) chapter for details.
 
 *   **Global Configuration Access (`core.config`)**
     *   Can directly access Nekro Agent's global configuration items (defined in the Agent main configuration file).

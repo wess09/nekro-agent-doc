@@ -1,4 +1,4 @@
-﻿---
+---
 title: 调试命令指南
 description: Nekro Agent 调试命令指南，涵盖技术调试、系统维护、错误日志管理等高级功能，仅适用于 OneBot V11 适配器（QQ 平台）
 ---
@@ -525,7 +525,7 @@ nekro_db_reset -y chat_messages # 重置指定数据表
 ::: tip 获取帮助
 
 - 使用 `na_help` 命令查看命令概览
-- 查看 [基础命令指南](/docs/zh/03_advanced/commands_basic) 了解日常管理功能
+- 查看 [基础命令指南](/docs/03_advanced/commands_basic) 了解日常管理功能
 - 访问 [GitHub 项目](https://github.com/KroMiose/nekro-agent) 报告问题
   :::
 

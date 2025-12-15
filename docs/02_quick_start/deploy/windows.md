@@ -11,7 +11,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
 
 <div class="deploy-container">
   <!-- Hyper-V -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/hyperv">
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/hyperv">
     <div class="option-header hyperv"> <!-- 这里的类名用于定位子元素图标颜色 -->
       <span class="option-icon">🚀</span>
       <span class="option-title">Hyper-V 部署</span>
@@ -20,7 +20,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
   </a>
   
   <!-- WSL2 -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/wsl">
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/wsl">
     <div class="option-header wsl">
       <span class="option-icon">🐧</span>
       <span class="option-title">WSL2 部署</span>
@@ -29,7 +29,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
   </a>
   
   <!-- ISO -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/iso">
+  <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/iso">
     <div class="option-header iso">
       <span class="option-icon">💿</span>
       <span class="option-title">完整镜像部署</span>

@@ -253,6 +253,6 @@ reset_plugin draw        # Reset drawing plugin configuration
 ::: tip Get More Help
 
 - Use the `na_help` command to view all available commands
-- Check the [Debug Command Guide](/docs/en/03_advanced/commands_debug) to learn about advanced debugging features
+- Check the [Debug Command Guide](/en/docs/03_advanced/commands_debug) to learn about advanced debugging features
 - Visit the [GitHub Project](https://github.com/KroMiose/nekro-agent) for the latest information
   :::

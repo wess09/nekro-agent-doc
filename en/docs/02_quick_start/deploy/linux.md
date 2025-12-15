@@ -41,7 +41,7 @@ sudo -E bash -c "$(curl -fsSL https://ep.nekro.ai/e/KroMiose/nekro-agent/main/do
 > - The `--with-napcat` parameter in the above command will start fully automatic standard deployment.
 > - If this parameter is not added, the script will start in interactive mode. At that time, please select `Y` to install Napcat.
 
-After deployment is complete, please refer to the [Protocol Configuration-Napcat](/docs/en/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) document to complete subsequent configuration.
+After deployment is complete, please refer to the [Protocol Configuration-Napcat](/en/docs/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) document to complete subsequent configuration.
 
 ## 🚀 Method 2: Core Deployment
 
@@ -87,6 +87,6 @@ After deployment is complete, Nekro Agent will listen to the following address. 
 
 ## ⚙️ Post-Deployment Configuration
 
-- **Standard Deployment**: Go to the [Protocol Configuration](/docs/en/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) document and complete the configuration according to the documentation.
-- **Core Deployment**: Go to the [Protocol Configuration](/docs/en/02_quick_start/config/protocol) document and continue configuration with reference to the instructions.
+- **Standard Deployment**: Go to the [Protocol Configuration](/en/docs/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) document and complete the configuration according to the documentation.
+- **Core Deployment**: Go to the [Protocol Configuration](/en/docs/02_quick_start/config/protocol) document and continue configuration with reference to the instructions.
 

@@ -206,7 +206,7 @@ orb -m nekro-dev
 
 ### 3. Follow Linux Development Guide in Virtual Machine
 
-In the virtual machine, follow the [Linux Development and Deployment Guide](/docs/en/05_app_dev/dev_linux.html) for subsequent operations.
+In the virtual machine, follow the [Linux Development and Deployment Guide](/en/docs/05_app_dev/dev_linux.html) for subsequent operations.
 
 ## Frontend Development (Optional)
 

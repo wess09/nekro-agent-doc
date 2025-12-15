@@ -1,4 +1,4 @@
-﻿﻿---
+﻿﻿﻿﻿---
 title: Debug Command Guide
 description: "Nekro Agent debug command guide, covering technical debugging, system maintenance, error log management and other advanced features, only applicable to OneBot V11 adapter (QQ platform)"
 ---
@@ -525,6 +525,6 @@ nekro_db_reset -y chat_messages # Reset specified data table
 ::: tip Getting Help
 
 - Use the `na_help` command to view command overview
-- View [Basic Command Guide](/docs/en/03_advanced/commands_basic) to understand daily management functions
+- View [Basic Command Guide](/en/docs/03_advanced/commands_basic) to understand daily management functions
 - Visit [GitHub Project](https://github.com/KroMiose/nekro-agent) to report issues
   :::

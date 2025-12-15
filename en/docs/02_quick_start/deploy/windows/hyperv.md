@@ -108,8 +108,8 @@ After installation is complete, the system will prompt you to restart your compu
 @[bilibili](BV1BqJizaEDs)
 
 ## Install Nekro Agent
-The steps to install Nekro Agent are consistent with Linux deployment. Please check the [Linux Deployment](/docs/en/02_quick_start/deploy/linux) document and complete the deployment according to the documentation.
+The steps to install Nekro Agent are consistent with Linux deployment. Please check the [Linux Deployment](/en/docs/02_quick_start/deploy/linux) document and complete the deployment according to the documentation.
 
 ### Post-Deployment Configuration
 
-Go to the [Protocol Endpoint Configuration](/docs/en/02_quick_start/config/protocol) document and complete the configuration according to the documentation.
+Go to the [Protocol Endpoint Configuration](/en/docs/02_quick_start/config/protocol) document and complete the configuration according to the documentation.

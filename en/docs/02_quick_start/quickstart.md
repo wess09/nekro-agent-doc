@@ -22,21 +22,20 @@ This project allows AI to execute arbitrary code in an isolated Docker container
 
 Choose the appropriate deployment method based on your operating system:
 
-- [Linux Deployment Tutorial](/docs/en/02_quick_start/deploy/linux) - Suitable for various Linux distributions
-- [Windows Deployment Tutorial](/docs/en/02_quick_start/deploy/windows) - Suitable for Windows 10/11 systems
-- [MacOS Deployment Tutorial](/docs/en/02_quick_start/deploy/macos) - Suitable for MacOS systems
+- [Linux Deployment Tutorial](/en/docs/02_quick_start/deploy/linux) - Suitable for various Linux distributions
+- [Windows Deployment Tutorial](/en/docs/02_quick_start/deploy/windows) - Suitable for Windows 10/11 systems
+- [MacOS Deployment Tutorial](/en/docs/02_quick_start/deploy/macos) - Suitable for MacOS systems
 
 ## Community Deployment Solutions
 
-- [Nekro-Agent-Toolkit](/docs/en/community/nekro-agent-toolkit) Cross-platform deployment CLI tool
-
+- [Nekro-Agent-Toolkit](/en/docs/community/nekro-agent-toolkit) Cross-platform deployment CLI tool
   - **Cross-platform** deployment solution and convenient **installation, backup, recovery** solution for NekroAgent.
 
 - [1Panel Application Deployment](https://github.com/lgc2333/nekro-agent-deploy-1panel)
 
   - Out-of-the-box one-click deployment solution based on **1Panel panel**, supporting pure interface deployment operations and OpenResty reverse proxy configuration, automatically configuring NapCat protocol endpoint.
 
-- [iStoreOS System Deployment](/docs/en/community/iStoreOS)
+- [iStoreOS System Deployment](/en/docs/community/iStoreOS)
 
   - Run Nekro Agent on a soft router system based on **OpenWRT**, providing one-click installation script.
 
@@ -57,9 +56,9 @@ For security reasons, please be sure to read the following information:
 
 For detailed configuration instructions, please refer to the following documents:
 
-- [Protocol Configuration](/docs/en/02_quick_start/config/protocol)
-- [System Configuration](/docs/en/02_quick_start/config/system)
-- [Application Updates](/docs/en/02_quick_start/config/update)
+- [Protocol Configuration](/en/docs/02_quick_start/config/protocol)
+- [System Configuration](/en/docs/02_quick_start/config/system)
+- [Application Updates](/en/docs/02_quick_start/config/update)
 
 ## First Use
 
@@ -85,7 +84,7 @@ For your first login, please use the administrator account and password generate
 
 After completing basic configuration, you can explore more advanced features:
 
-- [Model Group Configuration](/docs/en/03_advanced/model_config) - Configure multiple model combinations
+- [Model Group Configuration](/en/docs/03_advanced/model_config) - Configure multiple model combinations
 
 ## Quick Reference
 
@@ -111,6 +110,6 @@ sudo docker restart nekro_agent
 ```
 
 ::: tip 💡 Feature Exploration
-Curious about what Nekro Agent can do? Check out [Application Scenarios Showcase](/docs/en/01_intro/application_scenarios) to learn about rich and diverse practical use cases and creative ways to play!
+Curious about what Nekro Agent can do? Check out [Application Scenarios Showcase](/en/docs/01_intro/application_scenarios) to learn about rich and diverse practical use cases and creative ways to play!
 :::
 

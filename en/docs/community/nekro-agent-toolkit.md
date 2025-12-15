@@ -1,4 +1,4 @@
-﻿---
+---
 title: Nekro-Agent-Toolkit
 description: Use Nekro-Agent-Toolkit to quickly deploy NekroAgent.
 ---
@@ -85,8 +85,8 @@ Usage Examples:
 > [!WARNING]
 > ### Recommended reading after NekroAgent installation: 
 > 
->   [Quick Start#Basic Configuration](/docs/en/02_quick_start/quickstart.html#basic-configuration)
+>   [Quick Start#Basic Configuration](/en/docs/02_quick_start/quickstart.html#basic-configuration)
 > 
->   [NapCat Login and Change Default Password](/docs/en/02_quick_start/config/protocol.html)
+>   [NapCat Login and Change Default Password](/en/docs/02_quick_start/config/protocol.html)
 >
->   [NekroAgent Related Configuration](/docs/en/02_quick_start/config/system.html)
+>   [NekroAgent Related Configuration](/en/docs/02_quick_start/config/system.html)

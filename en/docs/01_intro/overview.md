@@ -29,7 +29,7 @@ NekroAgent guides AI to generate accurate code and execute it in a sandbox throu
 - **Event-driven** interaction architecture following an async-first efficient response mechanism
 - Support for dynamic installation and **real-time introduction of PYPI dependencies**, unlocking the endless treasures of the Python universe
 
-👉 Want to know what Nekro Agent can do? Check out [Application Scenarios Showcase](/docs/en/01_intro/application_scenarios) to learn about rich practical use cases!
+👉 Want to know what Nekro Agent can do? Check out [Application Scenarios Showcase](/en/docs/01_intro/application_scenarios) to learn about rich practical use cases!
 
 ## 🌟 Nekro AI
 

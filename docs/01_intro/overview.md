@@ -29,7 +29,7 @@ NekroAgent 通过强大灵活的提示词构建系统，引导 AI 生成准确�
 - 基于 **事件驱动** 的交互架构，遵循异步优先的高效响应机制
 - 支持动态安装与 **实时引入 PYPI 依赖**，解锁 Python 宇宙的无尽矿藏
 
-👉 想了解 Nekro Agent 能做什么？查看 [应用场景展示](/docs/zh/01_intro/application_scenarios) 了解丰富的实际使用案例！
+👉 想了解 Nekro Agent 能做什么？查看 [应用场景展示](/docs/01_intro/application_scenarios) 了解丰富的实际使用案例！
 
 ## 🌟 Nekro AI
 
