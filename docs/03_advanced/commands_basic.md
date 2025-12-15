@@ -1,4 +1,4 @@
----
+﻿---
 title: 基础命令指南
 description: Nekro Agent 基础命令指南，涵盖聊天管理、插件查看等日常使用的管理命令，仅适用于 OneBot V11 适配器（QQ 平台）
 ---
@@ -253,6 +253,7 @@ reset_plugin draw        # 重置绘图插件配置
 ::: tip 获取更多帮助
 
 - 使用 `na_help` 命令查看所有可用命令
-- 查看 [调试命令指南](/docs/03_advanced/commands_debug) 了解高级调试功能
+- 查看 [调试命令指南](/docs/zh/03_advanced/commands_debug) 了解高级调试功能
 - 访问 [GitHub 项目](https://github.com/KroMiose/nekro-agent) 获取最新信息
   :::
+

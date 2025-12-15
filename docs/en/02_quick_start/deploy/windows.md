@@ -1,49 +1,49 @@
-﻿---
-title: Windows 部署 Nekro Agent
-description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL2环境准备和两种部署方式的完整指南
+---
+title: Windows Deployment of Nekro Agent
+description: Detailed steps for deploying Nekro Agent on Windows systems, including WSL2 environment preparation and complete guides for two deployment methods
 ---
 
-# Windows 部署教程
+# Windows Deployment Tutorial
 
-将指导您在 Windows 系统上部署 Nekro Agent。
+This will guide you through deploying Nekro Agent on Windows systems.
 
-## 请选择部署方式
+## Please Select Deployment Method
 
 <div class="deploy-container">
   <!-- Hyper-V -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/hyperv">
-    <div class="option-header hyperv"> <!-- 这里的类名用于定位子元素图标颜色 -->
+  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/hyperv">
+    <div class="option-header hyperv"> <!-- The class name here is used to locate child element icon colors -->
       <span class="option-icon">🚀</span>
-      <span class="option-title">Hyper-V 部署</span>
+      <span class="option-title">Hyper-V Deployment</span>
     </div>
-    <div class="option-desc">性能强劲，跟随系统启动，Windows 原生虚拟化方案。</div>
+    <div class="option-desc">High performance, starts with the system, Windows native virtualization solution.</div>
   </a>
   
   <!-- WSL2 -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/wsl">
+  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/wsl">
     <div class="option-header wsl">
       <span class="option-icon">🐧</span>
-      <span class="option-title">WSL2 部署</span>
+      <span class="option-title">WSL2 Deployment</span>
     </div>
-    <div class="option-desc">轻量便捷，与 Windows 文件系统深度集成，适合开发。</div>
+    <div class="option-desc">Lightweight and convenient, deeply integrated with Windows file system, suitable for development.</div>
   </a>
   
   <!-- ISO -->
-  <a class="deploy-option" href="/docs/zh/02_quick_start/deploy/windows/iso">
+  <a class="deploy-option" href="/docs/en/02_quick_start/deploy/windows/iso">
     <div class="option-header iso">
       <span class="option-icon">💿</span>
-      <span class="option-title">完整镜像部署</span>
+      <span class="option-title">Complete Image Deployment</span>
     </div>
-    <div class="option-desc">独立环境，一键安装，隔离性最好的部署方式。</div>
+    <div class="option-desc">Independent environment, one-click installation, the deployment method with the best isolation.</div>
   </a>
   
   <!-- VMware -->
   <a class="deploy-option disabled">
     <div class="option-header vmware">
-      <span class="option-icon">📦</span> <!-- 换了个更符合软件的图标 -->
-      <span class="option-title">VMware 部署</span>
+      <span class="option-icon">📦</span> <!-- Changed to an icon more suitable for software -->
+      <span class="option-title">VMware Deployment</span>
     </div>
-    <div class="option-desc">即将推出：适用于 VMware Workstation 的专属方案。</div>
+    <div class="option-desc">Coming soon: Exclusive solution for VMware Workstation.</div>
   </a>
 </div>
 

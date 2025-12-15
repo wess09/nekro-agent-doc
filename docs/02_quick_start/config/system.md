@@ -1,4 +1,4 @@
----
+﻿---
 title: 系统配置指南
 description: Nekro Agent 系统配置的详细说明，包括基本配置项、配置键值概念及必要的模型组配置方法
 ---
@@ -55,4 +55,5 @@ Nekro Agent 提供了灵活的系统配置选项，让您可以根据自己的�
 
 ### 更多模型
 
-请前往 [模型选择指南](/docs/03_advanced/model_usage) 查看更多模型的多维实测与推荐
+请前往 [模型选择指南](/docs/zh/03_advanced/model_usage) 查看更多模型的多维实测与推荐
+

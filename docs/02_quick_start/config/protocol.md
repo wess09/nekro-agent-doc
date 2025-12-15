@@ -1,4 +1,4 @@
----
+﻿---
 title: 协议端配置指南
 description: Nekro Agent 协议端配置的详细说明，包括 NapCat 集成部署和其他协议端的连接方法及故障排除
 ---
@@ -39,7 +39,7 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
      - 配置 OneBot 访问密钥，即本页面上方显示的 `OneBot 访问密钥` ，复制填入即可
      - 打开「启用」开关并保存
 
-配置完成后，请参考[系统配置指南](/docs/02_quick_start/config/system.html)文档继续基本应用配置即可开始使用
+配置完成后，请参考[系统配置指南](/docs/zh/02_quick_start/config/system.html)文档继续基本应用配置即可开始使用
 
 ### 其他协议端
 
@@ -60,3 +60,4 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 
 - **收不到消息**：检查两端日志，确认是否正确建立连接（NekroAgent 系统日志中显示 `connection open` 字样）
 - **消息格式错误**：检查是否使用了兼容的 OneBot 实现
+

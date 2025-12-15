@@ -1,4 +1,4 @@
----
+﻿---
 title: Windows 部署 Nekro Agent for Hyper-V
 description: 在 Windows 系统上使用 Hyper-V 部署 Nekro Agent 的详细步骤
 ---
@@ -109,8 +109,9 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 @[bilibili](BV1BqJizaEDs)
 
 ## 安装 Nekro Agent
-安装 Nekro Agent 的步骤与 Linux 部署 一致，请查看[Linux部署](/docs/02_quick_start/deploy/linux)文档，根据文档说明完成部署。
+安装 Nekro Agent 的步骤与 Linux 部署 一致，请查看[Linux部署](/docs/zh/02_quick_start/deploy/linux)文档，根据文档说明完成部署。
 
 ### 部署后配置
 
-前往[协议端配置](/docs/02_quick_start/config/protocol)文档，根据文档说明完成配置。
+前往[协议端配置](/docs/zh/02_quick_start/config/protocol)文档，根据文档说明完成配置。
+

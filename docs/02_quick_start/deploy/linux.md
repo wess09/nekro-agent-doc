@@ -1,4 +1,4 @@
----
+﻿---
 title: Linux 部署 Nekro Agent
 description: 在 Linux 环境下部署 Nekro Agent 的完整指南，包括标准部署和核心部署两种方式的详细步骤。
 ---
@@ -41,7 +41,7 @@ sudo -E bash -c "$(curl -fsSL https://ep.nekro.ai/e/KroMiose/nekro-agent/main/do
 > - 上述命令中的 `--with-napcat` 参数会启动全自动标准部署。
 > - 如果不加此参数，脚本会以交互模式启动，届时请选择 `Y` 以安装 Napcat。
 
-部署完成后，请参考[协议端配置-Napcat](/docs/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档完成后续配置。
+部署完成后，请参考[协议端配置-Napcat](/docs/zh/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档完成后续配置。
 
 ## 🚀 方式二：核心部署
 
@@ -87,5 +87,6 @@ sudo -E bash -c "$(curl -fsSL https://raw.gitcode.com/gh_mirrors/ne/nekro-agent/
 
 ## ⚙️ 部署后配置
 
-- **标准部署**: 前往[协议端配置](/docs/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档，根据文档说明完成配置。
-- **核心部署**: 前往[协议端配置](/docs/02_quick_start/config/protocol)文档，参考说明继续配置。
+- **标准部署**: 前往[协议端配置](/docs/zh/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档，根据文档说明完成配置。
+- **核心部署**: 前往[协议端配置](/docs/zh/02_quick_start/config/protocol)文档，参考说明继续配置。
+

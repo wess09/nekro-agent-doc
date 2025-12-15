@@ -206,7 +206,7 @@ orb -m nekro-dev
 
 ### 3. 在虚拟机中按照 Linux 开发指南进行操作
 
-在虚拟机中按照 [Linux 开发部署指南](/docs/zh/05_app_dev/dev_linux.html) 进行后续操作。
+在虚拟机中按照 [Linux 开发部署指南](/docs/en/05_app_dev/dev_linux.html) 进行后续操作。
 
 ## 前端开发（可选）
 

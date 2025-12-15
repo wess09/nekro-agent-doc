@@ -1,4 +1,4 @@
----
+﻿---
 title: Nekro Agent 快速开始
 description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选择、基本配置和首次使用的详细步骤
 ---
@@ -22,13 +22,13 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 根据您的操作系统选择合适的部署方式：
 
-- [Linux 部署教程](/docs/02_quick_start/deploy/linux) - 适用于各类 Linux 发行版
-- [Windows 部署教程](/docs/02_quick_start/deploy/windows) - 适用于 Windows 10/11 系统
-- [MacOS 部署教程](/docs/02_quick_start/deploy/macos) - 适用于 MacOS 系统
+- [Linux 部署教程](/docs/zh/02_quick_start/deploy/linux) - 适用于各类 Linux 发行版
+- [Windows 部署教程](/docs/zh/02_quick_start/deploy/windows) - 适用于 Windows 10/11 系统
+- [MacOS 部署教程](/docs/zh/02_quick_start/deploy/macos) - 适用于 MacOS 系统
 
 ## 社区部署方案
 
-- [Nekro-Agent-Toolkit](/docs/community/nekro-agent-toolkit) 跨平台部署 Cli 工具
+- [Nekro-Agent-Toolkit](/docs/zh/community/nekro-agent-toolkit) 跨平台部署 Cli 工具
 
   - **跨平台**部署方案和便捷式的**安装、备份、恢复**NekroAgent 的方案。
 
@@ -36,7 +36,7 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
   - 基于 **1Panel 面板**的开箱即用一键部署方案，支持纯界面部署操作和 OpenResty 反向代理配置，自动配置 NapCat 协议端。
 
-- [iStoreOS 系统部署](/docs/community/iStoreOS)
+- [iStoreOS 系统部署](/docs/zh/community/iStoreOS)
 
   - 在基于 **OpenWRT** 的软路由系统运行 Nekro Agent，提供一键安装脚本。
 
@@ -57,9 +57,9 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 详细配置说明请参考以下文档：
 
-- [协议端配置](/docs/02_quick_start/config/protocol)
-- [系统配置](/docs/02_quick_start/config/system)
-- [应用更新](/docs/02_quick_start/config/update)
+- [协议端配置](/docs/zh/02_quick_start/config/protocol)
+- [系统配置](/docs/zh/02_quick_start/config/system)
+- [应用更新](/docs/zh/02_quick_start/config/update)
 
 ## 首次使用
 
@@ -85,7 +85,7 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 完成基础配置后，您可以探索更多高级功能：
 
-- [模型组配置](/docs/03_advanced/model_config) - 配置多种模型组合
+- [模型组配置](/docs/zh/03_advanced/model_config) - 配置多种模型组合
 
 ## 快速参考
 
@@ -111,5 +111,6 @@ sudo docker restart nekro_agent
 ```
 
 ::: tip 💡 功能探索
-好奇 Nekro Agent 能做什么？查看 [应用场景展示](/docs/01_intro/application_scenarios) 了解丰富多样的实际使用案例和创意玩法！
+好奇 Nekro Agent 能做什么？查看 [应用场景展示](/docs/zh/01_intro/application_scenarios) 了解丰富多样的实际使用案例和创意玩法！
 :::
+

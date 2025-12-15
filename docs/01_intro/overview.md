@@ -1,4 +1,4 @@
----
+﻿---
 title: Nekro Agent 概述
 description: Nekro Agent 是一款强大的AI代理框架，提供安全、高效、优雅的智能交互体验，支持沙盒环境执行代码、多模态视觉交互及高度可扩展的插件系统
 ---
@@ -29,7 +29,7 @@ NekroAgent 通过强大灵活的提示词构建系统，引导 AI 生成准确�
 - 基于 **事件驱动** 的交互架构，遵循异步优先的高效响应机制
 - 支持动态安装与 **实时引入 PYPI 依赖**，解锁 Python 宇宙的无尽矿藏
 
-👉 想了解 Nekro Agent 能做什么？查看 [应用场景展示](/docs/01_intro/application_scenarios) 了解丰富的实际使用案例！
+👉 想了解 Nekro Agent 能做什么？查看 [应用场景展示](/docs/zh/01_intro/application_scenarios) 了解丰富的实际使用案例！
 
 ## 🌟 Nekro AI
 
@@ -67,3 +67,4 @@ Nekro AI 致力于打造一个开放、协同、高可用的服务生态，助�
 <a href="https://github.com/KroMiose/nekro-agent/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=KroMiose/nekro-agent&max=1000" />
 </a>
+

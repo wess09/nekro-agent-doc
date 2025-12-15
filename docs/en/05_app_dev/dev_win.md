@@ -1,9 +1,9 @@
-﻿---
-title: macOS开发部署指南
-description: Nekro Agent macOS环境下的开发部署完整指南
+---
+title: Windows开发部署指南
+description: Nekro Agent Windows环境下的开发部署完整指南
 ---
 
-# macOS 开发环境准备
+# Windows 开发环境准备
 
 ::: warning 警告
 此文档仅用于开发环境，不推荐用于部署或使用。
@@ -17,27 +17,12 @@ description: Nekro Agent macOS环境下的开发部署完整指南
 - 安装 Python 环境 (推荐 Python 3.10)
 - 安装 `poetry` (Python 依赖管理工具)
 - 安装 `nb-cli` (NoneBot 脚手架)
-- 安装 OrbStack 或 Docker Desktop for Mac
-
-### 安装基础开发工具
-
-1. 安装 Homebrew (如果尚未安装)
+- 安装 Docker Desktop
+- 所有命令行操作推荐在 PowerShell 中执行
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-2. 安装 Python
-
-```bash
-brew install python@3.10
-```
-
-3. 安装开发依赖
-
-```bash
-pip3 install poetry
-pip3 install nb-cli
+pip install poetry
+pip install nb-cli
 ```
 
 ## 源码部署
@@ -52,30 +37,28 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
+pip install poetry  # 需要提前安装 Python 环境: 推荐 Python 3.10
 poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
 poetry install
 ```
 
 ### 3. 安装 PostgreSQL 数据库
 
-通过 Homebrew 安装：
-
-```bash
-brew install postgresql@15
-brew services start postgresql@15
-```
+1. 访问 [PostgreSQL 官网](https://www.postgresql.org/download/windows/)
+2. 下载最新 15.x 版本安装包
+3. 安装时：
+   - 设置管理员密码（请牢记）
+   - 保持默认端口 5432
+   - 取消勾选"Stack Builder"
 
 ### 4. 数据库初始化
 
-1. 创建数据库：
+1. 打开 SQL Shell (psql) 或 pgAdmin
+2. 执行以下 SQL 命令：
 
-```bash
-# 切换到 postgres 用户
-psql postgres
-
-# 在 PostgreSQL 内执行
+```sql
+-- 创建数据库
 CREATE DATABASE nekro_db;
-\q
 ```
 
 ### 5. 生成配置文件
@@ -100,8 +83,8 @@ ADMIN_CHAT_KEY: group_12345678 # 管理会话频道标识
 # Postgresql 数据库配置
 POSTGRES_HOST: localhost
 POSTGRES_PORT: 5432
-POSTGRES_USER: postgres  # macOS下默认用户名通常为当前用户名
-POSTGRES_PASSWORD: ""    # 本地开发环境可能无密码
+POSTGRES_USER: postgres
+POSTGRES_PASSWORD: your_password
 POSTGRES_DATABASE: nekro_db
 ```
 
@@ -109,49 +92,37 @@ POSTGRES_DATABASE: nekro_db
 完整配置说明请参考 [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
 :::
 
-### 7. 安装 Docker 环境
+### 7. 安装 Docker Desktop
 
-在 macOS 上，我们推荐使用 OrbStack 作为容器管理工具，它比 Docker Desktop 更轻量且性能更好。
-
-#### 方法一：安装 OrbStack（推荐）
-
-```bash
-brew install --cask orbstack
-```
-
-安装完成后启动 OrbStack 应用。
-
-#### 方法二：安装 Docker Desktop for Mac
-
-1. 访问 [Docker Desktop 官网](https://www.docker.com/products/docker-desktop/) 下载 macOS 版本
-2. 安装并启动 Docker Desktop
-3. 确认 Docker 服务正常运行：`docker info`
+1. 访问 [Docker 官网](https://www.docker.com/products/docker-desktop/)
+2. 下载 Windows 版本并安装
+3. 启动后右下角出现鲸鱼图标即成功
+4. （可选）在设置中启用 WSL2 后端提升性能
 
 ### 8. 拉取沙盒镜像
 
 拉取用于沙盒环境的 Docker 镜像：
 
-```bash
+```powershell
 # 拉取镜像
 docker pull kromiose/nekro-agent-sandbox:latest
 
 # 验证镜像
-docker images | grep nekro-agent-sandbox
+docker images | findstr "nekro-agent-sandbox"
 ```
 
 ### 9. 设置 WebUI 密码
 
-在 macOS 中设置环境变量：
+::: warning 注意
+由于 nekro_agent 的 webui 密码是被存放在环境变量而非数据库，需要在环境变量中设置密码
+:::
 
-```bash
-# 临时设置（当前终端会话有效）
-export NEKRO_ADMIN_PASSWORD="your_password"
-
-# 永久设置（需要重启终端生效）
-echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.zshrc  # 如果使用zsh
-# 或
-echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.bash_profile  # 如果使用bash
-```
+1. 打开文件资源管理器找到"此电脑", 右键点击 "属性"
+2. 找到"高级系统设置", 并点击"环境变量"
+3. 在环境变量中添加以下内容:
+   - 名称: `NEKRO_ADMIN_PASSWORD`
+   - 值: 你想要设置的密码
+4. 点击"确定"保存设置并退出
 
 ### 10. 运行 Bot
 
@@ -161,12 +132,10 @@ nb run
 nb run --reload --reload-excludes ext_workdir
 ```
 
-::: warning 注意
-在 macOS 上运行时，如果遇到权限问题，可能需要使用 sudo：
+或使用命令行启动：
 ```bash
-sudo nb run
+poetry run bot
 ```
-:::
 
 ### 11. OneBot 配置
 
@@ -188,37 +157,17 @@ ws://127.0.0.1:8021/onebot/v11/ws
 2. 按 `F5` 启动调试
 3. 观察终端输出是否正常
 
-## 使用 OrbStack 虚拟机开发（替代方案）
-
-如果在 macOS 原生环境中遇到兼容性问题，可以考虑使用 OrbStack 虚拟机进行开发：
-
-### 1. 创建 Linux 虚拟机
-
-```bash
-orb create ubuntu nekro-dev
-```
-
-### 2. 进入虚拟机
-
-```bash
-orb -m nekro-dev
-```
-
-### 3. 在虚拟机中按照 Linux 开发指南进行操作
-
-在虚拟机中按照 [Linux 开发部署指南](/docs/zh/05_app_dev/dev_linux.html) 进行后续操作。
-
 ## 前端开发（可选）
 
 如需开发前端页面，可按以下步骤进行：
 
 ### 1. 安装 Node.js
-```bash
-brew install node@20
-```
+1. 访问 [Node.js 官网](https://nodejs.org/)
+2. 下载 20.x LTS 版本（.msi 格式）
+3. 安装时勾选 **Add to PATH** 选项
 
 ### 2. 配置 pnpm
-```bash
+```powershell
 # 全局安装 pnpm
 npm install -g pnpm
 
@@ -227,7 +176,7 @@ pnpm config set registry https://registry.npmmirror.com
 ```
 
 ### 3. 安装前端依赖
-```bash
+```powershell
 cd frontend
 
 # 安装依赖
@@ -247,4 +196,4 @@ VITE vx.x.x  ready in xxx ms
 ➜  Local:   http://localhost:xxxx/ <-这里是端口号
 ➜  Network: use --host to expose
 ➜  press h + enter to show help
-``` 
+```

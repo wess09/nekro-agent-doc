@@ -9,13 +9,13 @@ hero:
   actions:
     - theme: brand
       text: 快速了解
-      link: /docs/01_intro/overview
+      link: /docs/zh/01_intro/overview
     - theme: alt
       text: 开始使用
-      link: /docs/02_quick_start/quickstart
+      link: /docs/zh/02_quick_start/quickstart
     - theme: alt
       text: 插件开发
-      link: /docs/04_plugin_dev/00_introduction
+      link: /docs/zh/04_plugin_dev/00_introduction
     - theme: alt
       text: 开源仓库
       link: https://github.com/KroMiose/nekro-agent
