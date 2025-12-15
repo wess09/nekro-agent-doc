@@ -215,56 +215,56 @@ export default defineConfig({
     en: {
       label: 'English',
       lang: 'en-US',
-      link: '/docs/en/',
+      link: '/en',
       title: "NekroAgent Docs",
       description: "NekroAgent is an open-source autonomous agent framework based on LLM.",
       themeConfig: {
         nav: [
-          { text: "Home", link: "/docs/en/" },
+          { text: "Home", link: "/en/index_en.html" },
           { text: "Contribute", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
           { text: "Join Community", link: "https://qm.qq.com/q/eT30LxDcSA" },
         ],
         sidebar: {
-          "/docs/en/": [
+          "/en/docs": [
             {
               text: "Introduction",
               collapsed: true,
               items: [
-                { text: "Overview", link: "/docs/en/01_intro/overview" },
-                { text: "Scenarios", link: "/docs/en/01_intro/application_scenarios" },
-                { text: "Incentive Plan", link: "/docs/en/01_intro/event" },
-                { text: "Recruitment", link: "/docs/en/01_intro/recruitment" },
+                { text: "Overview", link: "/en/docs/01_intro/overview" },
+                { text: "Scenarios", link: "/en/docs/01_intro/application_scenarios" },
+                { text: "Incentive Plan", link: "/en/docs/01_intro/event" },
+                { text: "Recruitment", link: "/en/docs/01_intro/recruitment" },
               ],
             },
             {
               text: "Quick Start",
               collapsed: true,
               items: [
-                { text: "Quick Start", link: "/docs/en/02_quick_start/quickstart" },
+                { text: "Quick Start", link: "/en/docs/02_quick_start/quickstart" },
                 {
                   text: "Deployment",
                   collapsed: true,
                   items: [
-                    { text: "Linux", link: "/docs/en/02_quick_start/deploy/linux" },
-                    { text: "Windows", link: "/docs/en/02_quick_start/deploy/windows" },
-                    { text: "MacOS", link: "/docs/en/02_quick_start/deploy/macos" }
+                    { text: "Linux", link: "/en/docs/02_quick_start/deploy/linux" },
+                    { text: "Windows", link: "/en/docs/02_quick_start/deploy/windows" },
+                    { text: "MacOS", link: "/en/docs/02_quick_start/deploy/macos" }
                   ],
                 },
                 {
                   text: "Community Deployment",
                   collapsed: true,
                   items: [
-                    { text: "Nekro-Agent-Toolkit", link: "/docs/en/community/nekro-agent-toolkit" },
-                    { text: "iStoreOS", link: "/docs/en/community/iStoreOS" }
+                    { text: "Nekro-Agent-Toolkit", link: "/en/docs/community/nekro-agent-toolkit" },
+                    { text: "iStoreOS", link: "/en/docs/community/iStoreOS" }
                   ]
                 },
                 {
                   text: "Configuration",
                   collapsed: true,
                   items: [
-                    { text: "Protocol", link: "/docs/en/02_quick_start/config/protocol" },
-                    { text: "System", link: "/docs/en/02_quick_start/config/system" },
-                    { text: "Update", link: "/docs/en/02_quick_start/config/update" },
+                    { text: "Protocol", link: "/en/docs/02_quick_start/config/protocol" },
+                    { text: "System", link: "/en/docs/02_quick_start/config/system" },
+                    { text: "Update", link: "/en/docs/02_quick_start/config/update" },
                   ],
                 },
               ],
@@ -273,65 +273,65 @@ export default defineConfig({
               text: "Advanced",
               collapsed: true,
               items: [
-                { text: "Model Config", link: "/docs/en/03_advanced/model_config" },
-                { text: "Model Selection", link: "/docs/en/03_advanced/model_usage" },
-                { text: "Persona Tips", link: "/docs/en/03_advanced/persona_tips" },
-                { text: "Session Persona", link: "/docs/en/03_advanced/session_persona" },
-                { text: "User Management", link: "/docs/en/03_advanced/user_management" },
-                { text: "Plugin Usage", link: "/docs/en/03_advanced/plugin_usage" },
-                { text: "Plugin Generator", link: "/docs/en/03_advanced/plugin_generator" },
-                { text: "Basic Commands", link: "/docs/en/03_advanced/commands_basic" },
-                { text: "Debug Commands", link: "/docs/en/03_advanced/commands_debug" },
+                { text: "Model Config", link: "/en/docs/03_advanced/model_config" },
+                { text: "Model Selection", link: "/en/docs/03_advanced/model_usage" },
+                { text: "Persona Tips", link: "/en/docs/03_advanced/persona_tips" },
+                { text: "Session Persona", link: "/en/docs/03_advanced/session_persona" },
+                { text: "User Management", link: "/en/docs/03_advanced/user_management" },
+                { text: "Plugin Usage", link: "/en/docs/03_advanced/plugin_usage" },
+                { text: "Plugin Generator", link: "/en/docs/03_advanced/plugin_generator" },
+                { text: "Basic Commands", link: "/en/docs/03_advanced/commands_basic" },
+                { text: "Debug Commands", link: "/en/docs/03_advanced/commands_debug" },
               ],
             },
             {
               text: "Plugin Dev",
               collapsed: true,
               items: [
-                { text: "Introduction", link: "/docs/en/04_plugin_dev/00_introduction" },
-                { text: "Quick Start", link: "/docs/en/04_plugin_dev/01_quick_start" },
+                { text: "Introduction", link: "/en/docs/04_plugin_dev/00_introduction" },
+                { text: "Quick Start", link: "/en/docs/04_plugin_dev/01_quick_start" },
                 {
                   text: "Core Concepts",
-                  link: "/docs/en/04_plugin_dev/02_plugin_basics",
+                  link: "/en/docs/04_plugin_dev/02_plugin_basics",
                   collapsed: true,
                   items: [
-                    { text: "Instance & Lifecycle", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.1_plugin_instance" },
-                    { text: "Sandbox Methods", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.2_sandbox_methods" },
-                    { text: "Configuration", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.3_configuration" },
-                    { text: "Storage", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.4_storage" },
-                    { text: "Prompt Injection", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.5_prompt_injection" },
-                    { text: "Context Object", link: "/docs/en/04_plugin_dev/02_plugin_basics/2.6_agent_context" },
+                    { text: "Instance & Lifecycle", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.1_plugin_instance" },
+                    { text: "Sandbox Methods", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.2_sandbox_methods" },
+                    { text: "Configuration", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.3_configuration" },
+                    { text: "Storage", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.4_storage" },
+                    { text: "Prompt Injection", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.5_prompt_injection" },
+                    { text: "Context Object", link: "/en/docs/04_plugin_dev/02_plugin_basics/2.6_agent_context" },
                   ],
                 },
                 {
                   text: "Advanced",
-                  link: "/docs/en/04_plugin_dev/03_advanced_features",
+                  link: "/en/docs/04_plugin_dev/03_advanced_features",
                   collapsed: true,
                   items: [
-                    { text: "Webhooks (Deprecated)", link: "/docs/en/04_plugin_dev/03_advanced_features/3.1_webhooks" },
-                    { text: "File Interaction", link: "/docs/en/04_plugin_dev/03_advanced_features/3.2_file_interaction" },
-                    { text: "Vector Database", link: "/docs/en/04_plugin_dev/03_advanced_features/3.3_vector_database" },
-                    { text: "Dynamic Router", link: "/docs/en/04_plugin_dev/03_advanced_features/3.4_dynamic_router" },
-                    { text: "Dynamic Package", link: "/docs/en/04_plugin_dev/03_advanced_features/3.5_dynamic_package_import" },
+                    { text: "Webhooks (Deprecated)", link: "/en/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
+                    { text: "File Interaction", link: "/en/docs/04_plugin_dev/03_advanced_features/3.2_file_interaction" },
+                    { text: "Vector Database", link: "/en/docs/04_plugin_dev/03_advanced_features/3.3_vector_database" },
+                    { text: "Dynamic Router", link: "/en/docs/04_plugin_dev/03_advanced_features/3.4_dynamic_router" },
+                    { text: "Dynamic Package", link: "/en/docs/04_plugin_dev/03_advanced_features/3.5_dynamic_package_import" },
                   ],
                 },
-                { text: "System API", link: "/docs/en/04_plugin_dev/04_system_api_reference" },
+                { text: "System API", link: "/en/docs/04_plugin_dev/04_system_api_reference" },
               ],
             },
             {
               text: "App Dev",
               collapsed: true,
               items: [
-                { text: "Linux Dev Env", link: "/docs/en/05_app_dev/dev_linux" },
-                { text: "Windows Dev Env", link: "/docs/en/05_app_dev/dev_win" },
-                { text: "MacOS Dev Env", link: "/docs/en/05_app_dev/dev_macos" },
+                { text: "Linux Dev Env", link: "/en/docs/05_app_dev/dev_linux" },
+                { text: "Windows Dev Env", link: "/en/docs/05_app_dev/dev_win" },
+                { text: "MacOS Dev Env", link: "/en/docs/05_app_dev/dev_macos" },
               ],
             },
             {
               text: "Troubleshooting",
               collapsed: true,
               items: [
-                { text: "FAQ", link: "/docs/en/06_troubleshooting/faq" },
+                { text: "FAQ", link: "/en/docs/06_troubleshooting/faq" },
               ],
             },
           ]

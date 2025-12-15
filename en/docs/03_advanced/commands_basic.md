@@ -1,6 +1,6 @@
 ---
 title: Basic Command Guide
-description: Nekro Agent basic command guide, covering daily management commands such as chat management and plugin viewing, only applicable to OneBot V11 adapter (QQ platform)
+description: "Nekro Agent basic command guide, covering daily management commands such as chat management and plugin viewing, only applicable to OneBot V11 adapter (QQ platform)"
 ---
 
 # Basic Command Guide
