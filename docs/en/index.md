@@ -1,9 +1,8 @@
-# Redirecting to English homepage...
-Redirecting...
+# 正在返回主页...
+正在重定向...
 ::: tip
-If the redirect fails, please click here to go to the [English homepage](index_en.html)
+如果返回失败 请点击这里返回 [主页](index.html)
 :::
 <script>
-  // 强制跳转到 index_en.html
-  window.location.replace("/index_en.html");
+  window.location.replace("/index.html");
 </script>

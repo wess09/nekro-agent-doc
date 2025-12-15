@@ -1,17 +1,17 @@
 ---
-title: 高级功能
-description: 探索 Nekro Agent 插件的高级功能，包括动态路由、文件交互、向量数据库的使用，以及即将弃用的 Webhook 接入功能。
+title: Advanced Features
+description: Explore advanced features of Nekro Agent plugins, including dynamic routing, file interaction, vector database usage, and the即将弃用的 Webhook access functionality.
 ---
 
-# 高级功能
+# Advanced Features
 
-在掌握了插件的核心概念之后，本章节将引导你探索 Nekro Agent 插件系统提供的一些高级功能。这些功能可以帮助你构建更强大、更灵活、集成度更高的插件，以应对复杂的应用场景。
+After mastering the core concepts of plugins, this chapter will guide you through exploring some advanced features provided by the Nekro Agent plugin system. These features can help you build more powerful, flexible, and highly integrated plugins to handle complex application scenarios.
 
-我们将深入探讨以下主题：
+We will delve into the following topics:
 
-1.  **[Webhook 接入点（弃用）](./03_advanced_features/3.1_webhooks.md)**：即将弃用的功能，建议使用动态路由替代。
-2.  **[文件交互](./03_advanced_features/3.2_file_interaction.md)**：详细了解在插件中处理文件的新一代 API，实现插件与 AI 之间的高效文件传递。
-3.  **[使用向量数据库](./03_advanced_features/3.3_vector_database.md)**：了解如何利用 Nekro Agent 内置的 Qdrant 向量数据库客户端，为你的插件添加基于向量相似度搜索的强大语义理解能力。
-4.  **[动态路由](./03_advanced_features/3.4_dynamic_router.md)**：学习如何创建强大的 Web API 接入点，支持完整的 RESTful 设计和 FastAPI 功能。
+1.  **[Webhook Access Points (Deprecated)](./03_advanced_features/3.1_webhooks.md)**: A soon-to-be-deprecated feature, it is recommended to use dynamic routing as a replacement.
+2.  **[File Interaction](./03_advanced_features/3.2_file_interaction.md)**: Detailed understanding of the new generation API for handling files in plugins, enabling efficient file transfer between plugins and AI.
+3.  **[Using Vector Database](./03_advanced_features/3.3_vector_database.md)**: Learn how to utilize the built-in Qdrant vector database client of Nekro Agent to add powerful semantic understanding capabilities based on vector similarity search to your plugins.
+4.  **[Dynamic Routing](./03_advanced_features/3.4_dynamic_router.md)**: Learn how to create powerful Web API access points, supporting complete RESTful design and FastAPI functionality.
 
-通过学习这些高级功能，你将能够将插件的潜力发挥到极致。
+By learning these advanced features, you will be able to maximize the potential of your plugins.

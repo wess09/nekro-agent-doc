@@ -1,50 +1,50 @@
-﻿---
-title: 系统 API 参考
-description: Nekro Agent 插件开发中可用的核心系统服务 API 参考，包括消息、上下文、定时器、核心工具及插件和数据库模型 API。
+---
+title: System API Reference
+description: Core system service API reference available in Nekro Agent plugin development, including message, context, timer, core tools, and plugin and database model APIs.
 ---
 
-# 系统 API 参考
+# System API Reference
 
-Nekro Agent 为插件开发者提供了一系列核心系统服务的 API，使得插件能够与 Agent 的核心功能进行深度集成。这些 API 通常通过 `nekro_agent.api` 包下的模块进行访问。
+Nekro Agent provides a series of core system service APIs for plugin developers, enabling deep integration between plugins and Agent's core functionality. These APIs are typically accessed through modules in the `nekro_agent.api` package.
 
-本参考将概述主要的 API 模块及其常用功能。更详细的参数、返回值和具体用法，请直接查阅 Nekro Agent 的源代码或使用 IDE 的智能提示功能。
+This reference will outline the main API modules and their common functions. For more detailed parameters, return values, and specific usage, please directly consult the Nekro Agent source code or use the IDE's intelligent prompt feature.
 
-## 1. 核心服务 (`nekro_agent.api.core`)
+## 1. Core Services (`nekro_agent.api.core`)
 
-`core` 模块提供了一些基础和核心的工具及服务。
+The `core` module provides some basic and core tools and services.
 
-*   **日志服务 (`core.logger`)**
-    *   提供标准的日志记录功能，支持不同级别（如 `debug`, `info`, `warning`, `error`, `success`, `critical`）。
-    *   示例: `core.logger.info("插件已启动")`
-    *   插件应使用此 logger 记录其运行状态和关键事件，方便调试和监控。
+*   **Logging Service (`core.logger`)**
+    *   Provides standard logging functionality, supporting different levels (such as `debug`, `info`, `warning`, `error`, `success`, `critical`).
+    *   Example: `core.logger.info("Plugin started")`
+    *   Plugins should use this logger to record their running status and key events, facilitating debugging and monitoring.
 
-*   **Qdrant 向量数据库客户端**
-    *   `core.get_qdrant_client() -> Optional[QdrantClient]` (async): 获取全局 Qdrant 客户端实例。
-    *   `core.get_qdrant_config() -> Optional[dict]` (async): 获取 Qdrant 连接配置。
-    *   详见 [使用向量数据库](/docs/en/04_plugin_dev/03_advanced_features/3.3_vector_database.md) 章节。
+*   **Qdrant Vector Database Client**
+    *   `core.get_qdrant_client() -> Optional[QdrantClient]` (async): Get the global Qdrant client instance.
+    *   `core.get_qdrant_config() -> Optional[dict]` (async): Get Qdrant connection configuration.
+    *   See the [Using Vector Database](/docs/en/04_plugin_dev/03_advanced_features/3.3_vector_database.md) chapter for details.
 
-*   **全局配置访问 (`core.config`)**
-    *   可以直接访问 Nekro Agent 的全局配置项（定义在 Agent 主配置文件中）。
-    *   示例: `api_base = core.config.NEKRO_API_BASE` (假设配置项存在)
-    *   插件应优先使用自身的配置系统 (`plugin.config`)，仅在确实需要访问 Agent 全局配置时才使用 `core.config`。
+*   **Global Configuration Access (`core.config`)**
+    *   Can directly access Nekro Agent's global configuration items (defined in the Agent main configuration file).
+    *   Example: `api_base = core.config.NEKRO_API_BASE` (assuming the configuration item exists)
+    *   Plugins should prioritize using their own configuration system (`plugin.config`), and only use `core.config` when they truly need to access Agent's global configuration.
 
-## 2. 消息服务 (`nekro_agent.api.message`)
+## 2. Message Service (`nekro_agent.api.message`)
 
-`message` 模块负责处理消息的发送。
+The `message` module is responsible for handling message sending.
 
-*   **发送文本消息 (`message.send_text`)**
+*   **Send Text Message (`message.send_text`)**
     *   `message.send_text(chat_key: str, text: str, ctx: AgentCtx)` (async)
-    *   向指定的 `chat_key` (会话标识) 发送纯文本消息。
-    *   `ctx` 是必需的，提供了发送上下文。
+    *   Send a plain text message to the specified `chat_key` (session identifier).
+    *   `ctx` is required and provides sending context.
 
-*   **发送图片消息 (`message.send_image`)**
+*   **Send Image Message (`message.send_image`)**
     *   `message.send_image(chat_key: str, image_path: str, ctx: AgentCtx)` (async)
-    *   `image_path` 可以是图片的 URL (str) 或本地文件路径 (str)。
-    *   `ctx` 是必需的，提供了发送上下文。
+    *   `image_path` can be an image URL (str) or local file path (str).
+    *   `ctx` is required and provides sending context.
 
-*   **发送文件消息 (`message.send_file`)**
+*   **Send File Message (`message.send_file`)**
     *   `message.send_file(chat_key: str, file_path: str, ctx: AgentCtx)` (async)
-    *   发送文件。`file_path` 参数同上。
-    *   `ctx` 是必需的，提供了发送上下文。
+    *   Send a file. The `file_path` parameter is the same as above.
+    *   `ctx` is required and provides sending context.
 
-这个 API 参考提供了一个概览。强烈建议插件开发者在实际开发中结合源代码、IDE 工具和具体的示例插件来深入理解和使用这些 API。 
+This API reference provides an overview. It is strongly recommended that plugin developers combine source code, IDE tools, and specific example plugins in actual development to deeply understand and use these APIs.

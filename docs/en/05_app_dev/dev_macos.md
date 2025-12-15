@@ -1,250 +1,250 @@
-﻿---
-title: macOS开发部署指南
-description: Nekro Agent macOS环境下的开发部署完整指南
+---
+title: macOS Development and Deployment Guide
+description: Complete guide for development and deployment of Nekro Agent in macOS environment
 ---
 
-# macOS 开发环境准备
+# macOS Development Environment Setup
 
-::: warning 警告
-此文档仅用于开发环境，不推荐用于部署或使用。
+::: warning Warning
+This document is for development environment only and is not recommended for deployment or use.
 :::
 
-## 准备工作
+## Prerequisites
 
-开发环境要求：
+Development environment requirements:
 
-- 一个可用的 Postgresql 数据库
-- 安装 Python 环境 (推荐 Python 3.10)
-- 安装 `poetry` (Python 依赖管理工具)
-- 安装 `nb-cli` (NoneBot 脚手架)
-- 安装 OrbStack 或 Docker Desktop for Mac
+- A functional PostgreSQL database
+- Python environment installed (Python 3.10 recommended)
+- Install `poetry` (Python dependency management tool)
+- Install `nb-cli` (NoneBot scaffolding tool)
+- Install OrbStack or Docker Desktop for Mac
 
-### 安装基础开发工具
+### Install Basic Development Tools
 
-1. 安装 Homebrew (如果尚未安装)
+1. Install Homebrew (if not already installed)
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. 安装 Python
+2. Install Python
 
 ```bash
 brew install python@3.10
 ```
 
-3. 安装开发依赖
+3. Install development dependencies
 
 ```bash
 pip3 install poetry
 pip3 install nb-cli
 ```
 
-## 源码部署
+## Source Code Deployment
 
-### 1. 克隆仓库
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/KroMiose/nekro-agent.git
 ```
 
-### 2. 安装依赖
+### 2. Install Dependencies
 
 ```bash
 cd nekro-agent
-poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
+poetry config virtualenvs.in-project true  # Install virtual environment in project directory (optional)
 poetry install
 ```
 
-### 3. 安装 PostgreSQL 数据库
+### 3. Install PostgreSQL Database
 
-通过 Homebrew 安装：
+Install via Homebrew:
 
 ```bash
 brew install postgresql@15
 brew services start postgresql@15
 ```
 
-### 4. 数据库初始化
+### 4. Database Initialization
 
-1. 创建数据库：
+1. Create database:
 
 ```bash
-# 切换到 postgres 用户
+# Switch to postgres user
 psql postgres
 
-# 在 PostgreSQL 内执行
+# Execute within PostgreSQL
 CREATE DATABASE nekro_db;
 \q
 ```
 
-### 5. 生成配置文件
+### 5. Generate Configuration File
 
-运行一次 Bot 加载插件并关闭以生成配置文件：
+Run the Bot once to load plugins and then close it to generate configuration files:
 
 ```bash
 nb run
 ```
 
-### 6. 配置必要信息
+### 6. Configure Required Information
 
-编辑配置文件 `./data/configs/nekro-agent.yaml` 配置数据库连接等信息。
+Edit the configuration file `./data/configs/nekro-agent.yaml` to configure database connection and other information.
 
 ```yaml
-# Bot 与管理信息
-SUPER_USERS: # 管理用户 QQ 号列表
+# Bot and management information
+SUPER_USERS: # List of admin user QQ numbers
   - "12345678"
-BOT_QQ: "12345678" # 机器人 QQ 号 (**必填**)
-ADMIN_CHAT_KEY: group_12345678 # 管理会话频道标识
+BOT_QQ: "12345678" # Bot QQ number (**Required**)
+ADMIN_CHAT_KEY: group_12345678 # Admin session channel identifier
 
-# Postgresql 数据库配置
+# PostgreSQL database configuration
 POSTGRES_HOST: localhost
 POSTGRES_PORT: 5432
-POSTGRES_USER: postgres  # macOS下默认用户名通常为当前用户名
-POSTGRES_PASSWORD: ""    # 本地开发环境可能无密码
+POSTGRES_USER: postgres  # Default username in macOS is usually the current username
+POSTGRES_PASSWORD: ""    # Local development environment may have no password
 POSTGRES_DATABASE: nekro_db
 ```
 
-::: info 完整配置
-完整配置说明请参考 [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
+::: info Complete Configuration
+For complete configuration instructions, please refer to [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
 :::
 
-### 7. 安装 Docker 环境
+### 7. Install Docker Environment
 
-在 macOS 上，我们推荐使用 OrbStack 作为容器管理工具，它比 Docker Desktop 更轻量且性能更好。
+On macOS, we recommend using OrbStack as a container management tool, which is lighter and more performant than Docker Desktop.
 
-#### 方法一：安装 OrbStack（推荐）
+#### Option 1: Install OrbStack (Recommended)
 
 ```bash
 brew install --cask orbstack
 ```
 
-安装完成后启动 OrbStack 应用。
+Start the OrbStack application after installation.
 
-#### 方法二：安装 Docker Desktop for Mac
+#### Option 2: Install Docker Desktop for Mac
 
-1. 访问 [Docker Desktop 官网](https://www.docker.com/products/docker-desktop/) 下载 macOS 版本
-2. 安装并启动 Docker Desktop
-3. 确认 Docker 服务正常运行：`docker info`
+1. Visit [Docker Desktop official website](https://www.docker.com/products/docker-desktop/) to download the macOS version
+2. Install and start Docker Desktop
+3. Confirm Docker service is running properly: `docker info`
 
-### 8. 拉取沙盒镜像
+### 8. Pull Sandbox Image
 
-拉取用于沙盒环境的 Docker 镜像：
+Pull the Docker image for the sandbox environment:
 
 ```bash
-# 拉取镜像
+# Pull image
 docker pull kromiose/nekro-agent-sandbox:latest
 
-# 验证镜像
+# Verify image
 docker images | grep nekro-agent-sandbox
 ```
 
-### 9. 设置 WebUI 密码
+### 9. Set WebUI Password
 
-在 macOS 中设置环境变量：
+Set environment variables in macOS:
 
 ```bash
-# 临时设置（当前终端会话有效）
+# Temporary setting (effective for current terminal session)
 export NEKRO_ADMIN_PASSWORD="your_password"
 
-# 永久设置（需要重启终端生效）
-echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.zshrc  # 如果使用zsh
-# 或
-echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.bash_profile  # 如果使用bash
+# Permanent setting (requires terminal restart to take effect)
+echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.zshrc  # If using zsh
+# Or
+echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.bash_profile  # If using bash
 ```
 
-### 10. 运行 Bot
+### 10. Run Bot
 
 ```bash
 nb run
-# 开发调试模式下启用重载监视并排除动态扩展目录
+# Enable reload monitoring in development debug mode and exclude dynamic extension directories
 nb run --reload --reload-excludes ext_workdir
 ```
 
-::: warning 注意
-在 macOS 上运行时，如果遇到权限问题，可能需要使用 sudo：
+::: warning Note
+When running on macOS, if you encounter permission issues, you may need to use sudo:
 ```bash
 sudo nb run
 ```
 :::
 
-### 11. OneBot 配置
+### 11. OneBot Configuration
 
-使用任意 OneBot 协议客户端登录机器人并使用反向 WebSocket 连接方式，配置好连接地址：
+Use any OneBot protocol client to log in to the bot and use reverse WebSocket connection method, configure the connection address:
 
 ```
 ws://127.0.0.1:8021/onebot/v11/ws
 ```
 
 ::: tip
-这里的端口可在 `.env.prod` 中配置，默认为 `8021`
+The port here can be configured in `.env.prod`, default is `8021`
 :::
 
-### 12. 调试模式
+### 12. Debug Mode
 
-项目中包含 `.vscode/launch.json` 文件，可以直接使用 VSCode 进行调试：
+The project includes a `.vscode/launch.json` file, which allows you to debug directly using VSCode:
 
-1. 打开项目根目录
-2. 按 `F5` 启动调试
-3. 观察终端输出是否正常
+1. Open the project root directory
+2. Press `F5` to start debugging
+3. Observe if terminal output is normal
 
-## 使用 OrbStack 虚拟机开发（替代方案）
+## Using OrbStack Virtual Machine for Development (Alternative)
 
-如果在 macOS 原生环境中遇到兼容性问题，可以考虑使用 OrbStack 虚拟机进行开发：
+If you encounter compatibility issues in the native macOS environment, consider using OrbStack virtual machine for development:
 
-### 1. 创建 Linux 虚拟机
+### 1. Create Linux Virtual Machine
 
 ```bash
 orb create ubuntu nekro-dev
 ```
 
-### 2. 进入虚拟机
+### 2. Enter Virtual Machine
 
 ```bash
 orb -m nekro-dev
 ```
 
-### 3. 在虚拟机中按照 Linux 开发指南进行操作
+### 3. Follow Linux Development Guide in Virtual Machine
 
-在虚拟机中按照 [Linux 开发部署指南](/docs/en/05_app_dev/dev_linux.html) 进行后续操作。
+In the virtual machine, follow the [Linux Development and Deployment Guide](/docs/en/05_app_dev/dev_linux.html) for subsequent operations.
 
-## 前端开发（可选）
+## Frontend Development (Optional)
 
-如需开发前端页面，可按以下步骤进行：
+If you need to develop frontend pages, follow these steps:
 
-### 1. 安装 Node.js
+### 1. Install Node.js
 ```bash
 brew install node@20
 ```
 
-### 2. 配置 pnpm
+### 2. Configure pnpm
 ```bash
-# 全局安装 pnpm
+# Install pnpm globally
 npm install -g pnpm
 
-# 设置镜像加速
+# Set up mirror for acceleration
 pnpm config set registry https://registry.npmmirror.com
 ```
 
-### 3. 安装前端依赖
+### 3. Install Frontend Dependencies
 ```bash
 cd frontend
 
-# 安装依赖
+# Install dependencies
 pnpm install --frozen-lockfile
 ```
 
-### 4. 启动前端
+### 4. Start Frontend
 ```bash
 cd ./frontend
 pnpm dev
 ```
 
-当看到如下日志时，即可在浏览器访问：
+When you see the following log, you can access it in your browser:
 ```
 VITE vx.x.x  ready in xxx ms
 
-➜  Local:   http://localhost:xxxx/ <-这里是端口号
+➜  Local:   http://localhost:xxxx/ <- This is the port number
 ➜  Network: use --host to expose
 ➜  press h + enter to show help
 ``` 

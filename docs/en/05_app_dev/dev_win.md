@@ -1,86 +1,86 @@
 ---
-title: Windows开发部署指南
-description: Nekro Agent Windows环境下的开发部署完整指南
+title: Windows Development and Deployment Guide
+description: Complete guide for development and deployment of Nekro Agent in Windows environment
 ---
 
-# Windows 开发环境准备
+# Windows Development Environment Setup
 
-::: warning 警告
-此文档仅用于开发环境，不推荐用于部署或使用。
+::: warning Warning
+This document is for development environment only and is not recommended for deployment or use.
 :::
 
-## 准备工作
+## Prerequisites
 
-开发环境要求：
+Development environment requirements:
 
-- 一个可用的 Postgresql 数据库
-- 安装 Python 环境 (推荐 Python 3.10)
-- 安装 `poetry` (Python 依赖管理工具)
-- 安装 `nb-cli` (NoneBot 脚手架)
-- 安装 Docker Desktop
-- 所有命令行操作推荐在 PowerShell 中执行
+- A functional PostgreSQL database
+- Python environment installed (Python 3.10 recommended)
+- Install `poetry` (Python dependency management tool)
+- Install `nb-cli` (NoneBot scaffolding tool)
+- Install Docker Desktop
+- All command line operations are recommended to be executed in PowerShell
 
 ```bash
 pip install poetry
 pip install nb-cli
 ```
 
-## 源码部署
+## Source Code Deployment
 
-### 1. 克隆仓库
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/KroMiose/nekro-agent.git
 ```
 
-### 2. 安装依赖
+### 2. Install Dependencies
 
 ```bash
 cd nekro-agent
-pip install poetry  # 需要提前安装 Python 环境: 推荐 Python 3.10
-poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
+pip install poetry  # Need to install Python environment first: Python 3.10 recommended
+poetry config virtualenvs.in-project true  # Install virtual environment in project directory (optional)
 poetry install
 ```
 
-### 3. 安装 PostgreSQL 数据库
+### 3. Install PostgreSQL Database
 
-1. 访问 [PostgreSQL 官网](https://www.postgresql.org/download/windows/)
-2. 下载最新 15.x 版本安装包
-3. 安装时：
-   - 设置管理员密码（请牢记）
-   - 保持默认端口 5432
-   - 取消勾选"Stack Builder"
+1. Visit [PostgreSQL official website](https://www.postgresql.org/download/windows/)
+2. Download the latest 15.x version installer
+3. During installation:
+   - Set administrator password (please remember it)
+   - Keep default port 5432
+   - Uncheck "Stack Builder"
 
-### 4. 数据库初始化
+### 4. Database Initialization
 
-1. 打开 SQL Shell (psql) 或 pgAdmin
-2. 执行以下 SQL 命令：
+1. Open SQL Shell (psql) or pgAdmin
+2. Execute the following SQL commands:
 
 ```sql
--- 创建数据库
+-- Create database
 CREATE DATABASE nekro_db;
 ```
 
-### 5. 生成配置文件
+### 5. Generate Configuration File
 
-运行一次 Bot 加载插件并关闭以生成配置文件：
+Run the Bot once to load plugins and then close it to generate configuration files:
 
 ```bash
 nb run
 ```
 
-### 6. 配置必要信息
+### 6. Configure Required Information
 
-编辑配置文件 `./data/configs/nekro-agent.yaml` 配置数据库连接等信息。
+Edit the configuration file `./data/configs/nekro-agent.yaml` to configure database connection and other information.
 
 ```yaml
-# Bot 与管理信息
-SUPER_USERS: # 管理用户 QQ 号列表
+# Bot and management information
+SUPER_USERS: # List of admin user QQ numbers
   - "12345678"
-BOT_QQ: "12345678" # 机器人 QQ 号 (**必填**)
-ADMIN_CHAT_KEY: group_12345678 # 管理会话频道标识
+BOT_QQ: "12345678" # Bot QQ number (**Required**)
+ADMIN_CHAT_KEY: group_12345678 # Admin session channel identifier
 
-# Postgresql 数据库配置
+# PostgreSQL database configuration
 POSTGRES_HOST: localhost
 POSTGRES_PORT: 5432
 POSTGRES_USER: postgres
@@ -88,112 +88,112 @@ POSTGRES_PASSWORD: your_password
 POSTGRES_DATABASE: nekro_db
 ```
 
-::: info 完整配置
-完整配置说明请参考 [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
+::: info Complete Configuration
+For complete configuration instructions, please refer to [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
 :::
 
-### 7. 安装 Docker Desktop
+### 7. Install Docker Desktop
 
-1. 访问 [Docker 官网](https://www.docker.com/products/docker-desktop/)
-2. 下载 Windows 版本并安装
-3. 启动后右下角出现鲸鱼图标即成功
-4. （可选）在设置中启用 WSL2 后端提升性能
+1. Visit [Docker official website](https://www.docker.com/products/docker-desktop/)
+2. Download Windows version and install
+3. After startup, the whale icon in the bottom right corner indicates success
+4. (Optional) Enable WSL2 backend in settings to improve performance
 
-### 8. 拉取沙盒镜像
+### 8. Pull Sandbox Image
 
-拉取用于沙盒环境的 Docker 镜像：
+Pull the Docker image for the sandbox environment:
 
 ```powershell
-# 拉取镜像
+# Pull image
 docker pull kromiose/nekro-agent-sandbox:latest
 
-# 验证镜像
+# Verify image
 docker images | findstr "nekro-agent-sandbox"
 ```
 
-### 9. 设置 WebUI 密码
+### 9. Set WebUI Password
 
-::: warning 注意
-由于 nekro_agent 的 webui 密码是被存放在环境变量而非数据库，需要在环境变量中设置密码
+::: warning Note
+Since the webui password of nekro_agent is stored in environment variables rather than database, you need to set the password in environment variables
 :::
 
-1. 打开文件资源管理器找到"此电脑", 右键点击 "属性"
-2. 找到"高级系统设置", 并点击"环境变量"
-3. 在环境变量中添加以下内容:
-   - 名称: `NEKRO_ADMIN_PASSWORD`
-   - 值: 你想要设置的密码
-4. 点击"确定"保存设置并退出
+1. Open File Explorer and find "This PC", right-click on "Properties"
+2. Find "Advanced system settings" and click "Environment Variables"
+3. Add the following in environment variables:
+   - Name: `NEKRO_ADMIN_PASSWORD`
+   - Value: The password you want to set
+4. Click "OK" to save settings and exit
 
-### 10. 运行 Bot
+### 10. Run Bot
 
 ```bash
 nb run
-# 开发调试模式下启用重载监视并排除动态扩展目录
+# Enable reload monitoring in development debug mode and exclude dynamic extension directories
 nb run --reload --reload-excludes ext_workdir
 ```
 
-或使用命令行启动：
+Or start via command line:
 ```bash
 poetry run bot
 ```
 
-### 11. OneBot 配置
+### 11. OneBot Configuration
 
-使用任意 OneBot 协议客户端登录机器人并使用反向 WebSocket 连接方式，配置好连接地址：
+Use any OneBot protocol client to log in to the bot and use reverse WebSocket connection method, configure the connection address:
 
 ```
 ws://127.0.0.1:8021/onebot/v11/ws
 ```
 
 ::: tip
-这里的端口可在 `.env.prod` 中配置，默认为 `8021`
+The port here can be configured in `.env.prod`, default is `8021`
 :::
 
-### 12. 调试模式
+### 12. Debug Mode
 
-项目中包含 `.vscode/launch.json` 文件，可以直接使用 VSCode 进行调试：
+The project includes a `.vscode/launch.json` file, which allows you to debug directly using VSCode:
 
-1. 打开项目根目录
-2. 按 `F5` 启动调试
-3. 观察终端输出是否正常
+1. Open the project root directory
+2. Press `F5` to start debugging
+3. Observe if terminal output is normal
 
-## 前端开发（可选）
+## Frontend Development (Optional)
 
-如需开发前端页面，可按以下步骤进行：
+If you need to develop frontend pages, follow these steps:
 
-### 1. 安装 Node.js
-1. 访问 [Node.js 官网](https://nodejs.org/)
-2. 下载 20.x LTS 版本（.msi 格式）
-3. 安装时勾选 **Add to PATH** 选项
+### 1. Install Node.js
+1. Visit [Node.js official website](https://nodejs.org/)
+2. Download 20.x LTS version (.msi format)
+3. Check **Add to PATH** option during installation
 
-### 2. 配置 pnpm
+### 2. Configure pnpm
 ```powershell
-# 全局安装 pnpm
+# Install pnpm globally
 npm install -g pnpm
 
-# 设置镜像加速
+# Set up mirror for acceleration
 pnpm config set registry https://registry.npmmirror.com
 ```
 
-### 3. 安装前端依赖
+### 3. Install Frontend Dependencies
 ```powershell
 cd frontend
 
-# 安装依赖
+# Install dependencies
 pnpm install --frozen-lockfile
 ```
 
-### 4. 启动前端
+### 4. Start Frontend
 ```bash
 cd ./frontend
 pnpm dev
 ```
 
-当看到如下日志时，即可在浏览器访问：
+When you see the following log, you can access it in your browser:
 ```
 VITE vx.x.x  ready in xxx ms
 
-➜  Local:   http://localhost:xxxx/ <-这里是端口号
+➜  Local:   http://localhost:xxxx/ <- This is the port number
 ➜  Network: use --host to expose
 ➜  press h + enter to show help
 ```

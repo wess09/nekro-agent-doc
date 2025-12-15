@@ -1,92 +1,92 @@
-﻿---
-title: iStoreOS 部署 Nekro Agent
-description: 在 iStoreOS 软路由系统上部署 Nekro Agent。iStoreOS 基于 OpenWRT，使用 ash shell 环境，我们提供专门适配的安装脚本。
+---
+title: Deploying Nekro Agent on iStoreOS
+description: Deploying Nekro Agent on the iStoreOS soft router system. iStoreOS is based on OpenWRT and uses the ash shell environment. We provide a specially adapted installation script.
 ---
 
 
-# iStoreOS 部署 Nekro Agent
+# Deploying Nekro Agent on iStoreOS
 
-在 iStoreOS 软路由系统上部署 Nekro Agent。iStoreOS 基于 OpenWRT，使用 ash shell 环境，我们提供专门适配的安装脚本。
+Deploying Nekro Agent on the iStoreOS soft router system. iStoreOS is based on OpenWRT and uses the ash shell environment. We provide a specially adapted installation script.
 
 
-## 📋 前置要求
+## 📋 Prerequisites
 
-在开始部署前，请确保您的 iStoreOS 系统满足以下条件：
+Before starting deployment, please ensure your iStoreOS system meets the following conditions:
 
-- **Docker 环境**：iStoreOS Docker 已迁移根目录
-- **存储空间**：Docker 根目录至少有 10GB 可用空间
-- **网络连接**：能够正常访问 GitHub 和 Docker.io
+- **Docker Environment**: iStoreOS Docker has migrated root directory
+- **Storage Space**: Docker root directory has at least 10GB of available space
+- **Network Connection**: Ability to access GitHub and Docker.io normally
 
-## 🚀 部署方式
+## 🚀 Deployment Methods
 
-### 一键部署
+### One-Click Deployment
 
-一键部署 Nekro Agent 核心服务及 Napcat 协议端，提供完整的机器人解决方案。
+Deploy Nekro Agent core services and Napcat protocol endpoint with one click, providing a complete bot solution.
 
-::: warning 安全警告
-1. **务必修改 NapCat 默认密码**：公网 WebUI 必须使用强密码（建议12位以上，含数字、字母、符号）
-2. **务必使用 Token 验证**：OneBot 服务务必设置有效 Token，避免空 Token 或弱口令
-3. **为安全起见，请避免使用默认端口**
+::: warning Security Warning
+1. **Must Change NapCat Default Password**: Public WebUI must use strong passwords (recommended 12+ characters, including numbers, letters, and symbols)
+2. **Must Use Token Authentication**: OneBot service must have a valid Token set, avoid empty tokens or weak passwords
+3. **For security reasons, please avoid using default ports**
 :::
 
-#### 部署命令
+#### Deployment Command
 
 ```bash
 # bin/ash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/KroMiose/nekro-agent/refs/heads/main/docker/wrtinstall.sh)" - --with-napcat
 ```
 
-部署完成后，请参考[协议端配置-Napcat](/docs/en/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档完成后续配置。
+After deployment is complete, please refer to the [Protocol Endpoint Configuration - Napcat](/docs/en/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) documentation to complete subsequent configuration.
 
 
-## ⚙️ 安装过程详解
+## ⚙️ Detailed Installation Process
 
-### 1. 环境检测
+### 1. Environment Detection
 
-安装脚本会自动执行以下检查：
+The installation script will automatically perform the following checks:
 
-- **Docker 环境**：验证 Docker 是否已安装并运行
-- **Docker Compose**：自动安装或使用现有版本
-- **存储空间**：检查 Docker 根目录是否有足够空间
+- **Docker Environment**: Verify if Docker is installed and running
+- **Docker Compose**: Automatically install or use existing version
+- **Storage Space**: Check if Docker root directory has sufficient space
 
-### 2. 目录配置
+### 2. Directory Configuration
 
-- **默认目录**：`~/srv/nekro_agent`
-- **自定义目录**：手动编辑`.env`文件
+- **Default Directory**: `~/srv/nekro_agent`
+- **Custom Directory**: Manually edit the `.env` file
 
-### 3. 自动配置
+### 3. Automatic Configuration
 
-脚本会自动完成以下配置：
+The script will automatically complete the following configurations:
 
-- **生成安全凭证**：自动创建随机的访问令牌和管理员密码
-- **下载配置文件**：从仓库获取最新的 docker-compose 配置
-- **拉取服务镜像**：下载所需的 Docker 镜像
+- **Generate Security Credentials**: Automatically create random access tokens and admin passwords
+- **Download Configuration Files**: Get the latest docker-compose configuration from the repository
+- **Pull Service Images**: Download required Docker images
 
-### 4. 防火墙配置
+### 4. Firewall Configuration
 
-安装脚本会自动配置 OpenWRT 防火墙，放行以下端口：
+The installation script will automatically configure the OpenWRT firewall to open the following ports:
 
-- **Nekro Agent 主服务**：`8021/tcp`（可在 .env 中自定义）
-- **Napcat 服务**：`6099/tcp`（可在 .env 中自定义）
+- **Nekro Agent Main Service**: `8021/tcp` (customizable in .env)
+- **Napcat Service**: `6099/tcp` (customizable in .env)
 
-## ⚙️ 部署后配置
+## ⚙️ Post-Deployment Configuration
 
-- **标准部署**: 前往[协议端配置](/docs/en/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档，根据文档说明完成配置。
-- **核心部署**: 前往[协议端配置](/docs/en/02_quick_start/config/protocol)文档，参考说明继续配置。
+- **Standard Deployment**: Go to the [Protocol Endpoint Configuration](/docs/en/02_quick_start/config/protocol.html#napcat-integrated-deployment-recommended) documentation and complete configuration according to the documentation.
+- **Core Deployment**: Go to the [Protocol Endpoint Configuration](/docs/en/02_quick_start/config/protocol) documentation and refer to the instructions to continue configuration.
 
-## 🚀 应用更新
+## 🚀 Application Updates
 
-iStoreOS 环境请使用以下命令更新应用
+For iStoreOS environment, please use the following commands to update the application
 
-### 进入数据目录
+### Enter Data Directory
 
 ```bash
-# 如果修改了数据目录，请根据实际情况设置
+# If you modified the data directory, please set according to the actual situation
 export NEKRO_DATA_DIR=${HOME}/srv/nekro_agent && \
 cd ${NEKRO_DATA_DIR}
 ```
 
-### 仅更新 Nekro Agent 和沙盒镜像 (推荐)
+### Update Only Nekro Agent and Sandbox Images (Recommended)
 
 ```bash
  docker pull kromiose/nekro-agent-sandbox && \
@@ -94,19 +94,15 @@ cd ${NEKRO_DATA_DIR}
  docker-compose --env-file .env up --build -d nekro_agent
 ```
 
-### 更新所有镜像并重启容器 (如果需要同时更新 NapCat 或其他数据支持服务)
+### Update All Images and Restart Containers (If you need to update NapCat or other data support services at the same time)
 
-> 该命令会更新 `nekro-agent` 镜像和所有依赖的镜像，可能导致 Bot 掉线需要重新登录
+> This command will update the `nekro-agent` image and all dependent images, which may cause the Bot to go offline and require re-login
 
 ```bash
  docker-compose --env-file .env pull && \
  docker-compose --env-file .env up --build -d
 ```
 
-## 📝 更新日志
+## 📝 Changelog
 
-每次更新后，可以在 [GitHub Releases](https://github.com/KroMiose/nekro-agent/releases) 查看更新日志了解变更内容
-
-
-
-
+After each update, you can check [GitHub Releases](https://github.com/KroMiose/nekro-agent/releases) to view the changelog and understand the changes

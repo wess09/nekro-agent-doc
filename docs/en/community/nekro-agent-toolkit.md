@@ -1,34 +1,34 @@
 ﻿---
 title: Nekro-Agent-Toolkit
-description: 使用Nekro-Agent-Toolkit快速部署NekroAgent。
+description: Use Nekro-Agent-Toolkit to quickly deploy NekroAgent.
 ---
 
 # Nekro-Agent-Toolkit
 
-> Nekro-Agent-Toolkit 是一个用于安装、更新、备份 Nekro Agent 的工具。
+> Nekro-Agent-Toolkit is a tool for installing, updating, and backing up Nekro Agent.
 
 ##  [Nekro-Agent-Toolkit](https://github.com/greenhandzdl/nekro-agent-toolkit)
 
 > [!NOTE]
-> Windows\Linux\MacOS 环境均已通过测试，BSD环境可能兼容。
-> Windows用户需要仔细阅读[用户文档](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki)，否则会遇到启动NekroAgent的已知错误。
+> Windows\Linux\MacOS environments have all been tested, BSD environment may be compatible.
+> Windows users need to carefully read the [User Documentation](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki), otherwise they will encounter known errors when starting NekroAgent.
 
-* 环境要求:
+* Environment Requirements:
 
-  - `sudo`:用于提权，Windows环境下不要选择提权（没有任何操作需要提权，只需要重试），Linux环境下如果配置好docker的用户权限，则不需要提权，MacOS环境下需要提权。
-  - Windows环境:`docker desktop`
-  - Linux环境:`docker`和`docker-compose` `docker compose`
-  - MacOS环境:`orbstack`
+  - `sudo`: Used for privilege escalation. Do not select privilege escalation in Windows environment (no operation requires privilege escalation, just retry). In Linux environment, if docker user permissions are properly configured, privilege escalation is not needed. In MacOS environment, privilege escalation is needed.
+  - Windows environment: `docker desktop`
+  - Linux environment: `docker` and `docker-compose` `docker compose`
+  - MacOS environment: `orbstack`
   - `python3`, `pipx`
-  - 选择性依赖:`zstd`，`ufw`
+  - Optional dependencies: `zstd`, `ufw`
 
-* 优势：
-  - 完整的工具箱支持**安装、更新、备份**一条龙工作。
-  - 理论上**跨平台**带来统一的用户体验。
+* Advantages:
+  - Complete toolbox support for one-stop **installation, update, backup** workflow.
+  - Theoretically **cross-platform** brings a unified user experience.
 
-* [用户文档(戳我阅读)](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki):如果看不懂，你可能需要沉浸式翻译器等翻译插件。
+* [User Documentation (Click to Read)](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki): If you don't understand, you may need translation plugins like immersive translator.
   
-* 功能介绍：
+* Feature Introduction:
 
 ```zsh
 ~
@@ -41,53 +41,52 @@ usage: nekro-agent-toolkit [-h] [-i [PATH] | -u [PATH] | -ua [PATH] |
                            -b [ARG ...] | -r [ARG ...] | -ri ARG [ARG ...] |
                            -v] [-sd [PATH]] [--with-napcat] [--dry-run] [-y]
 
-Nekro Agent 安装、更新与备份的统一管理工具。
+Nekro Agent unified management tool for installation, update, and backup.
 
 options:
   -h, --help            show this help message and exit
-  -i, --install [PATH]  安装 Nekro Agent 到指定路径。
-  -u, --update [PATH]   对指定路径的安装执行部分更新。
+  -i, --install [PATH]  Install Nekro Agent to the specified path.
+  -u, --update [PATH]   Perform partial update on the installation at the specified path.
   -ua, --upgrade [PATH]
-                        对指定路径的安装执行完全更新（升级）。
+                        Perform full update (upgrade) on the installation at the specified path.
   -b, --backup [ARG ...]
-                        备份数据目录到指定文件夹。
+                        Backup data directory to the specified folder.
   -r, --recovery [ARG ...]
-                        从备份文件恢复到指定数据目录。
+                        Restore from backup file to the specified data directory.
   -ri, --recover-install ARG [ARG ...]
-                        恢复并安装。这会解压备份文件到目标目录，然后在此之上运行安装流程。
-  -v, --version         显示版本信息。
+                        Restore and install. This will extract the backup file to the target directory, then run the installation process on top of it.
+  -v, --version         Display version information.
   -sd, --set-data [PATH]
-                        设置或清除默认数据目录。
-  --with-napcat         与 --install 或 --recover-install 配合使用，部署 NapCat 服务。
-  --dry-run             与 --install 或 --recover-install 配合使用，执行预演。
-  -y, --yes             自动确认所有提示，以非交互模式运行。
+                        Set or clear the default data directory.
+  --with-napcat         Used with --install or --recover-install to deploy NapCat service.
+  --dry-run             Used with --install or --recover-install to perform a dry run.
+  -y, --yes             Automatically confirm all prompts, run in non-interactive mode.
 
-用法示例:
+Usage Examples:
   nekro-agent-toolkit --install ./na_data
-    # 在 ./na_data 目录中安装 Nekro Agent
+    # Install Nekro Agent in the ./na_data directory
 
   nekro-agent-toolkit --update ./na_data
-    # 对指定目录的安装执行部分更新
+    # Perform partial update on the installation in the specified directory
 
   nekro-agent-toolkit --upgrade ./na_data
-    # 对指定目录的安装执行完全更新（升级）
+    # Perform full update (upgrade) on the installation in the specified directory
 
   nekro-agent-toolkit --backup ./na_data ./backups
-    # 备份 na_data 目录到 backups 文件夹
+    # Backup na_data directory to the backups folder
 
   nekro-agent-toolkit --recovery ./backups/na_backup_123.tar.zstd ./na_data_new
-    # 从备份文件恢复到 na_data_new 目录
+    # Restore from backup file to na_data_new directory
 
   nekro-agent-toolkit --recover-install ./backup.tar.zst ./restored_install
-    # 从备份恢复数据，并在此基础上执行安装
+    # Restore data from backup and perform installation based on it
 ```
 
 > [!WARNING]
-> ### NekroAgent安装后建议阅读： 
+> ### Recommended reading after NekroAgent installation: 
 > 
->   [快速开始#基本配置](/docs/en/02_quick_start/quickstart.html#基本配置)
+>   [Quick Start#Basic Configuration](/docs/en/02_quick_start/quickstart.html#basic-configuration)
 > 
->   [NapCat登陆并修改默认密码](/docs/en/02_quick_start/config/protocol.html)
+>   [NapCat Login and Change Default Password](/docs/en/02_quick_start/config/protocol.html)
 >
->   [NekroAgent相关项配置](/docs/en/02_quick_start/config/system.html)
-
+>   [NekroAgent Related Configuration](/docs/en/02_quick_start/config/system.html)
