@@ -225,7 +225,7 @@ export default defineConfig({
           { text: "Join Community", link: "https://qm.qq.com/q/eT30LxDcSA" },
         ],
         sidebar: {
-          "/en/docs/docs": [
+          "/en/docs/": [
             {
               text: "Introduction",
               collapsed: true,
