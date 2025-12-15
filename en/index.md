@@ -8,13 +8,13 @@ hero:
   actions:
     - theme: brand
       text: Quick Start
-      link: /en/docs/docs/01_intro/overview
+      link: /en/docs/01_intro/overview
     - theme: alt
       text: Get Started
-      link: /en/docs/docs/02_quick_start/quickstart
+      link: /en/docs/02_quick_start/quickstart
     - theme: alt
       text: Plugin Dev
-      link: /en/docs/docs/04_plugin_dev/00_introduction
+      link: /en/docs/04_plugin_dev/00_introduction  
     - theme: alt
       text: GitHub
       link: https://github.com/KroMiose/nekro-agent
