@@ -1,4 +1,4 @@
----
+﻿---
 title: iStoreOS 部署 Nekro Agent
 description: 在 iStoreOS 软路由系统上部署 Nekro Agent。iStoreOS 基于 OpenWRT，使用 ash shell 环境，我们提供专门适配的安装脚本。
 ---
@@ -106,6 +106,7 @@ cd ${NEKRO_DATA_DIR}
 ## 📝 更新日志
 
 每次更新后，可以在 [GitHub Releases](https://github.com/KroMiose/nekro-agent/releases) 查看更新日志了解变更内容
+
 
 
 

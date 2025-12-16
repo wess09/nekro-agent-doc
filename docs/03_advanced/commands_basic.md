@@ -256,3 +256,4 @@ reset_plugin draw        # 重置绘图插件配置
 - 查看 [调试命令指南](/docs/03_advanced/commands_debug) 了解高级调试功能
 - 访问 [GitHub 项目](https://github.com/KroMiose/nekro-agent) 获取最新信息
   :::
+

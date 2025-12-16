@@ -60,3 +60,4 @@ Nekro Agent 支持多种支持 OneBot V11 的协议端连接方式，本文档�
 
 - **收不到消息**：检查两端日志，确认是否正确建立连接（NekroAgent 系统日志中显示 `connection open` 字样）
 - **消息格式错误**：检查是否使用了兼容的 OneBot 实现
+

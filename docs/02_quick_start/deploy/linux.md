@@ -1,4 +1,4 @@
----
+﻿---
 title: Linux 部署 Nekro Agent
 description: 在 Linux 环境下部署 Nekro Agent 的完整指南，包括标准部署和核心部署两种方式的详细步骤。
 ---
@@ -89,3 +89,4 @@ sudo -E bash -c "$(curl -fsSL https://raw.gitcode.com/gh_mirrors/ne/nekro-agent/
 
 - **标准部署**: 前往[协议端配置](/docs/02_quick_start/config/protocol.html#napcat-集成部署-推荐)文档，根据文档说明完成配置。
 - **核心部署**: 前往[协议端配置](/docs/02_quick_start/config/protocol)文档，参考说明继续配置。
+

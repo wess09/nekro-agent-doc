@@ -1,4 +1,4 @@
----
+﻿---
 title: 系统 API 参考
 description: Nekro Agent 插件开发中可用的核心系统服务 API 参考，包括消息、上下文、定时器、核心工具及插件和数据库模型 API。
 ---
