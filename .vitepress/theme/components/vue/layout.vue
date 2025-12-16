@@ -4,12 +4,40 @@
 <script setup>
 import { useRouter, useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import { ref, watch, nextTick } from "vue";
+import { ref, watch, nextTick, computed } from "vue";
 
 const { Layout } = DefaultTheme;
 const { route } = useRouter();
+const { lang } = useData();
 const transitionName = ref('scale-in');
 const routeKey = ref(0);
+
+// 多语言配置
+const translations = {
+  'zh-CN': {
+    foundProblem: '发现文档问题？',
+    reportIssue: '报告问题',
+    backToTop: '返回顶部',
+    feedbackTitle: '反馈问题'
+  },
+  'en-US': {
+    foundProblem: 'Found a documentation problem?',
+    reportIssue: 'Report Issue',
+    backToTop: 'Back to Top',
+    feedbackTitle: 'Report Issue'
+  },
+  'ja-JP': {
+    foundProblem: 'ドキュメントに問題がありますか？',
+    reportIssue: '問題を報告',
+    backToTop: 'トップに戻る',
+    feedbackTitle: '問題を報告'
+  }
+};
+
+// 当前语言的翻译文本
+const t = computed(() => {
+  return translations[lang.value] || translations['zh-CN'];
+});
 
 /**
  * 滚动到页面顶部
@@ -55,18 +83,18 @@ watch(
     <div class="doc-footer" v-if="route.path.includes('/docs/')">
       <div class="container">
         <div class="doc-footer-content">
-          <span>发现文档问题？</span>
-          <a href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" class="doc-footer-link">报告问题</a>
+          <span>{{ t.foundProblem }}</span>
+          <a href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" class="doc-footer-link">{{ t.reportIssue }}</a>
         </div>
       </div>
     </div>
     
     <!-- 悬浮按钮区域 -->
     <div class="float-buttons" v-if="route.path.includes('/docs/')">
-      <button class="float-button" @click="scrollToTop" title="返回顶部">
+      <button class="float-button" @click="scrollToTop" :title="t.backToTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
       </button>
-      <a class="float-button" href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" title="反馈问题">
+      <a class="float-button" href="https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml" target="_blank" :title="t.feedbackTitle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
       </a>
     </div>

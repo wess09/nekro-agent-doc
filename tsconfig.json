@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": [
+            "vite/client"
+        ]
+    },
+    "include": [
+        ".vitepress/**/*.ts",
+        ".vitepress/**/*.mts",
+        ".vitepress/**/*.vue",
+        ".vitepress/env.d.ts"
+    ]
+}

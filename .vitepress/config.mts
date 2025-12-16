@@ -339,6 +339,133 @@ export default defineConfig({
           ]
         }
       }
+    },
+    ja: {
+      label: '日本語',
+      lang: 'ja-JP',
+      link: '/ja',
+      title: "NekroAgent ドキュメント",
+      description: "NekroAgentは、LLMに基づくオープンソースの自律型エージェントフレームワークです。",
+      themeConfig: {
+        nav: [
+          { text: "ホーム", link: "/ja/docs/index_ja.html" },
+          { text: "貢献", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
+          { text: "コミュニティに参加", link: "https://discord.com/invite/eMsgwFnxUB" },
+        ],
+        sidebar: {
+          "/ja/docs/": [
+            {
+              text: "はじめに",
+              collapsed: true,
+              items: [
+                { text: "概要", link: "/ja/docs/01_intro/overview" },
+                { text: "適用シナリオ", link: "/ja/docs/01_intro/application_scenarios" },
+                { text: "インセンティブプラン", link: "/ja/docs/01_intro/event" },
+                { text: "採用情報", link: "/ja/docs/01_intro/recruitment" },
+                { text: "プライバシーポリシー", link: "/ja/docs/01_intro/privacy" },
+              ],
+            },
+            {
+              text: "クイックスタート",
+              collapsed: true,
+              items: [
+                { text: "クイックスタート", link: "/ja/docs/02_quick_start/quickstart" },
+                {
+                  text: "デプロイ",
+                  collapsed: true,
+                  items: [
+                    { text: "Linux", link: "/ja/docs/02_quick_start/deploy/linux" },
+                    { text: "Windows", link: "/ja/docs/02_quick_start/deploy/windows" },
+                    { text: "MacOS", link: "/ja/docs/02_quick_start/deploy/macos" }
+                  ],
+                },
+                {
+                  text: "コミュニティデプロイ",
+                  collapsed: true,
+                  items: [
+                    { text: "Nekro-Agent-Toolkit", link: "/ja/docs/community/nekro-agent-toolkit" },
+                    { text: "iStoreOS", link: "/ja/docs/community/iStoreOS" }
+                  ]
+                },
+                {
+                  text: "構成",
+                  collapsed: true,
+                  items: [
+                    { text: "プロトコル", link: "/ja/docs/02_quick_start/config/protocol" },
+                    { text: "システム", link: "/ja/docs/02_quick_start/config/system" },
+                    { text: "アップデート", link: "/ja/docs/02_quick_start/config/update" },
+                  ],
+                },
+              ],
+            },
+            {
+              text: "高度な機能",
+              collapsed: true,
+              items: [
+                { text: "モデル構成", link: "/ja/docs/03_advanced/model_config" },
+                { text: "モデル選択", link: "/ja/docs/03_advanced/model_usage" },
+                { text: "ペルソナのヒント", link: "/ja/docs/03_advanced/persona_tips" },
+                { text: "セッションペルソナ", link: "/ja/docs/03_advanced/session_persona" },
+                { text: "ユーザー管理", link: "/ja/docs/03_advanced/user_management" },
+                { text: "プラグインの使用", link: "/ja/docs/03_advanced/plugin_usage" },
+                { text: "プラグインジェネレーター", link: "/ja/docs/03_advanced/plugin_generator" },
+                { text: "基本コマンド", link: "/ja/docs/03_advanced/commands_basic" },
+                { text: "デバッグコマンド", link: "/ja/docs/03_advanced/commands_debug" },
+              ],
+            },
+            {
+              text: "プラグイン開発",
+              collapsed: true,
+              items: [
+                { text: "はじめに", link: "/ja/docs/04_plugin_dev/00_introduction" },
+                { text: "クイックスタート", link: "/ja/docs/04_plugin_dev/01_quick_start" },
+                {
+                  text: "コアコンセプト",
+                  link: "/ja/docs/04_plugin_dev/02_plugin_basics",
+                  collapsed: true,
+                  items: [
+                    { text: "インスタンスとライフサイクル", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.1_plugin_instance" },
+                    { text: "サンドボックスメソッド", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.2_sandbox_methods" },
+                    { text: "構成", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.3_configuration" },
+                    { text: "ストレージ", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.4_storage" },
+                    { text: "プロンプトインジェクション", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.5_prompt_injection" },
+                    { text: "コンテキストオブジェクト", link: "/ja/docs/04_plugin_dev/02_plugin_basics/2.6_agent_context" },
+                  ],
+                },
+                {
+                  text: "高度な機能",
+                  link: "/ja/docs/04_plugin_dev/03_advanced_features",
+                  collapsed: true,
+                  items: [
+                    { text: "Webhook (非推奨)", link: "/ja/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
+                    { text: "ファイル相互作用", link: "/ja/docs/04_plugin_dev/03_advanced_features/3.2_file_interaction" },
+                    { text: "ベクトルデータベース", link: "/ja/docs/04_plugin_dev/03_advanced_features/3.3_vector_database" },
+                    { text: "動的ルーター", link: "/ja/docs/04_plugin_dev/03_advanced_features/3.4_dynamic_router" },
+                    { text: "動的パッケージ", link: "/ja/docs/04_plugin_dev/03_advanced_features/3.5_dynamic_package_import" },
+                  ],
+                },
+                { text: "システムAPI", link: "/ja/docs/04_plugin_dev/04_system_api_reference" },
+              ],
+            },
+            {
+              text: "アプリ開発",
+              collapsed: true,
+              items: [
+                { text: "Linux開発環境", link: "/ja/docs/05_app_dev/dev_linux" },
+                { text: "Windows開発環境", link: "/ja/docs/05_app_dev/dev_win" },
+                { text: "MacOS開発環境", link: "/ja/docs/05_app_dev/dev_macos" },
+              ],
+            },
+            {
+              text: "トラブルシューティング",
+              collapsed: true,
+              items: [
+                { text: "よくある質問", link: "/ja/docs/06_troubleshooting/faq" },
+              ],
+            },
+          ]
+        }
+      }
     }
   },
 

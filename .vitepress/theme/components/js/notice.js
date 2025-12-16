@@ -1,5 +1,3 @@
-// Cookie 使用提醒脚本
-
 export function showCookieNotice() {
   // 配置项
   const COOKIE_NOTICE_KEY = 'hasSeenCookieNotice'
@@ -13,65 +11,133 @@ export function showCookieNotice() {
       return
     }
 
-    createNoticeElement()
+    // 检查是否已存在元素，如果存在则只更新内容
+    let noticeWrapper = document.getElementById('cookie-notice')
+
+    if (!noticeWrapper) {
+      noticeWrapper = createNoticeContainer()
+      // 只有在没有元素时才添加，避免重复添加
+      if (!document.getElementById('cookie-notice')) {
+        document.body.appendChild(noticeWrapper)
+      }
+      injectStyles()
+    }
+
+    updateNoticeContent(noticeWrapper)
 
   } catch (error) {
     console.error("无法显示Cookie提醒:", error)
   }
 
-  function createNoticeElement() {
-    // 获取当前页面语言
-    const isEnglish = document.documentElement.lang === 'en-US'
-    
-    // 根据语言设置内容
-    const title = isEnglish ? 'We use cookies' : '我们使用 Cookie'
-    const content = isEnglish 
-      ? 'We use cookies to enhance your browsing experience. By continuing to use our site, you consent to our use of cookies.'
-      : '我们使用 Cookie 来改善您的浏览体验。继续使用我们的网站即表示您同意我们使用 Cookie。'
-    const learnMore = isEnglish ? 'Learn more' : '了解更多'
-    const acceptText = isEnglish ? 'Accept' : '接受'
-    const policyUrl = isEnglish ? POLICY_URL_EN : POLICY_URL_ZH
-    
-    const noticeWrapper = document.createElement('div')
-    noticeWrapper.id = 'cookie-notice'
-    noticeWrapper.innerHTML = `
+  function createNoticeContainer() {
+    const wrapper = document.createElement('div')
+    wrapper.id = 'cookie-notice'
+    wrapper.innerHTML = `
       <div class="notice-content">
-        <h4>${title}</h4>
-        <p>${content} <a href="${policyUrl}" target="_blank" rel="noopener noreferrer">${learnMore}</a></p>
+        <h4 id="cookie-notice-title"></h4>
+        <p id="cookie-notice-text"></p>
         <div class="button-group">
-          <button class="accept-button">${acceptText}</button>
-          <button class="reject-button">${isEnglish ? 'Reject' : '拒绝'}</button>
+          <button class="accept-button"></button>
+          <button class="reject-button"></button>
         </div>
-        <button class="close-button" aria-label="${isEnglish ? 'Close' : '关闭'}">&times;</button>
+        <button class="close-button" aria-label="Close">&times;</button>
       </div>
     `
-    
-    const acceptButton = noticeWrapper.querySelector('.accept-button')
-    const rejectButton = noticeWrapper.querySelector('.reject-button')
-    const closeButton = noticeWrapper.querySelector('.close-button')
-    
+    // 绑定事件 (只需要绑定一次)
+    const acceptButton = wrapper.querySelector('.accept-button')
+    const rejectButton = wrapper.querySelector('.reject-button')
+    const closeButton = wrapper.querySelector('.close-button')
+
     const closeNotice = () => {
-      noticeWrapper.classList.add('hiding')
-      
+      wrapper.classList.add('hiding')
       setTimeout(() => {
-        document.body.removeChild(noticeWrapper)
-        // 设置 localStorage 标记，30 天内不再显示
+        if (wrapper.parentNode) wrapper.parentNode.removeChild(wrapper)
         localStorage.setItem(COOKIE_NOTICE_KEY, 'true')
-        // 同时设置一个 cookie 用于服务端识别
         setCookie('nekroagent_cookie_consent', 'accepted', EXPIRY_DAYS)
       }, 300)
     }
 
     const rejectCookies = () => {
-      // 关闭页面
-      window.close();
-    }
-    
-    acceptButton.onclick = closeNotice
-    rejectButton.onclick = rejectCookies
-    closeButton.onclick = rejectCookies
+      const isEnglish = document.documentElement.lang === 'en-US' || window.location.pathname.startsWith('/en/')
+      const isJapanese = document.documentElement.lang === 'ja-JP' || window.location.pathname.startsWith('/ja/')
 
-    // 创建并注入样式
+      let message = '请使用浏览器相关功能关闭 Cookie'
+      if (isEnglish) {
+        message = 'Please use your browser settings to disable cookies.'
+      } else if (isJapanese) {
+        message = 'ブラウザの設定でクッキーを無効にしてください。'
+      }
+      alert(message)
+    }
+
+    if (acceptButton) acceptButton.onclick = closeNotice
+    if (rejectButton) rejectButton.onclick = rejectCookies
+    if (closeButton) closeButton.onclick = rejectCookies
+
+    return wrapper
+  }
+
+  function updateNoticeContent(wrapper) {
+    if (!wrapper) return
+
+    // 获取当前页面语言 (VitePress 会在 html 标签上设置 lang)
+    // 也可以通过检查 URL 路径来辅助判断
+    const isEnglish = document.documentElement.lang === 'en-US' || window.location.pathname.startsWith('/en/')
+    const isJapanese = document.documentElement.lang === 'ja-JP' || window.location.pathname.startsWith('/ja/')
+
+
+    // 内容配置
+    let config = {
+      title: '我们使用 Cookie',
+      content: '我们使用 Cookie 来改善您的浏览体验。继续使用我们的网站即表示您同意我们使用 Cookie。',
+      learnMore: '了解更多',
+      accept: '接受',
+      reject: '拒绝',
+      close: '关闭',
+      policyUrl: POLICY_URL_ZH
+    }
+
+    if (isEnglish) {
+      config = {
+        title: 'We use cookies',
+        content: 'We use cookies to enhance your browsing experience. By continuing to use our site, you consent to our use of cookies.',
+        learnMore: 'Learn more',
+        accept: 'Accept',
+        reject: 'Reject',
+        close: 'Close',
+        policyUrl: POLICY_URL_EN
+      }
+    } else if (isJapanese) {
+      config = {
+        title: 'Cookieを使用します',
+        content: '当サイトでは、閲覧体験を向上させるためにCookieを使用しています。サイトの利用を継続することで、Cookieの使用に同意したことになります。',
+        learnMore: '詳細を見る',
+        accept: '同意する',
+        reject: '拒否する',
+        close: '閉じる',
+        policyUrl: '/ja/docs/01_intro/privacy.html'
+      }
+    }
+
+    // 更新 DOM
+    const titleEl = wrapper.querySelector('#cookie-notice-title')
+    const contentEl = wrapper.querySelector('#cookie-notice-text')
+    const acceptBtn = wrapper.querySelector('.accept-button')
+    const rejectBtn = wrapper.querySelector('.reject-button')
+    const closeBtn = wrapper.querySelector('.close-button')
+
+    if (titleEl) titleEl.textContent = config.title
+    if (contentEl) {
+      contentEl.innerHTML = `${config.content} <a href="${config.policyUrl}" target="_blank" rel="noopener noreferrer">${config.learnMore}</a>`
+    }
+    if (acceptBtn) acceptBtn.textContent = config.accept
+    if (rejectBtn) rejectBtn.textContent = config.reject
+    if (closeBtn) closeBtn.setAttribute('aria-label', config.close)
+  }
+
+  function injectStyles() {
+    if (document.getElementById('cookie-notice-style')) return
+
     const styles = `
       #cookie-notice {
         position: fixed;
@@ -212,15 +278,16 @@ export function showCookieNotice() {
         }
       }
     `;
-    const styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-
-    // 将提示框添加到页面
-    document.body.appendChild(noticeWrapper);
+    // 检查是否已经style标签 (避免重复注入样式但是没有ID的情况)
+    if (!document.getElementById('cookie-notice-style')) {
+      const styleSheet = document.createElement("style");
+      styleSheet.id = 'cookie-notice-style'
+      styleSheet.type = "text/css";
+      styleSheet.innerText = styles;
+      document.head.appendChild(styleSheet);
+    }
   }
-  
+
   // 设置 Cookie 的辅助函数
   function setCookie(name, value, days) {
     const expires = new Date()

@@ -1,11 +1,6 @@
-// .vitepress/theme/index.ts
-// 自定义主题入口文件
-
 import { h, onMounted } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-// 写一下这些CSS的已知问题：火狐浏览器浏览时 背景会有异常 待修复  
-// 导入所有样式文件
 import './css/base/colors.css'
 import './css/layout/hero.css'
 import './css/components/animation.css'
@@ -14,17 +9,11 @@ import './css/components/feature.css'
 import './css/components/search.css'
 import './css/layout/blur.css'
 import './css/base/overrides.css'
-
-// 导入第三方库和组件
 import { inBrowser } from "vitepress"
 import Confetti from "./components/vue/Confetti.vue"
 import MyLayout from './components/vue/switch.vue'
 import LayoutComponent from './components/vue/layout.vue'
-
-// 导入3D倾斜效果
 import { init3DTiltEffect } from './components/js/feature.js'
-
-// 导入Cookie提醒脚本
 import { showCookieNotice } from './components/js/notice.js'
 
 export default {
@@ -52,6 +41,7 @@ export default {
       // 首次加载时初始化
       router.onAfterRouteChanged = () => {
         initEffects();
+        showCookieNotice(); // 路由切换时更新 Cookie 提示语言
       };
     }
   },
