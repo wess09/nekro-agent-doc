@@ -1,55 +1,79 @@
-// 网站美学更新提示脚本
+// Cookie 使用提醒脚本
 
-export function showAestheticNotice() {
+export function showCookieNotice() {
   // 配置项
-  const NOTICE_KEY = 'hasSeenAestheticNotice_2024_v1'
-  const EXPIRY_DATE_STRING = '2025-12-20'
-  const ISSUE_URL = 'https://github.com/KroMiose/nekro-agent-doc/issues/new?template=issue_template.yml'
+  const COOKIE_NOTICE_KEY = 'hasSeenCookieNotice'
+  const EXPIRY_DAYS = 30 // Cookie 过期时间（天）
+  const POLICY_URL_ZH = '/docs/01_intro/privacy.html'
+  const POLICY_URL_EN = '/en/docs/01_intro/privacy.html'
 
   try {
     // 检查用户是否已经看过提示
-    if (localStorage.getItem(NOTICE_KEY) === 'true') {
-      return
-    }
-
-    // 检查是否过期
-    const currentDate = new Date()
-    const expiryDate = new Date(EXPIRY_DATE_STRING)
-    if (currentDate >= expiryDate) {
+    if (localStorage.getItem(COOKIE_NOTICE_KEY) === 'true') {
       return
     }
 
     createNoticeElement()
 
   } catch (error) {
-    console.error("无法显示美学更新提示:", error)
+    console.error("无法显示Cookie提醒:", error)
   }
 
   function createNoticeElement() {
+    // 获取当前页面语言
+    const isEnglish = document.documentElement.lang === 'en-US'
+    
+    // 根据语言设置内容
+    const title = isEnglish ? 'We use cookies' : '我们使用 Cookie'
+    const content = isEnglish 
+      ? 'We use cookies to enhance your browsing experience. By continuing to use our site, you consent to our use of cookies.'
+      : '我们使用 Cookie 来改善您的浏览体验。继续使用我们的网站即表示您同意我们使用 Cookie。'
+    const learnMore = isEnglish ? 'Learn more' : '了解更多'
+    const acceptText = isEnglish ? 'Accept' : '接受'
+    const policyUrl = isEnglish ? POLICY_URL_EN : POLICY_URL_ZH
+    
     const noticeWrapper = document.createElement('div')
-    noticeWrapper.id = 'aesthetic-notice'
+    noticeWrapper.id = 'cookie-notice'
     noticeWrapper.innerHTML = `
       <div class="notice-content">
-        <h4>✨ 焕然一新！</h4>
-        <p>文档站的美学设计已全面更新，希望能为您带来更好的阅读体验。</p>
-        <p>如果在浏览时遇到任何显示问题或任何无障碍问题，请<a href="${ISSUE_URL}" target="_blank" rel="noopener noreferrer">提交 Issue</a> 帮助我们改进，非常感谢！</p>
-        <button class="close-button" aria-label="关闭提示">&times;</button>
+        <h4>${title}</h4>
+        <p>${content} <a href="${policyUrl}" target="_blank" rel="noopener noreferrer">${learnMore}</a></p>
+        <div class="button-group">
+          <button class="accept-button">${acceptText}</button>
+          <button class="reject-button">${isEnglish ? 'Reject' : '拒绝'}</button>
+        </div>
+        <button class="close-button" aria-label="${isEnglish ? 'Close' : '关闭'}">&times;</button>
       </div>
     `
     
+    const acceptButton = noticeWrapper.querySelector('.accept-button')
+    const rejectButton = noticeWrapper.querySelector('.reject-button')
     const closeButton = noticeWrapper.querySelector('.close-button')
-    closeButton.onclick = () => {
+    
+    const closeNotice = () => {
       noticeWrapper.classList.add('hiding')
       
       setTimeout(() => {
         document.body.removeChild(noticeWrapper)
-        localStorage.setItem(NOTICE_KEY, 'true')
+        // 设置 localStorage 标记，30 天内不再显示
+        localStorage.setItem(COOKIE_NOTICE_KEY, 'true')
+        // 同时设置一个 cookie 用于服务端识别
+        setCookie('nekroagent_cookie_consent', 'accepted', EXPIRY_DAYS)
       }, 300)
     }
 
+    const rejectCookies = () => {
+      // 关闭页面
+      window.close();
+    }
+    
+    acceptButton.onclick = closeNotice
+    rejectButton.onclick = rejectCookies
+    closeButton.onclick = rejectCookies
+
     // 创建并注入样式
     const styles = `
-      #aesthetic-notice {
+      #cookie-notice {
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -57,12 +81,12 @@ export function showAestheticNotice() {
         animation: notice-fade-in 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         transition: opacity 0.3s ease, transform 0.3s ease;
       }
-      #aesthetic-notice.hiding {
+      #cookie-notice.hiding {
         opacity: 0;
         transform: scale(0.95);
       }
       .notice-content {
-        background: rgba(28, 28, 30, 0.8);
+        background: rgba(28, 28, 30, 0.9);
         color: #fff;
         padding: 20px 24px;
         border-radius: 16px;
@@ -75,7 +99,7 @@ export function showAestheticNotice() {
       }
       /* 浅色模式下的样式 */
       html:not(.dark) .notice-content {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         color: #111827;
         border: 1px solid rgba(0, 0, 0, 0.05);
       }
@@ -100,6 +124,41 @@ export function showAestheticNotice() {
       .notice-content a:hover {
         border-bottom-color: #E56464;
       }
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .accept-button, .reject-button {
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: background-color 0.2s;
+      }
+      .accept-button {
+        background: #E56464;
+        color: white;
+      }
+      .accept-button:hover {
+        background: #d45353;
+      }
+      .reject-button {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+      html:not(.dark) .reject-button {
+        background: rgba(0, 0, 0, 0.05);
+        color: #333;
+      }
+      .reject-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      html:not(.dark) .reject-button:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
       .close-button {
         position: absolute;
         top: 10px;
@@ -115,6 +174,7 @@ export function showAestheticNotice() {
         line-height: 30px;
         text-align: center;
         transition: background-color 0.2s;
+        z-index: 1;
       }
       html:not(.dark) .close-button {
         background: rgba(0, 0, 0, 0.05);
@@ -140,7 +200,7 @@ export function showAestheticNotice() {
       }
       /* 响应式：小屏幕上占满宽度 */
       @media (max-width: 768px) {
-        #aesthetic-notice {
+        #cookie-notice {
             bottom: 0;
             left: 0;
             right: 0;
@@ -159,5 +219,12 @@ export function showAestheticNotice() {
 
     // 将提示框添加到页面
     document.body.appendChild(noticeWrapper);
+  }
+  
+  // 设置 Cookie 的辅助函数
+  function setCookie(name, value, days) {
+    const expires = new Date()
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000))
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`
   }
 }

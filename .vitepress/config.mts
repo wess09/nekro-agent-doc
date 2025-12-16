@@ -108,6 +108,7 @@ export default defineConfig({
                 { text: "应用场景", link: "/docs/01_intro/application_scenarios" },
                 { text: "社区宣发激励计划", link: "/docs/01_intro/event" },
                 { text: "NekroAI 成员招募", link: "/docs/01_intro/recruitment" },
+                { text: "文档站隐私政策", link: "/docs/01_intro/privacy" },
               ],
             },
             {
@@ -222,7 +223,7 @@ export default defineConfig({
         nav: [
           { text: "Home", link: "/en/docs/index_en.html" },
           { text: "Contribute", link: "https://github.com/KroMiose/nekro-agent-doc/issues/new/choose" },
-          { text: "Join Community", link: "https://qm.qq.com/q/eT30LxDcSA" },
+          { text: "Join Community", link: "https://discord.com/invite/eMsgwFnxUB" },
         ],
         sidebar: {
           "/en/docs/": [
@@ -234,6 +235,7 @@ export default defineConfig({
                 { text: "Scenarios", link: "/en/docs/01_intro/application_scenarios" },
                 { text: "Incentive Plan", link: "/en/docs/01_intro/event" },
                 { text: "Recruitment", link: "/en/docs/01_intro/recruitment" },
+                { text: "Privacy Policy", link: "/en/docs/01_intro/privacy" },
               ],
             },
             {

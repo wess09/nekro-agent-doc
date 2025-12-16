@@ -24,8 +24,8 @@ import LayoutComponent from './components/vue/layout.vue'
 // 导入3D倾斜效果
 import { init3DTiltEffect } from './components/js/feature.js'
 
-// 导入自定义通知脚本
-import { showAestheticNotice } from './components/js/notice.js'
+// 导入Cookie提醒脚本
+import { showCookieNotice } from './components/js/notice.js'
 
 export default {
   extends: DefaultTheme,
@@ -59,8 +59,8 @@ export default {
   setup() {
     onMounted(() => {
       if (inBrowser) {
-        // 在页面挂载后调用通知函数
-        showAestheticNotice();
+        // 在页面挂载后调用Cookie提醒函数
+        showCookieNotice();
 
         // 初始化3D倾斜效果
         setTimeout(() => {

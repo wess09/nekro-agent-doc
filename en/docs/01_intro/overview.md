@@ -11,7 +11,7 @@ description: Nekro Agent is a powerful AI agent framework that provides a secure
 <div align="center">
   🎉 Next-generation AI agent framework with secure, efficient, and elegant intelligent interaction experience 🎉<br/>
   🚅 Upgraded and restructured successor to the first-generation large model application <a href="https://github.com/KroMiose/nonebot_plugin_naturel_gpt"> Naturel GPT</a> 🌈<br/>
-  💬 Technical exchange/learning/Q&A/discussion: <a href="https://jq.qq.com/?_wv=1027&k=71t9iCT7">Join our community group: 636925153</a> 🗨️
+  💬 Technical exchange/learning/Q&A/discussion: <a href="https://discord.com/invite/eMsgwFnxUB">Join our Discord Server</a> 🗨️
 </div>
 
 ## 🚀 Core Capabilities
