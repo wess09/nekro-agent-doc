@@ -129,8 +129,8 @@ export default defineConfig({
                   text: "社区部署",
                   collapsed: true,
                   items: [
-                    { text: "Nekro-Agent-Toolkit", link: "/docs/02_quick_start/community/nekro-agent-toolkit" },
-                    { text: "iStoreOS 部署教程", link: "/docs/02_quick_start/community/iStoreOS" }
+                    { text: "Nekro-Agent-Toolkit", link: "/docs/community/nekro-agent-toolkit" },
+                    { text: "iStoreOS 部署教程", link: "/docs/community/iStoreOS" }
                   ]
                 },
                 {
