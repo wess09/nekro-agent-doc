@@ -14,13 +14,18 @@ description: Nekro Agent Linux环境下的开发部署完整指南
 开发环境要求：
 
 - 一个可用的 Postgresql 数据库
-- 安装 Python 环境 (推荐 Python 3.10)
-- 安装 `poetry` (Python 依赖管理工具)
-- 安装 `nb-cli` (NoneBot 脚手架)
+- 安装 Python 环境 (推荐 Python 3.11)
+- 安装 `uv` (Python 包管理器)
+- Docker & Docker Compose
+
+### 安装 UV
 
 ```bash
-pip install poetry
-pip install nb-cli
+# Linux/macOS
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 验证安装
+uv --version
 ```
 
 ## 源码部署
@@ -35,9 +40,9 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
-pip install poetry  # 需要提前安装 Python 环境: 推荐 Python 3.10
-poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
-poetry install
+
+# 使用 UV 安装依赖
+uv sync
 ```
 
 ### 3. 生成配置文件
@@ -45,7 +50,7 @@ poetry install
 运行一次 Bot 加载插件并关闭以生成配置文件：
 
 ```bash
-nb run
+uv run nb run
 ```
 
 ### 4. 配置必要信息
@@ -76,7 +81,11 @@ POSTGRES_DATABASE: nekro_agent
 拉取用于沙盒环境的 Docker 镜像：
 
 ```bash
-sudo bash sandbox.sh --pull
+# 拉取稳定版本
+sudo docker pull kromiose/nekro-agent-sandbox:latest
+
+# 或拉取预览版本（包含最新功能）
+sudo docker pull kromiose/nekro-agent-sandbox:preview
 ```
 
 如果需要修改镜像中的依赖包，可修改 `sandbox/dockerfile` 和 `sandbox/pyproject.toml` 文件，然后使用 `sudo bash sandbox.sh --build` 重新构建镜像
@@ -93,9 +102,11 @@ sudo usermod -aG docker $USER
 :::
 
 ```bash
-nb run
+# 正常启动
+uv run nb run
+
 # 开发调试模式下启用重载监视并排除动态扩展目录
-nb run --reload --reload-excludes ext_workdir
+uv run nb run --reload --reload-excludes ext_workdir
 ```
 
 ### 7. OneBot 配置
@@ -164,4 +175,19 @@ VITE vx.x.x  ready in xxx ms
 ➜  Local:   http://localhost:xxxx/ <-这里是端口号
 ➜  Network: use --host to expose
 ➜  press h + enter to show help
+```
+
+## Docker 镜像说明
+
+Nekro Agent 提供两种 Docker 镜像标签：
+
+- **latest**: 稳定版本，适用于生产环境
+- **preview**: 预览版本，包含最新功能，适用于测试和开发
+
+```bash
+# 使用稳定版本（推荐）
+docker pull kromiose/nekro-agent:latest
+
+# 使用预览版本（体验最新功能）
+docker pull kromiose/nekro-agent:preview
 ```

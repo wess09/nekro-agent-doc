@@ -14,15 +14,19 @@ description: Nekro Agent Windows环境下的开发部署完整指南
 开发环境要求：
 
 - 一个可用的 Postgresql 数据库
-- 安装 Python 环境 (推荐 Python 3.10)
-- 安装 `poetry` (Python 依赖管理工具)
-- 安装 `nb-cli` (NoneBot 脚手架)
+- 安装 Python 环境 (推荐 Python 3.11)
+- 安装 `uv` (Python 包管理器)
 - 安装 Docker Desktop
 - 所有命令行操作推荐在 PowerShell 中执行
 
-```bash
-pip install poetry
-pip install nb-cli
+### 安装 UV
+
+```powershell
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 验证安装
+uv --version
 ```
 
 ## 源码部署
@@ -37,9 +41,9 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
-pip install poetry  # 需要提前安装 Python 环境: 推荐 Python 3.10
-poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
-poetry install
+
+# 使用 UV 安装依赖
+uv sync
 ```
 
 ### 3. 安装 PostgreSQL 数据库
@@ -66,7 +70,7 @@ CREATE DATABASE nekro_db;
 运行一次 Bot 加载插件并关闭以生成配置文件：
 
 ```bash
-nb run
+uv run nb run
 ```
 
 ### 6. 配置必要信息
@@ -104,8 +108,11 @@ POSTGRES_DATABASE: nekro_db
 拉取用于沙盒环境的 Docker 镜像：
 
 ```powershell
-# 拉取镜像
+# 拉取稳定版本
 docker pull kromiose/nekro-agent-sandbox:latest
+
+# 或拉取预览版本（包含最新功能）
+docker pull kromiose/nekro-agent-sandbox:preview
 
 # 验证镜像
 docker images | findstr "nekro-agent-sandbox"
@@ -127,14 +134,16 @@ docker images | findstr "nekro-agent-sandbox"
 ### 10. 运行 Bot
 
 ```bash
-nb run
+# 正常启动
+uv run nb run
+
 # 开发调试模式下启用重载监视并排除动态扩展目录
-nb run --reload --reload-excludes ext_workdir
+uv run nb run --reload --reload-excludes ext_workdir
 ```
 
 或使用命令行启动：
 ```bash
-poetry run bot
+uv run bot
 ```
 
 ### 11. OneBot 配置

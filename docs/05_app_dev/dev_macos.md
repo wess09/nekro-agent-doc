@@ -14,9 +14,8 @@ description: Nekro Agent macOS环境下的开发部署完整指南
 开发环境要求：
 
 - 一个可用的 Postgresql 数据库
-- 安装 Python 环境 (推荐 Python 3.10)
-- 安装 `poetry` (Python 依赖管理工具)
-- 安装 `nb-cli` (NoneBot 脚手架)
+- 安装 Python 环境 (推荐 Python 3.11)
+- 安装 `uv` (Python 包管理器)
 - 安装 OrbStack 或 Docker Desktop for Mac
 
 ### 安装基础开发工具
@@ -30,14 +29,20 @@ description: Nekro Agent macOS环境下的开发部署完整指南
 2. 安装 Python
 
 ```bash
-brew install python@3.10
+brew install python@3.11
 ```
 
-3. 安装开发依赖
+3. 安装 UV
 
 ```bash
-pip3 install poetry
-pip3 install nb-cli
+# 使用 Homebrew
+brew install uv
+
+# 或使用官方安装脚本
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 验证安装
+uv --version
 ```
 
 ## 源码部署
@@ -52,8 +57,9 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
-poetry config virtualenvs.in-project true  # 将虚拟环境安装到项目目录下 (可选)
-poetry install
+
+# 使用 UV 安装依赖
+uv sync
 ```
 
 ### 3. 安装 PostgreSQL 数据库
@@ -83,7 +89,7 @@ CREATE DATABASE nekro_db;
 运行一次 Bot 加载插件并关闭以生成配置文件：
 
 ```bash
-nb run
+uv run nb run
 ```
 
 ### 6. 配置必要信息
@@ -132,8 +138,11 @@ brew install --cask orbstack
 拉取用于沙盒环境的 Docker 镜像：
 
 ```bash
-# 拉取镜像
+# 拉取稳定版本
 docker pull kromiose/nekro-agent-sandbox:latest
+
+# 或拉取预览版本（包含最新功能）
+docker pull kromiose/nekro-agent-sandbox:preview
 
 # 验证镜像
 docker images | grep nekro-agent-sandbox
@@ -156,15 +165,17 @@ echo 'export NEKRO_ADMIN_PASSWORD="your_password"' >> ~/.bash_profile  # 如果�
 ### 10. 运行 Bot
 
 ```bash
-nb run
+# 正常启动
+uv run nb run
+
 # 开发调试模式下启用重载监视并排除动态扩展目录
-nb run --reload --reload-excludes ext_workdir
+uv run nb run --reload --reload-excludes ext_workdir
 ```
 
 ::: warning 注意
 在 macOS 上运行时，如果遇到权限问题，可能需要使用 sudo：
 ```bash
-sudo nb run
+sudo uv run nb run
 ```
 :::
 
