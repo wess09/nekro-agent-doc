@@ -14,14 +14,50 @@ description: Linux環境でのNekro Agentの開発とデプロイメントに関
 開発環境要件：
 
 - 機能するPostgreSQLデータベース
-- Python環境がインストール済み（Python 3.10推奨）
-- `poetry`をインストール（Python依存関係管理ツール）
-- `nb-cli`をインストール（NoneBotスキャフォールディングツール）
+- Python環境がインストール済み（Python 3.11推奨）
+- `uv`をインストール（Pythonパッケージマネージャー）
+- Docker & Docker Compose
+
+### UVのインストール
 
 ```bash
-pip install poetry
-pip install nb-cli
+# Linux/macOS
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# インストールを確認
+uv --version
 ```
+
+::: tip sudo権限について
+プロジェクトがDockerを呼び出す必要があるため、一部の開発シナリオではsudo権限が必要になる場合があります。`uv`と`poe`をsudoで使用できるようにするには：
+
+**UVとpoeをシステムパスにインストール**
+```bash
+# UVをシステムパスにインストール
+sudo cp ~/.local/bin/uv /usr/local/bin/
+sudo cp ~/.local/bin/uvx /usr/local/bin/
+sudo chmod +x /usr/local/bin/uv /usr/local/bin/uvx
+
+# poeをシステムパスにインストール（プロジェクトで依存関係をインストール後）
+cd nekro-agent
+uv sync --all-extras
+sudo cp ~/.local/share/uv/tools/poethepoet/bin/poe /usr/local/bin/
+sudo chmod +x /usr/local/bin/poe
+
+# 新しいターミナルで確認
+sudo uv --version
+sudo poe --help
+```
+
+**sudoで開発サーバーを実行：**
+```bash
+sudo -E uv run poe dev
+# または
+sudo -E poe dev
+```
+
+`-E`パラメータは現在のユーザーの環境変数を保持します。
+:::
 
 ## ソースコードデプロイメント
 
@@ -35,9 +71,9 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
-pip install poetry  # 最初にPython環境をインストールする必要があります：Python 3.10推奨
-poetry config virtualenvs.in-project true  # プロジェクトディレクトリに仮想環境をインストール（オプション）
-poetry install
+
+# UVを使用して依存関係をインストール
+uv sync
 ```
 
 ### 3. 設定ファイルを生成
@@ -45,7 +81,7 @@ poetry install
 Botを一度実行してプラグインをロードし、設定ファイルを生成するために閉じます：
 
 ```bash
-nb run
+uv run nb run
 ```
 
 ### 4. 必要な情報を設定
@@ -83,19 +119,12 @@ sudo bash sandbox.sh --pull
 
 ### 6. Botを実行
 
-::: warning 注意
-プラグインは実行中にDockerを動的に使用してサンドボックス実行環境を作成し、コンテナ共有ディレクトリの権限を設定するため、現在のユーザーを`docker`グループに追加し、シェルを再起動して変更を有効にすることをお勧めします
-
 ```bash
-sudo usermod -aG docker $USER
-```
+# 通常起動
+uv run nb run
 
-:::
-
-```bash
-nb run
 # 開発デバッグモードでリロード監視を有効にし、動的拡張ディレクトリを除外
-nb run --reload --reload-excludes ext_workdir
+uv run nb run --reload --reload-excludes ext_workdir
 ```
 
 ### 7. OneBot設定

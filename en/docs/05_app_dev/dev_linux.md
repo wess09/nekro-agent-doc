@@ -14,14 +14,50 @@ This document is for development environment only and is not recommended for dep
 Development environment requirements:
 
 - A functional PostgreSQL database
-- Python environment installed (Python 3.10 recommended)
-- Install `poetry` (Python dependency management tool)
-- Install `nb-cli` (NoneBot scaffolding tool)
+- Python environment installed (Python 3.11 recommended)
+- Install `uv` (Python package manager)
+- Docker & Docker Compose
+
+### Install UV
 
 ```bash
-pip install poetry
-pip install nb-cli
+# Linux/macOS
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Verify installation
+uv --version
 ```
+
+::: tip About sudo permissions
+Due to the project's need to call Docker, some development scenarios may require sudo permissions. To ensure `uv` and `poe` are available under sudo:
+
+**Install UV and poe to system path**
+```bash
+# Install UV to system path
+sudo cp ~/.local/bin/uv /usr/local/bin/
+sudo cp ~/.local/bin/uvx /usr/local/bin/
+sudo chmod +x /usr/local/bin/uv /usr/local/bin/uvx
+
+# Install poe to system path (after installing dependencies in the project)
+cd nekro-agent
+uv sync --all-extras
+sudo cp ~/.local/share/uv/tools/poethepoet/bin/poe /usr/local/bin/
+sudo chmod +x /usr/local/bin/poe
+
+# Verify in a new terminal
+sudo uv --version
+sudo poe --help
+```
+
+**Run development server with sudo:**
+```bash
+sudo -E uv run poe dev
+# or
+sudo -E poe dev
+```
+
+The `-E` parameter preserves the current user's environment variables.
+:::
 
 ## Source Code Deployment
 
@@ -35,9 +71,9 @@ git clone https://github.com/KroMiose/nekro-agent.git
 
 ```bash
 cd nekro-agent
-pip install poetry  # Need to install Python environment first: Python 3.10 recommended
-poetry config virtualenvs.in-project true  # Install virtual environment in project directory (optional)
-poetry install
+
+# Install dependencies using UV
+uv sync
 ```
 
 ### 3. Generate Configuration File
@@ -45,7 +81,7 @@ poetry install
 Run the Bot once to load plugins and then close it to generate configuration files:
 
 ```bash
-nb run
+uv run nb run
 ```
 
 ### 4. Configure Required Information
@@ -83,19 +119,12 @@ If you need to modify dependency packages in the image, you can modify the `sand
 
 ### 6. Run Bot
 
-::: warning Note
-Since plugins need to dynamically use Docker to create sandbox execution environments and set container shared directory permissions during operation, it is recommended to add the current user to the `docker` group and restart the shell for changes to take effect
-
 ```bash
-sudo usermod -aG docker $USER
-```
+# Normal startup
+uv run nb run
 
-:::
-
-```bash
-nb run
 # Enable reload monitoring in development debug mode and exclude dynamic extension directories
-nb run --reload --reload-excludes ext_workdir
+uv run nb run --reload --reload-excludes ext_workdir
 ```
 
 ### 7. OneBot Configuration

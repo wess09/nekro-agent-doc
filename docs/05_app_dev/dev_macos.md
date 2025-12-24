@@ -45,6 +45,31 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv --version
 ```
 
+::: tip 关于 sudo 权限
+macOS 用户通常不需要 sudo 运行开发服务器。如果遇到 Docker 权限问题：
+
+**使用 OrbStack（推荐）：**
+OrbStack 默认不需要 sudo 权限，开箱即用。
+
+**使用 Docker Desktop：**
+Docker Desktop 会自动配置权限，无需额外设置。
+
+**如果仍需 sudo：**
+```bash
+# 安装 UV 到系统路径
+sudo cp ~/.local/bin/uv /usr/local/bin/
+sudo cp ~/.local/bin/uvx /usr/local/bin/
+
+# 安装 poe 到系统路径
+cd nekro-agent
+uv sync --all-extras
+sudo cp ~/.local/share/uv/tools/poethepoet/bin/poe /usr/local/bin/
+
+# 使用 sudo 运行
+sudo -E uv run poe dev
+```
+:::
+
 ## 源码部署
 
 ### 1. 克隆仓库

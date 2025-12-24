@@ -39,7 +39,7 @@ git clone https://github.com/KroMiose/nekro-agent.git
 cd nekro-agent
 pip install poetry  # 最初にPython環境をインストールする必要があります：Python 3.10を推奨
 poetry config virtualenvs.in-project true  # プロジェクトディレクトリに仮想環境をインストール（オプション）
-poetry install
+uv sync
 ```
 
 ### 3. PostgreSQLデータベースのインストール
@@ -134,7 +134,7 @@ nb run --reload --reload-excludes ext_workdir
 
 またはコマンドラインから起動：
 ```bash
-poetry run bot
+uv run poe dev
 ```
 
 ### 11. OneBot設定

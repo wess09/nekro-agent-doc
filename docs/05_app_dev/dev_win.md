@@ -29,6 +29,34 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 uv --version
 ```
 
+::: tip 关于管理员权限
+Windows 用户通常不需要管理员权限运行开发服务器。Docker Desktop 会自动配置权限。
+
+**如果遇到权限问题：**
+
+1. **以管理员身份运行 PowerShell/终端**
+   - 右键点击 PowerShell 图标
+   - 选择"以管理员身份运行"
+
+2. **确保 Docker Desktop 正常运行**
+   - Docker Desktop 需要在后台运行
+   - 首次启动可能需要管理员权限
+
+3. **使用 WSL2（推荐）**
+   ```powershell
+   # 安装 WSL2
+   wsl --install
+   
+   # 在 WSL2 中开发，参考 Linux 开发文档
+   ```
+
+**正常使用：**
+```powershell
+# 直接运行（无需管理员权限）
+uv run poe dev
+```
+:::
+
 ## 源码部署
 
 ### 1. 克隆仓库

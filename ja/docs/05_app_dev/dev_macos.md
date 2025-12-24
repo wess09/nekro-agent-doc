@@ -53,7 +53,7 @@ git clone https://github.com/KroMiose/nekro-agent.git
 ```bash
 cd nekro-agent
 poetry config virtualenvs.in-project true  # プロジェクトディレクトリに仮想環境をインストール（オプション）
-poetry install
+uv sync
 ```
 
 ### 3. PostgreSQLデータベースをインストール

@@ -28,6 +28,37 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv --version
 ```
 
+::: tip 关于 sudo 权限
+由于项目需要调用 Docker，部分开发场景可能需要 sudo 权限。为确保 `uv` 和 `poe` 在 sudo 下可用：
+
+**安装 UV 和 poe 到系统路径**
+```bash
+# 安装 UV 到系统路径
+sudo cp ~/.local/bin/uv /usr/local/bin/
+sudo cp ~/.local/bin/uvx /usr/local/bin/
+sudo chmod +x /usr/local/bin/uv /usr/local/bin/uvx
+
+# 安装 poe 到系统路径（在项目中安装依赖后）
+cd nekro-agent
+uv sync --all-extras
+sudo cp ~/.local/share/uv/tools/poethepoet/bin/poe /usr/local/bin/
+sudo chmod +x /usr/local/bin/poe
+
+# 在新终端中验证
+sudo uv --version
+sudo poe --help
+```
+
+**使用 sudo 运行开发服务器：**
+```bash
+sudo -E uv run poe dev
+# 或
+sudo -E poe dev
+```
+
+`-E` 参数保留当前用户的环境变量。
+:::
+
 ## 源码部署
 
 ### 1. 克隆仓库
