@@ -18,7 +18,7 @@ description: Linux環境でのNekro Agentの開発とデプロイメントに関
 - `uv`をインストール（Pythonパッケージマネージャー）
 - Docker & Docker Compose
 
-### UVのインストール
+### UVとpoeのインストール
 
 ```bash
 # Linux/macOS
@@ -26,6 +26,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # インストールを確認
 uv --version
+
+# poeのインストール
+uv tool install poethepoet
+
+# インストールを確認
+poe --version
 ```
 
 ::: tip sudo権限について
@@ -72,39 +78,45 @@ git clone https://github.com/KroMiose/nekro-agent.git
 ```bash
 cd nekro-agent
 
-# UVを使用して依存関係をインストール
-uv sync
+# UVを使用して依存関係をインストール（開発依存関係を含む）
+uv sync --all-extras
 ```
 
-### 3. 設定ファイルを生成
+### 3. 開発サービスを起動
 
-Botを一度実行してプラグインをロードし、設定ファイルを生成するために閉じます：
+PostgreSQLやQdrantなどの必要なサービスを起動します：
 
 ```bash
-uv run nb run
+# 開発サービスオーケストレーションを起動（PostgreSQL + Qdrant + NapCat）
+docker compose -f docker/docker-compose.dev.yml up -d
 ```
 
-### 4. 必要な情報を設定
+::: tip サービスポート情報
+開発環境のサービスポートマッピング：
+- PostgreSQL: `5433`（ローカルのデフォルト5432との競合を避けるため）
+- Qdrant: `6334`（本番環境のデフォルト6333との競合を避けるため）
+- NapCat: `6199`（デフォルト6099との競合を避けるため）
+:::
 
-設定ファイル`./data/configs/nekro-agent.yaml`を編集して、データベース接続やその他の情報を設定します。
+### 4. 環境変数を設定
 
-```yaml
-# Botと管理情報
-SUPER_USERS: # 管理者ユーザーQQ番号のリスト
-  - "12345678"
-BOT_QQ: "12345678" # Bot QQ番号（**必須**）
-ADMIN_CHAT_KEY: group_12345678 # 管理者セッションチャネル識別子
+環境変数設定テンプレートをコピーし、必要に応じて変更します：
 
-# PostgreSQLデータベース設定
-POSTGRES_HOST: 127.0.0.1
-POSTGRES_PORT: 5432
-POSTGRES_USER: db_username
-POSTGRES_PASSWORD: db_password
-POSTGRES_DATABASE: nekro_agent
+```bash
+# 設定テンプレートをコピー（開発サービスに接続するように事前設定済み）
+cp .env.example .env.dev
+
+# 必要に応じて設定を変更（オプション）
+vim .env.dev
 ```
 
-::: info 完全な設定
-完全な設定手順については、[config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)を参照してください
+::: info 設定情報
+`.env.example`は開発環境のデフォルト値で事前設定されており、以下が含まれます：
+- データベース接続情報（前のステップで起動したサービスに接続）
+- Qdrantベクトルデータベース設定
+- 開発環境用の事前設定されたセキュリティキー
+
+ほとんどの場合、変更せずにそのまま使用できます。カスタム設定については、[config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)を参照してください
 :::
 
 ### 5. サンドボックスイメージをプル
@@ -112,7 +124,11 @@ POSTGRES_DATABASE: nekro_agent
 サンドボックス環境用のDockerイメージをプルします：
 
 ```bash
-sudo bash sandbox.sh --pull
+# 安定版をプル
+sudo docker pull kromiose/nekro-agent-sandbox:latest
+
+# またはプレビュー版をプル（最新機能を含む）
+sudo docker pull kromiose/nekro-agent-sandbox:preview
 ```
 
 イメージ内の依存関係パッケージを変更する必要がある場合は、`sandbox/dockerfile`と`sandbox/pyproject.toml`ファイルを変更し、`sudo bash sandbox.sh --build`を使用してイメージを再構築できます

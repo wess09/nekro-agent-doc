@@ -18,7 +18,7 @@ Development environment requirements:
 - Install `uv` (Python package manager)
 - Docker & Docker Compose
 
-### Install UV
+### Install UV and poe
 
 ```bash
 # Linux/macOS
@@ -26,6 +26,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Verify installation
 uv --version
+
+# Install poe
+uv tool install poethepoet
+
+# Verify installation
+poe --version
 ```
 
 ::: tip About sudo permissions
@@ -72,39 +78,45 @@ git clone https://github.com/KroMiose/nekro-agent.git
 ```bash
 cd nekro-agent
 
-# Install dependencies using UV
-uv sync
+# Install dependencies using UV (including dev dependencies)
+uv sync --all-extras
 ```
 
-### 3. Generate Configuration File
+### 3. Start Development Services
 
-Run the Bot once to load plugins and then close it to generate configuration files:
+Start required services like PostgreSQL and Qdrant:
 
 ```bash
-uv run nb run
+# Start development service orchestration (PostgreSQL + Qdrant + NapCat)
+docker compose -f docker/docker-compose.dev.yml up -d
 ```
 
-### 4. Configure Required Information
+::: tip Service Port Information
+Development environment service port mappings:
+- PostgreSQL: `5433` (to avoid conflicts with local default 5432)
+- Qdrant: `6334` (to avoid conflicts with production default 6333)
+- NapCat: `6199` (to avoid conflicts with default 6099)
+:::
 
-Edit the configuration file `./data/configs/nekro-agent.yaml` to configure database connection and other information.
+### 4. Configure Environment Variables
 
-```yaml
-# Bot and management information
-SUPER_USERS: # List of admin user QQ numbers
-  - "12345678"
-BOT_QQ: "12345678" # Bot QQ number (**Required**)
-ADMIN_CHAT_KEY: group_12345678 # Admin session channel identifier
+Copy the environment variable configuration template and modify as needed:
 
-# PostgreSQL database configuration
-POSTGRES_HOST: 127.0.0.1
-POSTGRES_PORT: 5432
-POSTGRES_USER: db_username
-POSTGRES_PASSWORD: db_password
-POSTGRES_DATABASE: nekro_agent
+```bash
+# Copy configuration template (pre-configured to connect to dev services)
+cp .env.example .env.dev
+
+# Modify configuration as needed (optional)
+vim .env.dev
 ```
 
-::: info Complete Configuration
-For complete configuration instructions, please refer to [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
+::: info Configuration Information
+`.env.example` is pre-configured with development environment defaults, including:
+- Database connection information (connects to services started in the previous step)
+- Qdrant vector database configuration
+- Pre-set security keys for development environment
+
+In most cases, you can use it directly without modification. For custom configuration, please refer to [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
 :::
 
 ### 5. Pull Sandbox Image
@@ -112,7 +124,11 @@ For complete configuration instructions, please refer to [config.py](https://git
 Pull the Docker image for the sandbox environment:
 
 ```bash
-sudo bash sandbox.sh --pull
+# Pull stable version
+sudo docker pull kromiose/nekro-agent-sandbox:latest
+
+# Or pull preview version (includes latest features)
+sudo docker pull kromiose/nekro-agent-sandbox:preview
 ```
 
 If you need to modify dependency packages in the image, you can modify the `sandbox/dockerfile` and `sandbox/pyproject.toml` files, then use `sudo bash sandbox.sh --build` to rebuild the image

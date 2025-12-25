@@ -18,7 +18,7 @@ description: Nekro Agent Linux环境下的开发部署完整指南
 - 安装 `uv` (Python 包管理器)
 - Docker & Docker Compose
 
-### 安装 UV
+### 安装 UV 和 poe
 
 ```bash
 # Linux/macOS
@@ -26,30 +26,36 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # 验证安装
 uv --version
+
+# 安装 poe
+uv tool install poethepoet
+
+# 验证安装
+poe --version
 ```
 
 ::: tip 关于 sudo 权限
 由于项目需要调用 Docker，部分开发场景可能需要 sudo 权限。为确保 `uv` 和 `poe` 在 sudo 下可用：
 
 **安装 UV 和 poe 到系统路径**
+
 ```bash
 # 安装 UV 到系统路径
 sudo cp ~/.local/bin/uv /usr/local/bin/
 sudo cp ~/.local/bin/uvx /usr/local/bin/
 sudo chmod +x /usr/local/bin/uv /usr/local/bin/uvx
 
-# 安装 poe 到系统路径（在项目中安装依赖后）
-cd nekro-agent
-uv sync --all-extras
+# 安装 poe 到系统路径
 sudo cp ~/.local/share/uv/tools/poethepoet/bin/poe /usr/local/bin/
 sudo chmod +x /usr/local/bin/poe
 
-# 在新终端中验证
+# 在新终端中验证使用 sudo 执行命令
 sudo uv --version
 sudo poe --help
 ```
 
 **使用 sudo 运行开发服务器：**
+
 ```bash
 sudo -E uv run poe dev
 # 或
@@ -72,39 +78,45 @@ git clone https://github.com/KroMiose/nekro-agent.git
 ```bash
 cd nekro-agent
 
-# 使用 UV 安装依赖
-uv sync
+# 使用 UV 安装依赖 (包括开发依赖)
+uv sync --all-extras
 ```
 
-### 3. 生成配置文件
+### 3. 启动开发依赖服务
 
-运行一次 Bot 加载插件并关闭以生成配置文件：
+启动开发所需的 PostgreSQL、Qdrant 等依赖服务：
 
 ```bash
-uv run nb run
+# 启动开发服务编排 (PostgreSQL + Qdrant + NapCat)
+docker compose -f docker/docker-compose.dev.yml up -d
 ```
 
-### 4. 配置必要信息
+::: tip 服务端口说明
+开发环境服务端口映射：
+- PostgreSQL: `5433` (避免与本地默认 5432 冲突)
+- Qdrant: `6334` (避免与生产环境默认 6333 冲突)
+- NapCat: `6199` (避免与默认 6099 冲突)
+:::
 
-编辑配置文件 `./data/configs/nekro-agent.yaml` 配置数据库连接等信息。
+### 4. 配置环境变量
 
-```yaml
-# Bot 与管理信息
-SUPER_USERS: # 管理用户 QQ 号列表
-  - "12345678"
-BOT_QQ: "12345678" # 机器人 QQ 号 (**必填**)
-ADMIN_CHAT_KEY: group_12345678 # 管理会话频道标识
+复制环境变量配置模板并根据需要修改：
 
-# Postgresql 数据库配置
-POSTGRES_HOST: 127.0.0.1
-POSTGRES_PORT: 5432
-POSTGRES_USER: db_username
-POSTGRES_PASSWORD: db_password
-POSTGRES_DATABASE: nekro_agent
+```bash
+# 复制配置模板（已预配置连接开发服务）
+cp .env.example .env.dev
+
+# 根据需要修改配置（可选）
+vim .env.dev
 ```
 
-::: info 完整配置
-完整配置说明请参考 [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
+::: info 配置说明
+`.env.example` 已预配置好开发环境的默认值，包括：
+- 数据库连接信息（连接到上一步启动的开发服务）
+- Qdrant 向量数据库配置
+- 开发环境预设的安全密钥
+
+大多数情况下无需修改即可直接使用。如需自定义配置，请参考 [config.py](https://github.com/KroMiose/nekro-agent/blob/main/nekro_agent/core/config.py)
 :::
 
 ### 5. 拉取沙盒镜像
@@ -177,6 +189,7 @@ ws://127.0.0.1:8021/onebot/v11/ws
     你也可以通过系统的包管理器安装，但请确保版本是 20.x。
 
 ### 2. 配置 pnpm
+
 ```bash
 # 全局安装 pnpm
 npm install -g pnpm
@@ -186,6 +199,7 @@ pnpm config set registry https://registry.npmmirror.com
 ```
 
 ### 3. 安装前端依赖
+
 ```bash
 cd frontend
 
@@ -194,12 +208,14 @@ pnpm install --frozen-lockfile
 ```
 
 ### 4. 启动前端
+
 ```bash
 cd ./frontend
 pnpm dev
 ```
 
 当看到如下日志时，即可在浏览器访问：
+
 ```
 VITE vx.x.x  ready in xxx ms
 
