@@ -210,3 +210,18 @@ VITE vx.x.x  ready in xxx ms
 ➜  Network: use --host to expose
 ➜  press h + enter to show help
 ```
+
+## Dockerイメージ説明
+
+Nekro Agentは2種類のDockerイメージタグを提供しています：
+
+- **latest**: 安定版、本番環境に適しています
+- **preview**: プレビュー版、最新機能を含み、テストと開発に適しています
+
+```bash
+# 安定版を使用（推奨）
+docker pull kromiose/nekro-agent:latest
+
+# プレビュー版を使用（最新機能を体験）
+docker pull kromiose/nekro-agent:preview
+```
