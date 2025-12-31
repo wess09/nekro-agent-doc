@@ -62,11 +62,16 @@ function initIEDetection() {
 }
 
 // 页面加载完成后执行检测
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initIEDetection);
-} else {
-  initIEDetection();
+// 使用VitePress的inBrowser变量确保只在浏览器环境中执行
+function setupIEDetection() {
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initIEDetection);
+    } else {
+      initIEDetection();
+    }
+  }
 }
 
 // 导出函数供其他模块使用
-export { isIEBrowser, isOldEdge, redirectToIEIncompatiblePage };
+export { isIEBrowser, isOldEdge, redirectToIEIncompatiblePage, setupIEDetection };

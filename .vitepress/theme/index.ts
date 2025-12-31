@@ -15,7 +15,7 @@ import MyLayout from './components/vue/switch.vue'
 import LayoutComponent from './components/vue/layout.vue'
 import { init3DTiltEffect } from './components/js/feature.js'
 import { showCookieNotice } from './components/js/notice.js'
-import './components/js/ie-detector.js'
+import { setupIEDetection } from './components/js/ie-detector.js'
 
 export default {
   extends: DefaultTheme,
