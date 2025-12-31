@@ -1,92 +1,87 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>浏览器不兼容提醒 - NekroAgent</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+    <style type="text/css">
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            margin: 0;
             padding: 20px;
         }
         
         .container {
             background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
             max-width: 600px;
-            width: 100%;
-            padding: 40px;
+            margin: 50px auto;
+            padding: 30px;
             text-align: center;
         }
         
         .logo {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .logo img {
             max-width: 150px;
-            height: auto;
         }
         
         h1 {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 20px;
             color: #e74c3c;
         }
         
         .message {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 30px;
             color: #555;
         }
         
         .browsers {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
             margin-bottom: 30px;
         }
         
         .browser {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            width: 120px;
+            text-align: center;
             text-decoration: none;
             color: #333;
-            transition: transform 0.3s ease;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            min-width: 120px;
         }
         
         .browser:hover {
-            transform: translateY(-5px);
             background-color: #f0f0f0;
         }
         
         .browser-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 30px;
+            margin-bottom: 5px;
         }
         
         .browser-name {
-            font-weight: 500;
+            font-weight: bold;
+        }
+        
+        .continue-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .continue-btn:hover {
+            background-color: #2980b9;
         }
         
         .note {
@@ -95,22 +90,6 @@
             margin-top: 20px;
             border-top: 1px solid #eee;
             padding-top: 20px;
-        }
-        
-        .continue-btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-        
-        .continue-btn:hover {
-            background-color: #2980b9;
         }
         
         .lang-selector {
@@ -123,20 +102,59 @@
             padding: 5px 10px;
             margin: 0 5px;
             cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
         }
         
         .lang-btn.active {
             background-color: #3498db;
             color: white;
-            border-color: #3498db;
         }
         
         .hidden {
             display: none;
         }
     </style>
+    <script type="text/javascript">
+        function switchLanguage(lang) {
+            // 隐藏所有语言内容
+            var contents = document.getElementsByClassName('lang-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = 'none';
+            }
+            
+            // 显示选中的语言内容
+            var selectedContent = document.getElementById('content-' + lang);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+            
+            // 更新按钮状态
+            var buttons = document.getElementsByClassName('lang-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].className = 'lang-btn';
+            }
+            
+            var activeButton = document.getElementById('btn-' + lang);
+            if (activeButton) {
+                activeButton.className = 'lang-btn active';
+            }
+        }
+        
+        // 页面加载完成后设置默认语言
+        window.onload = function() {
+            // 检测浏览器语言
+            var browserLang = navigator.language || navigator.userLanguage;
+            var defaultLang = 'zh'; // 默认中文
+            
+            if (browserLang.indexOf('en') === 0) {
+                defaultLang = 'en';
+            } else if (browserLang.indexOf('ja') === 0) {
+                defaultLang = 'ja';
+            }
+            
+            // 设置默认语言
+            switchLanguage(defaultLang);
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -145,9 +163,9 @@
         </div>
         
         <div class="lang-selector">
-            <button class="lang-btn active" data-lang="zh">中文</button>
-            <button class="lang-btn" data-lang="en">English</button>
-            <button class="lang-btn" data-lang="ja">日本語</button>
+            <button id="btn-zh" class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+            <button id="btn-en" class="lang-btn" onclick="switchLanguage('en')">English</button>
+            <button id="btn-ja" class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
         </div>
         
         <!-- 中文内容 -->
@@ -161,22 +179,22 @@
             
             <div class="browsers">
                 <a href="https://www.google.com/chrome/" target="_blank" class="browser">
-                    <div class="browser-icon">🌐</div>
+                    <div class="browser-icon">C</div>
                     <div class="browser-name">Chrome</div>
                 </a>
                 
                 <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
-                    <div class="browser-icon">🦊</div>
+                    <div class="browser-icon">F</div>
                     <div class="browser-name">Firefox</div>
                 </a>
                 
                 <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
-                    <div class="browser-icon">📘</div>
+                    <div class="browser-icon">E</div>
                     <div class="browser-name">Edge</div>
                 </a>
                 
                 <a href="https://www.apple.com/safari/" target="_blank" class="browser">
-                    <div class="browser-icon">🧭</div>
+                    <div class="browser-icon">S</div>
                     <div class="browser-name">Safari</div>
                 </a>
             </div>
@@ -199,22 +217,22 @@
             
             <div class="browsers">
                 <a href="https://www.google.com/chrome/" target="_blank" class="browser">
-                    <div class="browser-icon">🌐</div>
+                    <div class="browser-icon">C</div>
                     <div class="browser-name">Chrome</div>
                 </a>
                 
                 <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
-                    <div class="browser-icon">🦊</div>
+                    <div class="browser-icon">F</div>
                     <div class="browser-name">Firefox</div>
                 </a>
                 
                 <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
-                    <div class="browser-icon">📘</div>
+                    <div class="browser-icon">E</div>
                     <div class="browser-name">Edge</div>
                 </a>
                 
                 <a href="https://www.apple.com/safari/" target="_blank" class="browser">
-                    <div class="browser-icon">🧭</div>
+                    <div class="browser-icon">S</div>
                     <div class="browser-name">Safari</div>
                 </a>
             </div>
@@ -237,22 +255,22 @@
             
             <div class="browsers">
                 <a href="https://www.google.com/chrome/" target="_blank" class="browser">
-                    <div class="browser-icon">🌐</div>
+                    <div class="browser-icon">C</div>
                     <div class="browser-name">Chrome</div>
                 </a>
                 
                 <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
-                    <div class="browser-icon">🦊</div>
+                    <div class="browser-icon">F</div>
                     <div class="browser-name">Firefox</div>
                 </a>
                 
                 <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
-                    <div class="browser-icon">📘</div>
+                    <div class="browser-icon">E</div>
                     <div class="browser-name">Edge</div>
                 </a>
                 
                 <a href="https://www.apple.com/safari/" target="_blank" class="browser">
-                    <div class="browser-icon">🧭</div>
+                    <div class="browser-icon">S</div>
                     <div class="browser-name">Safari</div>
                 </a>
             </div>
@@ -264,64 +282,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // 语言切换功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const langButtons = document.querySelectorAll('.lang-btn');
-            const langContents = document.querySelectorAll('.lang-content');
-            
-            // 从URL或存储中获取用户首选语言
-            function getPreferredLanguage() {
-                // 从URL路径检测语言
-                const path = window.location.pathname;
-                if (path.startsWith('/en/')) return 'en';
-                if (path.startsWith('/ja/')) return 'ja';
-                
-                // 从浏览器语言检测
-                const browserLang = navigator.language || navigator.userLanguage;
-                if (browserLang.startsWith('en')) return 'en';
-                if (browserLang.startsWith('ja')) return 'ja';
-                
-                // 默认中文
-                return 'zh';
-            }
-            
-            // 设置语言
-            function setLanguage(lang) {
-                langButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('active');
-                    }
-                });
-                
-                langContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                const targetContent = document.getElementById(`content-${lang}`);
-                if (targetContent) {
-                    targetContent.classList.remove('hidden');
-                }
-                
-                // 更新HTML lang属性
-                document.documentElement.lang = lang === 'en' ? 'en-US' : 
-                                                  lang === 'ja' ? 'ja-JP' : 'zh-CN';
-            }
-            
-            // 初始化语言
-            const preferredLang = getPreferredLanguage();
-            setLanguage(preferredLang);
-            
-            // 添加语言切换事件
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    setLanguage(lang);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
