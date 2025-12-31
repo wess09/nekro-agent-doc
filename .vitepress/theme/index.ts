@@ -15,7 +15,6 @@ import MyLayout from './components/vue/switch.vue'
 import LayoutComponent from './components/vue/layout.vue'
 import { init3DTiltEffect } from './components/js/feature.js'
 import { showCookieNotice } from './components/js/notice.js'
-import { setupIEDetection } from './components/js/ie-detector.js'
 
 export default {
   extends: DefaultTheme,
@@ -52,9 +51,6 @@ export default {
       if (inBrowser) {
         // 在页面挂载后调用Cookie提醒函数
         showCookieNotice();
-        
-        // 设置IE检测
-        setupIEDetection();
 
         // 初始化3D倾斜效果
         setTimeout(() => {
