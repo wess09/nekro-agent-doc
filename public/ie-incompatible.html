@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器不兼容提醒 - NekroAgent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+        
+        .message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .browsers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .browser {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            min-width: 120px;
+        }
+        
+        .browser:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+        }
+        
+        .browser-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .browser-name {
+            font-weight: 500;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .continue-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .lang-selector {
+            margin-bottom: 20px;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="/nekro_agent_logo.webp" alt="NekroAgent Logo">
+        </div>
+        
+        <div class="lang-selector">
+            <button class="lang-btn active" data-lang="zh">中文</button>
+            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="ja">日本語</button>
+        </div>
+        
+        <!-- 中文内容 -->
+        <div id="content-zh" class="lang-content">
+            <h1>浏览器不兼容提醒</h1>
+            
+            <div class="message">
+                <p>您正在使用 Internet Explorer 浏览器，此浏览器已不再被现代网站支持。</p>
+                <p>为了获得最佳的浏览体验，请使用以下现代浏览器之一：</p>
+            </div>
+            
+            <div class="browsers">
+                <a href="https://www.google.com/chrome/" target="_blank" class="browser">
+                    <div class="browser-icon">🌐</div>
+                    <div class="browser-name">Chrome</div>
+                </a>
+                
+                <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
+                    <div class="browser-icon">🦊</div>
+                    <div class="browser-name">Firefox</div>
+                </a>
+                
+                <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
+                    <div class="browser-icon">📘</div>
+                    <div class="browser-name">Edge</div>
+                </a>
+                
+                <a href="https://www.apple.com/safari/" target="_blank" class="browser">
+                    <div class="browser-icon">🧭</div>
+                    <div class="browser-name">Safari</div>
+                </a>
+            </div>
+            
+            <a href="/" class="continue-btn">继续访问（可能无法正常显示）</a>
+            
+            <div class="note">
+                <p>现代浏览器不仅提供更好的安全性，还能支持最新的Web技术，让您获得更快的加载速度和更丰富的用户体验。</p>
+            </div>
+        </div>
+        
+        <!-- 英文内容 -->
+        <div id="content-en" class="lang-content hidden">
+            <h1>Browser Incompatibility Notice</h1>
+            
+            <div class="message">
+                <p>You are using Internet Explorer, which is no longer supported by modern websites.</p>
+                <p>For the best browsing experience, please use one of the following modern browsers:</p>
+            </div>
+            
+            <div class="browsers">
+                <a href="https://www.google.com/chrome/" target="_blank" class="browser">
+                    <div class="browser-icon">🌐</div>
+                    <div class="browser-name">Chrome</div>
+                </a>
+                
+                <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
+                    <div class="browser-icon">🦊</div>
+                    <div class="browser-name">Firefox</div>
+                </a>
+                
+                <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
+                    <div class="browser-icon">📘</div>
+                    <div class="browser-name">Edge</div>
+                </a>
+                
+                <a href="https://www.apple.com/safari/" target="_blank" class="browser">
+                    <div class="browser-icon">🧭</div>
+                    <div class="browser-name">Safari</div>
+                </a>
+            </div>
+            
+            <a href="/en/" class="continue-btn">Continue Anyway (May Not Display Correctly)</a>
+            
+            <div class="note">
+                <p>Modern browsers not only provide better security but also support the latest web technologies, giving you faster loading speeds and a richer user experience.</p>
+            </div>
+        </div>
+        
+        <!-- 日文内容 -->
+        <div id="content-ja" class="lang-content hidden">
+            <h1>ブラウザ互換性に関するお知らせ</h1>
+            
+            <div class="message">
+                <p>Internet Explorerをご利用されていますが、このブラウザは最新のWebサイトでサポートされなくなりました。</p>
+                <p>最高の閲覧体験を得るために、以下の最新ブラウザのいずれかをご利用ください：</p>
+            </div>
+            
+            <div class="browsers">
+                <a href="https://www.google.com/chrome/" target="_blank" class="browser">
+                    <div class="browser-icon">🌐</div>
+                    <div class="browser-name">Chrome</div>
+                </a>
+                
+                <a href="https://www.mozilla.org/firefox/new/" target="_blank" class="browser">
+                    <div class="browser-icon">🦊</div>
+                    <div class="browser-name">Firefox</div>
+                </a>
+                
+                <a href="https://www.microsoft.com/edge/" target="_blank" class="browser">
+                    <div class="browser-icon">📘</div>
+                    <div class="browser-name">Edge</div>
+                </a>
+                
+                <a href="https://www.apple.com/safari/" target="_blank" class="browser">
+                    <div class="browser-icon">🧭</div>
+                    <div class="browser-name">Safari</div>
+                </a>
+            </div>
+            
+            <a href="/ja/" class="continue-btn">続行（正しく表示されない可能性があります）</a>
+            
+            <div class="note">
+                <p>最新ブラウザは、より優れたセキュリティを提供するだけでなく、最新のWeb技術もサポートしており、より高速な読み込み速度と豊かなユーザー体験を実現します。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 语言切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const langContents = document.querySelectorAll('.lang-content');
+            
+            // 从URL或存储中获取用户首选语言
+            function getPreferredLanguage() {
+                // 从URL路径检测语言
+                const path = window.location.pathname;
+                if (path.startsWith('/en/')) return 'en';
+                if (path.startsWith('/ja/')) return 'ja';
+                
+                // 从浏览器语言检测
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('en')) return 'en';
+                if (browserLang.startsWith('ja')) return 'ja';
+                
+                // 默认中文
+                return 'zh';
+            }
+            
+            // 设置语言
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                langContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                const targetContent = document.getElementById(`content-${lang}`);
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                }
+                
+                // 更新HTML lang属性
+                document.documentElement.lang = lang === 'en' ? 'en-US' : 
+                                                  lang === 'ja' ? 'ja-JP' : 'zh-CN';
+            }
+            
+            // 初始化语言
+            const preferredLang = getPreferredLanguage();
+            setLanguage(preferredLang);
+            
+            // 添加语言切换事件
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

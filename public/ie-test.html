@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IE检测测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>IE浏览器检测测试页面</h1>
+    
+    <div id="browser-info" class="test-result info">
+        <h3>浏览器信息</h3>
+        <p id="user-agent"></p>
+    </div>
+    
+    <div id="test-results">
+        <h2>测试结果</h2>
+        <div id="ie-test" class="test-result">
+            <h3>IE浏览器检测</h3>
+            <p id="ie-result"></p>
+        </div>
+        
+        <div id="edge-test" class="test-result">
+            <h3>旧版Edge检测</h3>
+            <p id="edge-result"></p>
+        </div>
+    </div>
+    
+    <div class="test-result info">
+        <h3>测试说明</h3>
+        <p>此页面用于测试IE浏览器检测功能。如果您使用的是IE浏览器，应该会自动跳转到不兼容页面。</p>
+        <p>如果您使用的是现代浏览器，可以点击下面的按钮模拟IE浏览器的User Agent进行测试。</p>
+    </div>
+    
+    <div>
+        <button id="simulate-ie10">模拟IE 10</button>
+        <button id="simulate-ie11">模拟IE 11</button>
+        <button id="simulate-edge">模拟旧版Edge</button>
+        <button id="reset-ua">重置User Agent</button>
+    </div>
+    
+    <script>
+        // 显示当前User Agent
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        
+        // IE检测函数
+        function isIEBrowser() {
+            const ua = navigator.userAgent;
+            
+            // 检测IE 10及以下版本
+            const isIE10orLower = ua.indexOf('MSIE ') > -1;
+            
+            // 检测IE 11
+            const isIE11 = ua.indexOf('Trident/') > -1 && ua.indexOf('rv:') > -1;
+            
+            return isIE10orLower || isIE11;
+        }
+        
+        // 旧版Edge检测函数
+        function isOldEdge() {
+            const ua = navigator.userAgent;
+            return ua.indexOf('Edge/') > -1;
+        }
+        
+        // 更新测试结果
+        function updateTestResults() {
+            const isIE = isIEBrowser();
+            const isOldEdgeBrowser = isOldEdge();
+            
+            const ieResult = document.getElementById('ie-result');
+            const ieTest = document.getElementById('ie-test');
+            
+            ieResult.textContent = `检测结果: ${isIE ? '是IE浏览器' : '不是IE浏览器'}`;
+            ieTest.className = `test-result ${isIE ? 'error' : 'success'}`;
+            
+            const edgeResult = document.getElementById('edge-result');
+            const edgeTest = document.getElementById('edge-test');
+            
+            edgeResult.textContent = `检测结果: ${isOldEdgeBrowser ? '是旧版Edge浏览器' : '不是旧版Edge浏览器'}`;
+            edgeTest.className = `test-result ${isOldEdgeBrowser ? 'error' : 'success'}`;
+            
+            // 更新User Agent显示
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+        }
+        
+        // 模拟IE浏览器的User Agent
+        function simulateIE(version) {
+            let ua;
+            switch(version) {
+                case '10':
+                    ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)';
+                    break;
+                case '11':
+                    ua = 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko';
+                    break;
+                case 'edge':
+                    ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246';
+                    break;
+                default:
+                    ua = navigator.userAgent;
+            }
+            
+            // 注意：这只是为了演示，实际无法在真实浏览器中修改User Agent
+            // 在真实环境中，需要使用浏览器扩展或开发者工具来模拟不同的User Agent
+            alert(`模拟User Agent: ${ua}\n\n注意：这只是一个演示，实际无法在真实浏览器中修改User Agent。\n要测试真实效果，请使用IE浏览器或开发者工具模拟IE浏览器。`);
+        }
+        
+        // 初始化测试结果
+        updateTestResults();
+        
+        // 添加按钮事件
+        document.getElementById('simulate-ie10').addEventListener('click', () => simulateIE('10'));
+        document.getElementById('simulate-ie11').addEventListener('click', () => simulateIE('11'));
+        document.getElementById('simulate-edge').addEventListener('click', () => simulateIE('edge'));
+        document.getElementById('reset-ua').addEventListener('click', updateTestResults);
+    </script>
+</body>
+</html>
