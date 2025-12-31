@@ -52,6 +52,9 @@ export default {
       if (inBrowser) {
         // 在页面挂载后调用Cookie提醒函数
         showCookieNotice();
+        
+        // 设置IE检测
+        setupIEDetection();
 
         // 初始化3D倾斜效果
         setTimeout(() => {
