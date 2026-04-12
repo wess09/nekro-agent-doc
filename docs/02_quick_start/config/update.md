@@ -35,8 +35,8 @@ cd ${NEKRO_DATA_DIR}
 
 ```bash
 sudo docker pull kromiose/nekro-agent-sandbox:latest && \
-sudo docker-compose --env-file .env pull nekro_agent && \
-sudo docker-compose --env-file .env up --build -d nekro_agent
+sudo docker compose --env-file .env pull nekro_agent && \
+sudo docker compose --env-file .env up --build -d nekro_agent
 ```
 
 ### 更新所有镜像并重启容器 (如果需要同时更新 NapCat 或其他数据支持服务)
@@ -45,14 +45,16 @@ sudo docker-compose --env-file .env up --build -d nekro_agent
 
 ```bash
 sudo docker pull kromiose/nekro-agent-sandbox:latest && \
-sudo docker-compose --env-file .env pull && \
-sudo docker-compose --env-file .env up --build -d
+sudo docker compose --env-file .env pull && \
+sudo docker compose --env-file .env up --build -d
 ```
 
 ### 启动器更新流程
 
 进入`镜像管理`页面，点击检查更新，后按照弹窗提示进行操作即可，如下图所示
 ![更新](/assets/windows/manage9.png)
+
+
 
 ## 🧪 切换到预览版
 
@@ -78,9 +80,9 @@ sudo docker-compose --env-file .env up --build -d
 grep -n "image: kromiose/nekro-agent" docker-compose.yml
 ```
 
-如果输出中已经是 `kromiose/nekro-agent:preview`，可以直接执行下方的升级命令。
+如果输出中已经是 `kromiose/nekro-agent:preview`，可以直接执行第三步的升级命令。
 
-### 第二步：将主镜像标签从 `latest` 改为 `preview`
+### 第二步：（如果不是`preview`）将主镜像标签从 `latest` 改为 `preview`
 
 ```bash
 sed -i 's|image: kromiose/nekro-agent:latest|image: kromiose/nekro-agent:preview|g' docker-compose.yml
@@ -92,7 +94,7 @@ sed -i 's|image: kromiose/nekro-agent:latest|image: kromiose/nekro-agent:preview
 sed -i '' 's|image: kromiose/nekro-agent:latest|image: kromiose/nekro-agent:preview|g' docker-compose.yml
 ```
 
-修改后可再次检查：
+修改后可重复第一步再次检查：
 
 ```bash
 grep -n "image: kromiose/nekro-agent" docker-compose.yml
@@ -102,28 +104,28 @@ grep -n "image: kromiose/nekro-agent" docker-compose.yml
 
 ```bash
 sudo docker pull kromiose/nekro-agent-sandbox:preview && \
-sudo docker-compose --env-file .env pull nekro_agent && \
-sudo docker-compose --env-file .env up --build -d nekro_agent
+sudo docker compose --env-file .env pull nekro_agent && \
+sudo docker compose --env-file .env up --build -d nekro_agent
 ```
 
-如果你还希望同时更新 NapCat 或其他依赖服务，可以改用：
+如果你还希望同时更新 NapCat 或其他依赖服务(建议)，可以改用：
 
 ```bash
 sudo docker pull kromiose/nekro-agent-sandbox:preview && \
-sudo docker-compose --env-file .env pull && \
-sudo docker-compose --env-file .env up --build -d
+sudo docker compose --env-file .env pull && \
+sudo docker compose --env-file .env up --build -d
 ```
 
 ### 第四步：确认是否切换成功
 
 ```bash
-sudo docker-compose --env-file .env ps
+sudo docker compose --env-file .env ps
 ```
 
 如需查看主服务日志，可执行：
 
 ```bash
-sudo docker-compose --env-file .env logs -f nekro_agent
+sudo docker compose --env-file .env logs -f nekro_agent
 ```
 
 ### 启动器切换预览版流程
@@ -131,7 +133,9 @@ sudo docker-compose --env-file .env logs -f nekro_agent
 1. 进入`系统设置`页面，点击`启用高级功能`按钮，然后回到`总览控制台`点击`切换至预览版`按钮，后根据提示操作即可，如下图所示
 ![切换](/assets/windows/manage10.png)
 
-### 如何切回正式版
+
+
+### 如何切回正式版(不建议)
 
 将 `docker-compose.yml` 中的镜像标签改回 `latest`，然后重新执行一次正式版更新命令即可：
 
@@ -141,6 +145,11 @@ sed -i 's|image: kromiose/nekro-agent:preview|image: kromiose/nekro-agent:latest
 
 若您通过启动器切换至预览版的同时，备份了正式版数据，可在`总览控制台`点击`恢复正式版`按钮后，根据提示操作，如下图所示
 ![降级](/assets/windows/manage11.png)
+
+### ⚠️:强烈建议预览版用户定期备份数据
+
+无责推荐一个好用的Wsl虚拟机部署方案的备份工具。
+`https://gitee.com/bye/wsl-dashboard/releases`
 
 ## 📝 更新日志
 
