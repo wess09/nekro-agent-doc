@@ -16,7 +16,7 @@ Please be sure to pay attention to this page in a timely manner
 ::: warning Model Discontinuation Warning
 Updated on April 18, 2026
 
-According to the [Google Gemini API Deprecation Notice](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn) and [Version Notes](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn), the following models have announced discontinuation plans. The dates listed in the table are the **earliest possible dates** for the models to be retired.
+According to the [Google Gemini API Deprecation Notice](https://ai.google.dev/gemini-api/docs/deprecations) and [Version Notes](https://ai.google.dev/gemini-api/docs/changelog), the following models have announced discontinuation plans. The dates listed in the table are the **earliest possible dates** for the models to be retired.
 
 ### Upcoming Discontinued Models (2026)
 - **Gemini 2.5 Series**:
@@ -60,7 +60,7 @@ Automatic redirection operations are performed by Google Gemini, and NekroAgent 
 ::: tip Experimental Model Description
 Models marked as `exp` (experimental) or `preview` (preview) in the documentation are experimental models. These models:
 - May be updated or closed at any time, with a short lifecycle
-- It is recommended to regularly follow [Google Gemini API Version Notes](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn) for the latest updates
+- It is recommended to regularly follow [Google Gemini API Version Notes](https://ai.google.dev/gemini-api/docs/changelog) for the latest updates
 - For production environments, it is recommended to prioritize stable version (GA) models, or prepare backup solutions
 - Experimental models will usually be gradually closed after the stable version is released
 - **Some preview models will automatically redirect to stable versions**, it is recommended to directly use stable version model names

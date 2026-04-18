@@ -719,6 +719,12 @@ html:not(.dark) .VPHomeHero::after {
 
 /* 应用彩虹动画到英雄区标题 */
 .VPHomeHero .name {
+    /* 层级高于 .text */
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
     /* 定义初始值 */
     --rainbow-prev: #009ff7;
     --rainbow-next: #c76dd1;
@@ -729,4 +735,10 @@ html:not(.dark) .VPHomeHero::after {
     color: transparent;
     /* 应用动画 */
     animation: rainbow 8s linear infinite;
+}
+
+
+.VPHomeHero .text {
+    position: relative;
+    z-index: 1;
 }
