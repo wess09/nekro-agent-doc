@@ -14,47 +14,47 @@
 :::
 
 ::: warning 模型停用警告
-更新日期 2025 年 12 月 10 日
+更新日期 2026 年 4 月 18 日
 
-根据 [Google Gemini API 弃用公告](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn) 和 [版本说明](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)，以下模型将在指定时间停用，请及时迁移：
+根据 [Google Gemini API 弃用公告](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn) 和 [版本说明](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)，以下模型已宣布停用计划。表中列出的日期为模型可能退役的**最早日期**。
 
-- **gemini-2.0-flash**：预计最早于 **2026 年 2 月**停用，建议更换为 `gemini-2.5-flash`
-- **gemini-2.5-pro**：预计最早于 **2026 年 6 月**停用，建议更换为 `gemini-3-pro`
-- **gemini-2.5-flash**：预计最早于 **2026 年 6 月**停用
-- **gemini-2.5-flash-thinking**：预计最早于 **2026 年 6 月**停用
-- **gemini-2.5-flash-image-preview**：将于 **2026 年 1 月 15 日**关闭
+### 即将停用的模型 (2026年)
+- **Gemini 2.5 系列**:
+  - `gemini-2.5-pro`: **2026 年 6 月 17 日** 停用 (推荐: `gemini-3.1-pro-preview`)
+  - `gemini-2.5-flash`: **2026 年 6 月 17 日** 停用 (推荐: `gemini-3-flash-preview`)
+  - `gemini-2.5-flash-lite`: **2026 年 7 月 22 日** 停用 (推荐: `gemini-3.1-flash-lite-preview`)
+  - `gemini-2.5-flash-image`: **2026 年 10 月 2 日** 停用 (推荐: `gemini-3.1-flash-image-preview`)
+- **Gemini 2.0 系列**:
+  - `gemini-2.0-flash / -001`: **2026 年 6 月 1 日** 停用 (推荐: `gemini-2.5-flash`)
+  - `gemini-2.0-flash-lite / -001`: **2026 年 6 月 1 日** 停用 (推荐: `gemini-2.5-flash-lite`)
+- **其他模型**:
+  - `gemini-embedding-001`: **2026 年 7 月 14 日** 停用
+  - `imagen-4.0-generate-001 / ultra / fast`: **2026 年 6 月 24 日** 停用
+  - `gemini-robotics-er-1.5-preview`: **2026 年 4 月 30 日** 停用 (推荐: `gemini-robotics-er-1.6-preview`)
+:::
 
-::: danger 已关闭的模型
-以下模型已经关闭，请求将无法使用或会自动重定向：
+::: danger 已停用的模型
+以下模型已经关闭，请求将无法使用或会自动重定向。
 
-**已关闭（2025年6月26日）**：
-- `gemini-2.5-pro-exp-03-25` - 已关闭，请使用 `gemini-2.5-pro`
+| 模型名称 | 停用日期 | 推荐替代方案 |
+| :--- | :--- | :--- |
+| `gemini-3-pro-preview` | 2026 年 3 月 9 日 | `gemini-3.1-pro-preview` |
+| `gemini-2.5-flash-lite-preview-09-2025` | 2026 年 3 月 31 日 | `gemini-3.1-flash-lite-preview` |
+| `gemini-2.5-flash-preview-09-25` | 2026 年 2 月 17 日 | `gemini-3-flash-preview` |
+| `imagen-4.0-generate-preview-06-06` | 2026 年 2 月 17 日 | `imagen-4.0-generate-001` |
+| `gemini-2.5-flash-image-preview` | 2026 年 1 月 15 日 | `gemini-2.5-flash-image` |
+| `text-embedding-004` | 2026 年 1 月 14 日 | `gemini-embedding-001` |
+| `gemini-2.5-pro-preview (03-25/05-06/06-05)` | 2025 年 12 月 2 日 | `gemini-3.1-pro-preview` |
+| `gemini-2.0-flash-lite-preview (-02-05)` | 2025 年 12 月 9 日 | `gemini-2.5-flash-lite` |
+| `gemini-2.0-flash-live-001` | 2025 年 12 月 9 日 | `gemini-3.1-flash-live-preview` |
+| `gemini-live-2.5-flash-preview` | 2025 年 12 月 9 日 | `gemini-3.1-flash-live-preview` |
+| `gemini-2.5-flash-preview-05-20` | 2025 年 11 月 18 日 | `gemini-3-flash-preview` |
+| `gemini-2.0-flash-preview-image-generation` | 2025 年 11 月 14 日 | `gemini-2.5-flash-image` |
+| `veo-3.0-generate / fast-preview` | 2025 年 11 月 12 日 | `veo-3.1-generate-preview` |
+| `imagen-3.0-generate-002` | 2025 年 11 月 10 日 | `imagen-4.0-generate-001` |
+| `embedding-001 / gecko-001 / exp` | 2025 年 10 月 30 日 | `gemini-embedding-001` |
 
-**已关闭（2025年9月29日）**：
-- `gemini-1.5-pro` - 已关闭
-- `gemini-1.5-flash` - 已关闭
-- `gemini-1.5-flash-8b` - 已关闭
-
-**已关闭（2025年11月10日）**：
-- `imagen-3.0-generate-002` - 已关闭，请改用 Imagen 4
-
-**已关闭（2025年11月4日公告）**：
-- `gemini-2.5-flash-lite-preview-06-17` - 2025年11月18日关闭
-- `gemini-2.5-flash-preview-05-20` - 2025年11月18日关闭
-- `gemini-2.0-flash-thinking-exp` - 2025年12月2日关闭
-- `gemini-2.0-flash-thinking-exp-01-21` - 2025年12月2日关闭
-- `gemini-2.0-flash-thinking-exp-1219` - 2025年12月2日关闭
-- `gemini-2.5-pro-preview-03-25` - 2025年12月2日关闭
-- `gemini-2.5-pro-preview-05-06` - 2025年12月2日关闭
-- `gemini-2.5-pro-preview-06-05` - 2025年12月2日关闭
-- `gemini-2.0-flash-lite-preview` - 2025年12月9日关闭
-- `gemini-2.0-flash-lite-preview-02-05` - 2025年12月9日关闭
-
-**自动重定向（2025年6月26日）**：
-- `gemini-2.5-pro-preview-05-06` → 自动重定向到 `gemini-2.5-pro`
-- `gemini-2.5-pro-preview-03-25` → 自动重定向到 `gemini-2.5-pro`
-
-自动重定向操作由 Google Gemini 进行  NekroAgent 官方中转 为保护用户服务稳定性不会主动删除对应模型
+自动重定向操作由 Google Gemini 进行 NekroAgent 官方中转 为保护用户服务稳定性不会主动删除对应模型
 :::
 
 ::: tip 实验性模型说明
