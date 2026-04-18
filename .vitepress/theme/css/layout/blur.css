@@ -28,7 +28,7 @@
 }
 
 /* ==================================================
-   1. 顶部导航栏 (Navbar) - 性能优化版本
+   1. 顶部导航栏 (Navbar)
    ================================================== */
 
 /* 首页下滑后 & 文档页的导航栏 */
@@ -36,7 +36,8 @@
 .VPNavBar:not(.has-sidebar):not(.home.top),
 .VPNavBar.has-sidebar {
   background-color: var(--glass-bg-color) !important;
-  /* 已移除 backdrop-filter 以提升滚动性能 */
+  backdrop-filter: blur(var(--blur-radius)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-radius)) saturate(var(--glass-saturate));
 
   /* 移除边框以避免滚动时的突变 */
   border-bottom: none !important;

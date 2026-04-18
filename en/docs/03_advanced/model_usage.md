@@ -40,23 +40,24 @@ The chat session process of NekroAgent (excluding plugin functions) is mainly af
 
 Below is the list of recommended models for **Chat Conversation Process**:
 
-> This list updated on December 10, 2025
+> This list updated on April 18, 2026
 
-| Model Name                        | Quality | Speed | Stability | Cost-Effectiveness | Vision | Built-in Thinking | Notes |
+| Model Name                          | Quality | Speed | Stability | Cost-Effectiveness | Vision | Built-in Thinking | Notes |
 | --------------------------------- | ------- | ----- | --------- | ------------------ | ------ | ----------------- | ----- |
 | claude-4-5-sonnet-latest          | 👑     | 🥈    | 🥈        | 🥈                 | 👁️    | ❌                | Anthropic's latest flagship model, with the strongest comprehensive capabilities but limited supply, suitable as the main model |
-| gemini-3-pro-preview              | 👑     | 🥉    | 🥇        | 🥉                 | 👁️    | 🧠                | Google's latest high-quality flagship model, with powerful agent and coding capabilities, supports thinking signature and thinking levels ⚠️ Preview model |
-| gemini-2.5-pro                    | 👑     | 🥇    | 🥇        | 🥈                 | 👁️    | 🧠                | Best overall experience, with good performance in language ability, logic ability, and other aspects, has adaptive thinking ability, suitable as the main model ⚠️ Expected to be discontinued as early as June 2026, recommend switching to `gemini-3-pro` |
+| gemini-3.1-pro-preview            | 👑     | 🥈    | 🥇        | 🥉                 | 👁️    | 🧠                | Google's 3.1 generation high-quality flagship model, currently top performance, supports thinking signature and thinking levels ⚠️ Preview model |
+| gemini-3-flash-preview            | 🥇     | 🥇    | 🥇        | 👑                 | 👁️    | ❌                | Balanced model with excellent overall experience, fast speed and strong logic, recommended as the main model |
+| gemini-2.5-pro                    | 🥇     | 🥇    | 🥇        | 🥈                 | 👁️    | 🧠                | Stable logical ability, has adaptive thinking ability ⚠️ Expected to be discontinued on June 17, 2026 |
 | gpt-4.1                           | 🥇     | 🥈    | 🥇        | 🥈                 | 👁️    | ❌                | Newer flagship GPT model, with obvious AI characteristics but decent logical ability |
-| claude-4-5-haiku                  | 🥈     | 🥇    | 🥇        | 🥉                 | 👁️    | ❌                | Anthropic's small model, comparable to gpt-4o-mini level |
-| gemini-2.5-flash                  | 🥇     | 🥇    | 🥇        | 👑                 | 👁️    | ❌                | High cost-effectiveness, fast speed, with balanced logical and language abilities, suitable as the main model ⚠️ Expected to be discontinued as early as June 2026 |
-| gemini-2.5-flash-thinking         | 🥇     | 🥈    | 🥉        | 👑                 | 👁️    | 🧠                | Slightly faster built-in thinking model, with high generation quality but fluctuating generation speed ⚠️ Expected to be discontinued as early as June 2026 |
+| gemini-3.1-flash-lite-preview     | 🥈     | 👑    | 🥇        | 👑                 | 👁️    | ❌                | Ultra-fast small model, extremely low inference cost, suitable for simple tasks or fast iteration ⚠️ Preview model |
+| claude-4-5-haiku                  | 🥈     | 🥇    | 🥇        | 🥉                 | 👁️    | ❌                | Anthropic's fast model, suitable for scenarios with specific requirements for generation style |
+| gemini-2.5-flash                  | 🥇     | 🥇    | 🥇        | 👑                 | 👁️    | ❌                | High cost-effectiveness, will soon be replaced by gemini-3-flash ⚠️ Expected to be discontinued on June 17, 2026 |
 | deepseek-chat (v3)                | 🥇     | 🥉    | 🥇        | 🥈                 | ❌    | ❌                | Classic domestic model, excellent Chinese ability, distinctive language style |
-| doubao-1.5-vision-pro-32k-250115  | 🥈     | 🥈    | 👑        | 🥈                 | 👁️    | ❌                | Domestic model provided by ByteDance, good stability, strong multimodal ability, stable price, suitable as a backup model |
-| gemini-2.0-flash                  | 🥈     | 👑    | 🥇        | 🥇                 | 👁️    | ❌                | Extremely low-cost and fast small model, recommended to use with external chain of thought, can also be used as an iterative model ⚠️ Expected to be discontinued as early as February 2026, recommend switching to `gemini-2.5-flash` |
-| gpt-4o                            | 🥇     | 🥈    | 🥇        | 🥈                 | 👁️    | ❌                | GPT-generated content has a strong AI flavor, suitable for productivity use |
-| gpt-4o-mini                       | 🥈     | 🥈    | 🥇        | 🥇                 | 👁️    | ❌                | GPT-generated content has a strong AI flavor, suitable for productivity use |
-| grok-3                            | 🥈     | 🥈    | 🥇        | 🥉                 | 👁️    | ❌                | Language model launched by xAI, with fewer restrictions and lower AI flavor, suitable for conversation |
+| doubao-1.5-vision-pro-32k-250115  | 🥈     | 🥈    | 👑        | 🥈                 | 👁️    | ❌                | Domestic model provided by ByteDance, excellent stability, strong multimodal ability, suitable as a backup model |
+| gemini-2.0-flash                  | 🥈     | 👑    | 🥇        | 🥇                 | 👁️    | ❌                | Small model with extremely low cost ⚠️ Expected to be discontinued on June 1, 2026 |
+| gpt-4o                            | 🥇     | 🥈    | 🥇        | 🥈                 | 👁️    | ❌                | Commonly used model for productivity scenarios, high API stability |
+| gpt-4o-mini                       | 🥈     | 🥈    | 🥇        | 🥇                 | 👁️    | ❌                | Classic GPT series small model |
+| grok-3                            | 🥈     | 🥈    | 🥇        | 🥉                 | 👁️    | ❌                | Language model launched by xAI, distinct personality, lower AI flavor |
 
 Note:
 
@@ -71,14 +72,15 @@ The generation modification suggestion model in NekroAgent's **Plugin Editor** u
 | Model Name                        | Quality | Speed | Stability | Cost-Effectiveness | Vision | Thinking | Notes |
 | --------------------------------- | ------- | ----- | --------- | ------------------ | ------ | -------- | ----- |
 | claude-4-5                        | 👑     | 🥈    | 🥈        | 🥈                 | 👁️    | 🧠       | Anthropic's latest high-quality flagship coding model |
-| gemini-3-pro-preview              | 👑     | 🥉    | 🥈        | 🥉                 | 👁️    | 🧠       | Google's latest high-quality flagship model, excellent performance in the programming field, with powerful agent and coding capabilities ⚠️ Preview model |
-| gemini-2.5-pro                    | 👑     | 🥇    | 🥇        | 🥈                 | 👁️    | 🧠       | Google's previous generation flagship model, excellent performance in the programming field, with adaptive thinking ability ⚠️ Expected to be discontinued as early as June 2026, recommend switching to `gemini-3-pro` |
+| gemini-3.1-pro-preview            | 👑     | 🥈    | 🥇        | 🥉                 | 👁️    | 🧠       | Google's latest generation flagship model, excellent performance in the programming field, extremely strict logic ⚠️ Preview model |
+| gemini-2.5-pro                    | 🥇     | 🥇    | 🥇        | 🥈                 | 👁️    | 🧠       | Classic flagship model, stable programming ability, supports adaptive thinking ⚠️ Expected to be discontinued on June 17, 2026 |
 
 After the generation model generates modification suggestions, we also need to use the `Plugin Code Application Model Group (PLUGIN_APPLY_MODEL_GROUP)` to apply the modification suggestions in the current plugin editor. It is recommended to use models with strong prompt compliance and fast generation speed. Below is the list of recommended models:
 
 | Model Name         | Quality | Speed | Stability | Cost-Effectiveness | Vision | Thinking | Notes |
 | ------------------ | ------- | ----- | --------- | ------------------ | ------ | -------- | ----- |
-| gemini-2.5-flash   | 🥈     | 👑    | 🥇        | 🥈                 | 👁️    | ❌       | ⚠️ Expected to be discontinued as early as June 2026 |
+| gemini-3-flash-preview | 🥇   | 👑    | 🥇        | 👑                 | 👁️    | ❌       | Recommended fast logic application model |
+| gemini-2.5-flash       | 🥈   | 👑    | 🥇        | 🥈                 | 👁️    | ❌       | ⚠️ Expected to be discontinued on June 17, 2026 |
 
 ## Built-in Plugins
 
@@ -97,10 +99,10 @@ The drawing plugin supports OpenAI standard drawing API (such as DALL-E 3) and a
 
 | Model Name                       | Quality | Speed | Stability | Cost-Effectiveness | Image-to-Image | Format         | Notes |
 | -------------------------------- | ------- | ----- | --------- | ------------------ | -------------- | -------------- | ----- |
-| gemini-2.5-flash-image-preview | 🥇     | 🥇    | 🥈        | 🥇                 | ✅             | Chat mode      | Gemini 2.5 drawing model ⚠️ Will be closed on January 15, 2026 |
-| gemini-3-pro-image-preview     | 🥇     | 🥇    | 🥈        | 🥉                 | ✅             | Chat mode      | Gemini 3 drawing model, recommended to use with advanced drawing plugin (market) |
-| sora_image                     | 👑     | ⚪    | 🥇        | 🥈                 | ✅             | Chat mode      | Consistent with ChatGPT official website 4o drawing, high compliance but very slow |
-| Kolors                         | 🥈     | 👑    | 👑        | 🥇                 | ✅             | Image generation mode | Domestic drawing model, with single style and偏向 CG style |
+| gemini-3.1-flash-image-preview | 👑     | 🥇    | 🥇        | 🥇                 | ✅             | Chat mode      | Gemini 3.1 drawing model, with extremely high understanding and visual quality |
+| gemini-3-pro-image-preview     | 👑     | 🥇    | 🥈        | 🥉                 | ✅             | Chat mode      | Gemini 3 flagship drawing model, rich in details |
+| sora_image                     | 🥇     | ⚪    | 🥇        | 🥈                 | ✅             | Chat mode      | Consistent with ChatGPT official website 4o drawing, good logic compliance but slow |
+| Kolors                         | 🥈     | 👑    | 👑        | 🥇                 | ✅             | Image generation mode | Classic domestic drawing model, suitable for CG style tasks |
 
 ## Notes
 
@@ -113,8 +115,9 @@ The drawing plugin supports OpenAI standard drawing API (such as DALL-E 3) and a
    - Prioritize using stable version (GA) models
    - Some preview models will automatically redirect to stable versions. It is recommended to directly use stable version model names to avoid delays caused by redirection
 5. **Model Redirection**: Some discontinued preview models will automatically redirect to corresponding stable versions, for example:
-   - `gemini-2.5-pro-preview-03-25` → `gemini-2.5-pro`
-   - `gemini-2.5-pro-preview-05-06` → `gemini-2.5-pro`
+   - `gemini-3-pro-preview` → `gemini-3.1-pro-preview`
+   - `gemini-2.5-flash-image-preview` → `gemini-3.1-flash-image-preview`
+   - `gemini-2.5-pro-preview-06-05` → `gemini-2.5-pro`
 
 ::: warning Important Note
 When using any generative artificial intelligence service, be sure to comply with relevant terms of service and laws and regulations

@@ -14,45 +14,45 @@ Please be sure to pay attention to this page in a timely manner
 :::
 
 ::: warning Model Discontinuation Warning
-Updated on December 10, 2025
+Updated on April 18, 2026
 
-According to the [Google Gemini API Deprecation Notice](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn) and [Version Notes](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn), the following models will be discontinued at the specified time. Please migrate in a timely manner:
+According to the [Google Gemini API Deprecation Notice](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn) and [Version Notes](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn), the following models have announced discontinuation plans. The dates listed in the table are the **earliest possible dates** for the models to be retired.
 
-- **gemini-2.0-flash**: Expected to be discontinued as early as **February 2026**, recommend switching to `gemini-2.5-flash`
-- **gemini-2.5-pro**: Expected to be discontinued as early as **June 2026**, recommend switching to `gemini-3-pro`
-- **gemini-2.5-flash**: Expected to be discontinued as early as **June 2026**
-- **gemini-2.5-flash-thinking**: Expected to be discontinued as early as **June 2026**
-- **gemini-2.5-flash-image-preview**: Will be closed on **January 15, 2026**
+### Upcoming Discontinued Models (2026)
+- **Gemini 2.5 Series**:
+  - `gemini-2.5-pro`: **June 17, 2026** Discontinued (Recommend: `gemini-3.1-pro-preview`)
+  - `gemini-2.5-flash`: **June 17, 2026** Discontinued (Recommend: `gemini-3-flash-preview`)
+  - `gemini-2.5-flash-lite`: **July 22, 2026** Discontinued (Recommend: `gemini-3.1-flash-lite-preview`)
+  - `gemini-2.5-flash-image`: **October 2, 2026** Discontinued (Recommend: `gemini-3.1-flash-image-preview`)
+- **Gemini 2.0 Series**:
+  - `gemini-2.0-flash / -001`: **June 1, 2026** Discontinued (Recommend: `gemini-2.5-flash`)
+  - `gemini-2.0-flash-lite / -001`: **June 1, 2026** Discontinued (Recommend: `gemini-2.5-flash-lite`)
+- **Other Models**:
+  - `gemini-embedding-001`: **July 14, 2026** Discontinued
+  - `imagen-4.0-generate-001 / ultra / fast`: **June 24, 2026** Discontinued
+  - `gemini-robotics-er-1.5-preview`: **April 30, 2026** Discontinued (Recommend: `gemini-robotics-er-1.6-preview`)
+:::
 
 ::: danger Discontinued Models
 The following models have been closed, and requests will not be available or will be automatically redirected:
 
-**Closed (June 26, 2025)**:
-- `gemini-2.5-pro-exp-03-25` - Closed, please use `gemini-2.5-pro`
-
-**Closed (September 29, 2025)**:
-- `gemini-1.5-pro` - Closed
-- `gemini-1.5-flash` - Closed
-- `gemini-1.5-flash-8b` - Closed
-
-**Closed (November 10, 2025)**:
-- `imagen-3.0-generate-002` - Closed, please switch to Imagen 4
-
-**Closed (Announced November 4, 2025)**:
-- `gemini-2.5-flash-lite-preview-06-17` - Closed November 18, 2025
-- `gemini-2.5-flash-preview-05-20` - Closed November 18, 2025
-- `gemini-2.0-flash-thinking-exp` - Closed December 2, 2025
-- `gemini-2.0-flash-thinking-exp-01-21` - Closed December 2, 2025
-- `gemini-2.0-flash-thinking-exp-1219` - Closed December 2, 2025
-- `gemini-2.5-pro-preview-03-25` - Closed December 2, 2025
-- `gemini-2.5-pro-preview-05-06` - Closed December 2, 2025
-- `gemini-2.5-pro-preview-06-05` - Closed December 2, 2025
-- `gemini-2.0-flash-lite-preview` - Closed December 9, 2025
-- `gemini-2.0-flash-lite-preview-02-05` - Closed December 9, 2025
-
-**Automatic Redirection (June 26, 2025)**:
-- `gemini-2.5-pro-preview-05-06` → Automatically redirects to `gemini-2.5-pro`
-- `gemini-2.5-pro-preview-03-25` → Automatically redirects to `gemini-2.5-pro`
+| Model Name | Discontinuation Date | Recommended Alternative |
+| :--- | :--- | :--- |
+| `gemini-3-pro-preview` | March 9, 2026 | `gemini-3.1-pro-preview` |
+| `gemini-2.5-flash-lite-preview-09-2025` | March 31, 2026 | `gemini-3.1-flash-lite-preview` |
+| `gemini-2.5-flash-preview-09-25` | February 17, 2026 | `gemini-3-flash-preview` |
+| `imagen-4.0-generate-preview-06-06` | February 17, 2026 | `imagen-4.0-generate-001` |
+| `gemini-2.5-flash-image-preview` | January 15, 2026 | `gemini-2.5-flash-image` |
+| `text-embedding-004` | January 14, 2026 | `gemini-embedding-001` |
+| `gemini-2.5-pro-preview (03-25/05-06/06-05)` | December 2, 2025 | `gemini-3.1-pro-preview` |
+| `gemini-2.0-flash-lite-preview (-02-05)` | December 9, 2025 | `gemini-2.5-flash-lite` |
+| `gemini-2.0-flash-live-001` | December 9, 2025 | `gemini-3.1-flash-live-preview` |
+| `gemini-live-2.5-flash-preview` | December 9, 2025 | `gemini-3.1-flash-live-preview` |
+| `gemini-2.5-flash-preview-05-20` | November 18, 2025 | `gemini-3-flash-preview` |
+| `gemini-2.0-flash-preview-image-generation` | November 14, 2025 | `gemini-2.5-flash-image` |
+| `veo-3.0-generate / fast-preview` | November 12, 2025 | `veo-3.1-generate-preview` |
+| `imagen-3.0-generate-002` | November 10, 2025 | `imagen-4.0-generate-001` |
+| `embedding-001 / gecko-001 / exp` | October 30, 2025 | `gemini-embedding-001` |
 
 Automatic redirection operations are performed by Google Gemini, and NekroAgent Official Relay will not actively delete corresponding models to protect user service stability
 :::
