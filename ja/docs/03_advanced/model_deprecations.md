@@ -14,47 +14,47 @@
 :::
 
 ::: warning モデル廃止警告
-2025年12月10日更新
+2026年4月18日更新
 
-[Google Gemini API非推奨通知](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn)および[バージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)によると、以下のモデルは指定された時刻に廃止されます。適時移行してください：
+[Google Gemini API非推奨通知](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn)および[バージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)によると、以下のモデルは廃止計画が発表されています。表に記載されている日付は、モデルが廃止される**最も早い日付**です。
 
-- **gemini-2.0-flash**：**2026年2月**に廃止される見込み、`gemini-2.5-flash`への切り替えを推奨
-- **gemini-2.5-pro**：**2026年6月**に廃止される見込み、`gemini-3-pro`への切り替えを推奨
-- **gemini-2.5-flash**：**2026年6月**に廃止される見込み
-- **gemini-2.5-flash-thinking**：**2026年6月**に廃止される見込み
-- **gemini-2.5-flash-image-preview**：**2026年1月15日**に閉鎖されます
+### 今後廃止予定のモデル (2026年)
+- **Gemini 2.5 シリーズ**:
+  - `gemini-2.5-pro`: **2026 年 6 月 17 日** 廃止 (推奨: `gemini-3.1-pro-preview`)
+  - `gemini-2.5-flash`: **2026 年 6 月 17 日** 廃止 (推奨: `gemini-3-flash-preview`)
+  - `gemini-2.5-flash-lite`: **2026 年 7 月 22 日** 廃止 (推奨: `gemini-3.1-flash-lite-preview`)
+  - `gemini-2.5-flash-image`: **2026 年 10 月 2 日** 廃止 (推奨: `gemini-3.1-flash-image-preview`)
+- **Gemini 2.0 シリーズ**:
+  - `gemini-2.0-flash / -001`: **2026 年 6 月 1 日** 廃止 (推奨: `gemini-2.5-flash`)
+  - `gemini-2.0-flash-lite / -001`: **2026 年 6 月 1 日** 廃止 (推奨: `gemini-2.5-flash-lite`)
+- **その他のモデル**:
+  - `gemini-embedding-001`: **2026 年 7 月 14 日** 廃止
+  - `imagen-4.0-generate-001 / ultra / fast`: **2026 年 6 月 24 日** 廃止
+  - `gemini-robotics-er-1.5-preview`: **2026 年 4 月 30 日** 廃止 (推奨: `gemini-robotics-er-1.6-preview`)
+:::
 
 ::: danger 廃止されたモデル
-以下のモデルは閉鎖されており、リクエストは利用できないか、自動的にリダイレクトされます：
+以下のモデルは閉鎖されており、リクエストは利用できないか、自動的にリダイレクトされます。
 
-**閉鎖（2025年6月26日）**：
-- `gemini-2.5-pro-exp-03-25` - 閉鎖、`gemini-2.5-pro`を使用してください
+| モデル名 | 廃止日 | 推奨代替案 |
+| :--- | :--- | :--- |
+| `gemini-3-pro-preview` | 2026 年 3 月 9 日 | `gemini-3.1-pro-preview` |
+| `gemini-2.5-flash-lite-preview-09-2025` | 2026 年 3 月 31 日 | `gemini-3.1-flash-lite-preview` |
+| `gemini-2.5-flash-preview-09-25` | 2026 年 2 月 17 日 | `gemini-3-flash-preview` |
+| `imagen-4.0-generate-preview-06-06` | 2026 年 2 月 17 日 | `imagen-4.0-generate-001` |
+| `gemini-2.5-flash-image-preview` | 2026 年 1 月 15 日 | `gemini-2.5-flash-image` |
+| `text-embedding-004` | 2026 年 1 月 14 日 | `gemini-embedding-001` |
+| `gemini-2.5-pro-preview (03-25/05-06/06-05)` | 2025 年 12 月 2 日 | `gemini-3.1-pro-preview` |
+| `gemini-2.0-flash-lite-preview (-02-05)` | 2025 年 12 月 9 日 | `gemini-2.5-flash-lite` |
+| `gemini-2.0-flash-live-001` | 2025 年 12 月 9 日 | `gemini-3.1-flash-live-preview` |
+| `gemini-live-2.5-flash-preview` | 2025 年 12 月 9 日 | `gemini-3.1-flash-live-preview` |
+| `gemini-2.5-flash-preview-05-20` | 2025 年 11 月 18 日 | `gemini-3-flash-preview` |
+| `gemini-2.0-flash-preview-image-generation` | 2025 年 11 月 14 日 | `gemini-2.5-flash-image` |
+| `veo-3.0-generate / fast-preview` | 2025 年 11 月 12 日 | `veo-3.1-generate-preview` |
+| `imagen-3.0-generate-002` | 2025 年 11 月 10 日 | `imagen-4.0-generate-001` |
+| `embedding-001 / gecko-001 / exp` | 2025 年 10 月 30 日 | `gemini-embedding-001` |
 
-**閉鎖（2025年9月29日）**：
-- `gemini-1.5-pro` - 閉鎖
-- `gemini-1.5-flash` - 閉鎖
-- `gemini-1.5-flash-8b` - 閉鎖
-
-**閉鎖（2025年11月10日）**：
-- `imagen-3.0-generate-002` - 閉鎖、Imagen 4に切り替えてください
-
-**閉鎖（2025年11月4日発表）**：
-- `gemini-2.5-flash-lite-preview-06-17` - 2025年11月18日閉鎖
-- `gemini-2.5-flash-preview-05-20` - 2025年11月18日閉鎖
-- `gemini-2.0-flash-thinking-exp` - 2025年12月2日閉鎖
-- `gemini-2.0-flash-thinking-exp-01-21` - 2025年12月2日閉鎖
-- `gemini-2.0-flash-thinking-exp-1219` - 2025年12月2日閉鎖
-- `gemini-2.5-pro-preview-03-25` - 2025年12月2日閉鎖
-- `gemini-2.5-pro-preview-05-06` - 2025年12月2日閉鎖
-- `gemini-2.5-pro-preview-06-05` - 2025年12月2日閉鎖
-- `gemini-2.0-flash-lite-preview` - 2025年12月9日閉鎖
-- `gemini-2.0-flash-lite-preview-02-05` - 2025年12月9日閉鎖
-
-**自動リダイレクト（2025年6月26日）**：
-- `gemini-2.5-pro-preview-05-06` → 自動的に`gemini-2.5-pro`にリダイレクト
-- `gemini-2.5-pro-preview-03-25` → 自動的に`gemini-2.5-pro`にリダイレクト
-
-自動リダイレクト操作はGoogle Geminiによって実行され、NekroAgent公式リレーはユーザーサービスの安定性を保護するために、対応するモデルを積極的に削除しません
+自動リダイレクト操作は Google Gemini によって実行され、NekroAgent 公式リレーはユーザーサービスの安定性を保護するために、対応するモデルを積極的に削除しません
 :::
 
 ::: tip 実験的モデルの説明
