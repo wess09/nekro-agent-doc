@@ -1,7 +1,9 @@
 import { h, onMounted } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import './css/base/fonts.css'
 import './css/base/colors.css'
+
 import './css/layout/hero.css'
 import './css/components/animation.css'
 import './css/components/button.css'
