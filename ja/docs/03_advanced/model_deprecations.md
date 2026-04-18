@@ -16,7 +16,7 @@
 ::: warning モデル廃止警告
 2026年4月18日更新
 
-[Google Gemini API非推奨通知](https://ai.google.dev/gemini-api/docs/deprecations?hl=zh-cn)および[バージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)によると、以下のモデルは廃止計画が発表されています。表に記載されている日付は、モデルが廃止される**最も早い日付**です。
+[Google Gemini API非推奨通知](https://ai.google.dev/gemini-api/docs/deprecations)および[バージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog)によると、以下のモデルは廃止計画が発表されています。表に記載されている日付は、モデルが廃止される**最も早い日付**です。
 
 ### 今後廃止予定のモデル (2026年)
 - **Gemini 2.5 シリーズ**:
@@ -60,7 +60,7 @@
 ::: tip 実験的モデルの説明
 ドキュメントで`exp`（実験的）または`preview`（プレビュー）とマークされたモデルは実験的モデルです。これらのモデルは：
 - いつでも更新または閉鎖される可能性があり、ライフサイクルが短い
-- [Google Gemini APIバージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog?hl=zh-cn)を定期的にフォローして最新の更新を確認することを推奨
+- [Google Gemini APIバージョン注意事項](https://ai.google.dev/gemini-api/docs/changelog)を定期的にフォローして最新の更新を確認することを推奨
 - 本番環境では、安定版（GA）モデルを優先するか、バックアップソリューションを準備することを推奨
 - 実験的モデルは通常、安定版がリリースされた後に徐々に閉鎖されます
 - **一部のプレビューモデルは安定版に自動的にリダイレクトされます**、安定版モデル名を直接使用することを推奨
