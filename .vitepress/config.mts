@@ -232,7 +232,7 @@ export default defineConfig({
                       link: "/docs/04_plugin_dev/03_advanced_features",
                       collapsed: true,
                       items: [
-                        { text: "Webhook 接入点（弃用）", link: "/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
+                        { text: "Webhook 接入点（已废弃）", link: "/docs/04_plugin_dev/03_advanced_features/3.1_webhooks" },
                         { text: "文件交互", link: "/docs/04_plugin_dev/03_advanced_features/3.2_file_interaction" },
                         { text: "使用向量数据库", link: "/docs/04_plugin_dev/03_advanced_features/3.3_vector_database" },
                         { text: "动态路由", link: "/docs/04_plugin_dev/03_advanced_features/3.4_dynamic_router" },

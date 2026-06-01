@@ -100,7 +100,7 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 ## 使用 Hyper-V 安装 Linux 虚拟机
 ### 安装 Linux 虚拟机
-1.打开 Hyper-V 管理器。 选择 “快速创建”，然后选择 Ubuntu 22.04 LTS 
+1.打开 Hyper-V 管理器。 选择 “快速创建”，然后选择 Ubuntu 22.04 LTS
 
 2.选择 “创建虚拟机”。
 

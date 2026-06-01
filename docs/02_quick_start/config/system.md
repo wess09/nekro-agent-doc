@@ -48,7 +48,7 @@ WebUI 每个配置项下方都有一个**英文大写键名**（如 `ENABLE_NEKR
 
 在「系统配置」→「模型管理」里至少配置一个**聊天类型**的模型组，否则 Bot 无法工作。
 
-系统默认预置了来自 [NekroAI 中转站](https://api.nekro.ai) 的聊天、绘图、嵌入三个类型模型组配置。您可以直接前往 [NekroAI 中转站](https://api.nekro.ai) 注册账号后创建密钥分别填入即可开始使用（新用户注册赠送 1 刀站点余额，可满足一些低频低成本模型的使用需求）。如果您有其他官方或非官方的 OpenAI 兼容接口模型渠道，可自行替换 API 地址访问。
+系统默认预置了来自 [NekroAI 中转站](https://api.nekro.ai) 的聊天、绘图、嵌入三个类型模型组配置。您可以前往 [NekroAI 中转站](https://api.nekro.ai) 注册账号并创建 API Key，然后在对应模型组的「API 密钥」字段中填入；接入点和模型名称可先使用预置值。若您使用其他 OpenAI 兼容接口，也可以按服务商说明替换 API 接入点、模型名称和密钥。
 
 ### 模型组字段说明
 
@@ -60,7 +60,7 @@ WebUI 每个配置项下方都有一个**英文大写键名**（如 `ENABLE_NEKR
 | API 密钥 | 对应接入点的鉴权密钥 |
 | 模型类型 | `chat`（聊天）、`embedding`（向量嵌入）或 `draw`（绘图） |
 | 启用视觉功能 | 模型是否支持图片理解，不支持则关闭 |
-| 启用外置思维链 | 强制 AI 输出思考过程，原生支持 CoT 的模型无需开启 |
+| 启用外置思维链 | 为不自带推理格式的模型启用额外思考提示；原生支持思考能力的模型通常无需开启 |
 | 附加参数 | temperature、max_tokens、top_p 等可选参数 |
 
 ### 主要模型调度场景
@@ -69,7 +69,7 @@ WebUI 每个配置项下方都有一个**英文大写键名**（如 `ENABLE_NEKR
 |---|---|---|
 | 主对话模型 | `USE_MODEL_GROUP` | 会话的默认模型 |
 | 备用模型 | `FALLBACK_MODEL_GROUP` | 主模型失败时使用 |
-| 调试迁移模型 | `DEBUG_MIGRATION_MODEL_GROUP` | 触发 Agent 类方法或出错后切换使用 |
+| 异常处理模型 | `DEBUG_MIGRATION_MODEL_GROUP` | 主流程需要修正或继续处理时使用 |
 | 插件代码生成 | `PLUGIN_GENERATE_MODEL_GROUP` | 插件编辑器生成代码 |
 | 插件代码应用 | `PLUGIN_APPLY_MODEL_GROUP` | 插件编辑器应用修改 |
 

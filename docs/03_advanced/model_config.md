@@ -64,18 +64,13 @@ API 接入点支持任意 OpenAI 兼容接口，兼容市面上大多数 LLM 供
 | 场景 | 对应配置项 |
 |---|---|
 | 主对话模型（默认） | `USE_MODEL_GROUP` |
-| 调试 / Agent 迁移阶段 | `DEBUG_MIGRATION_MODEL_GROUP` |
+| 异常处理模型 | `DEBUG_MIGRATION_MODEL_GROUP` |
 | 主模型调用失败时的备用 | `FALLBACK_MODEL_GROUP` |
 | 插件编辑器代码生成 | `PLUGIN_GENERATE_MODEL_GROUP` |
 | 插件编辑器代码应用 | `PLUGIN_APPLY_MODEL_GROUP` |
-| 记忆整合（可选覆盖） | `MEMORY_CONSOLIDATION_MODEL_GROUP` |
+| 记忆整理（可选覆盖） | `MEMORY_CONSOLIDATION_MODEL_GROUP` |
 
-**会话调度策略：**
-
-1. 会话开始时使用 `USE_MODEL_GROUP`（主模型）
-2. 主模型输出触发 Agent 类方法或产生错误时，后续调用切换到 `DEBUG_MIGRATION_MODEL_GROUP`
-3. 任一模型调用失败则回落到 `FALLBACK_MODEL_GROUP`
-4. 备用模型也失败时，本次响应以失败结束
+建议至少配置主对话模型和备用模型。需要使用插件编辑器时，再单独配置代码生成和代码应用模型；启用记忆系统后，再按效果决定是否为记忆整理指定更合适的模型。
 
 ## CC 模型组
 

@@ -64,8 +64,8 @@ plugin = NekroPlugin(
 # 2. 注册一个沙盒方法
 @plugin.mount_sandbox_method(
     method_type=SandboxMethodType.TOOL, # 方法类型为 TOOL，结果直接返回给 AI
-    name="say_hello",                  
-    description="返回一个问候语。"       
+    name="say_hello",
+    description="返回一个问候语。"
 )
 async def say_hello_from_plugin(_ctx: AgentCtx) -> str:
     """插件的问候方法
@@ -119,4 +119,4 @@ async def say_hello_from_plugin(_ctx: AgentCtx) -> str:
 
 恭喜！您已经成功创建并测试了您的第一个 Nekro Agent 插件。
 
-在接下来的章节中，我们将深入学习插件的各项核心概念和高级功能。 
+在接下来的章节中，我们将深入学习插件的各项核心概念和高级功能。

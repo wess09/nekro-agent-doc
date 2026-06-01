@@ -135,21 +135,20 @@ sudo docker compose --env-file .env logs -f nekro_agent
 
 
 
-### 如何切回正式版(不建议)
+### 回退到正式版
 
-将 `docker-compose.yml` 中的镜像标签改回 `latest`，然后重新执行一次正式版更新命令即可：
+回退前请先备份数据。确认需要回退后，将 `docker-compose.yml` 中的镜像标签改回 `latest`，然后重新执行一次正式版更新命令即可：
 
 ```bash
 sed -i 's|image: kromiose/nekro-agent:preview|image: kromiose/nekro-agent:latest|g' docker-compose.yml
 ```
 
-若您通过启动器切换至预览版的同时，备份了正式版数据，可在`总览控制台`点击`恢复正式版`按钮后，根据提示操作，如下图所示
+若您通过启动器切换至预览版时已经备份正式版数据，可在「总览控制台」点击「恢复正式版」按钮，并根据提示操作，如下图所示
 ![降级](/assets/windows/manage11.png)
 
-### ⚠️:强烈建议预览版用户定期备份数据
+### 强烈建议预览版用户定期备份数据
 
-无责推荐一个好用的Wsl虚拟机部署方案的备份工具。
-`https://gitee.com/bye/wsl-dashboard/releases`
+如果您使用 WSL 虚拟机部署，可以按需选择第三方备份工具辅助管理。第三方工具并非 Nekro Agent 官方组件，使用前请自行确认来源、权限和备份结果。
 
 ## 📝 更新日志
 

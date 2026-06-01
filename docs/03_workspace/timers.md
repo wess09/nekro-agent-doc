@@ -47,20 +47,23 @@ description: 让 AI 按照时间计划自动执行任务，实现无人值守的
 
 ### 一次性定时器
 
-在指定时间触发一次后自动完成。
+在指定时间触发一次后自动完成，适合临时提醒和单次任务。
 
-- 通过 `timer` API 创建
-- 适合临时提醒和单次任务
-- 支持临时定时器模式（同频道只保留最新一个）
+常见说法：
+
+- 「5 分钟后提醒我回复消息」
+- 「今晚 8 点提醒我检查部署结果」
+- 「下周三下午 3 点提醒我交报告」
 
 ### 循环定时器（Cron）
 
 按周期重复执行，适合长期自动化任务。
 
-- 通过 `recurring_timer` API 创建
+循环定时器支持：
+
 - 使用标准 cron 表达式定义周期
-- 支持暂停、恢复、立即执行
-- 支持工作日模式
+- 暂停、恢复、立即执行
+- 按工作日或节假日过滤触发时间
 
 ## 创建定时器
 
@@ -72,11 +75,11 @@ description: 让 AI 按照时间计划自动执行任务，实现无人值守的
 - 「5 分钟后提醒我回复消息」
 - 「每周一上午 10 点生成周报摘要」
 
-AI 会自动调用定时器 API 完成创建。
+AI 会根据您的描述创建合适的定时器。创建后，您可以在 WebUI 的定时器列表中查看和管理。
 
-### 插件代码创建
+### 开发者创建
 
-插件可以通过 `nekro_agent.api.timer` 和 `nekro_agent.api.recurring_timer` API 创建定时器。详见 [插件定时任务开发](/docs/04_plugin_dev/06_timer_development)。
+如果您正在开发插件，也可以在插件中创建定时任务。详见 [插件定时任务开发](/docs/04_plugin_dev/06_timer_development)。
 
 ## Cron 表达式
 
@@ -141,4 +144,4 @@ AI 会自动调用定时器 API 完成创建。
 - [工作区总览](/docs/03_workspace/overview)
 - [Claude Code 沙盒](/docs/03_workspace/claude_code_sandbox) — 定时任务 + CC 沙盒 = 强大的自动化能力
 - [记忆系统](/docs/03_workspace/memory_system) — 让定时任务有上下文
-- [插件定时任务开发](/docs/04_plugin_dev/06_timer_development)
+- [插件定时任务开发](/docs/04_plugin_dev/06_timer_development) — 开发者参考

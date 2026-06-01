@@ -27,7 +27,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
     </div>
     <div class="option-desc">性能强劲，跟随系统启动，Windows 原生虚拟化方案。</div>
   </a>
-  
+
   <!-- WSL2 -->
   <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/wsl">
     <div class="option-header wsl">
@@ -36,7 +36,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
     </div>
     <div class="option-desc">轻量便捷，与 Windows 文件系统深度集成，适合开发。</div>
   </a>
-  
+
   <!-- ISO -->
   <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/iso">
     <div class="option-header iso">
@@ -45,7 +45,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
     </div>
     <div class="option-desc">独立环境，一键安装，隔离性最好的部署方式。</div>
   </a>
-  
+
   <!-- VMware -->
   <a class="deploy-option disabled">
     <div class="option-header vmware">
@@ -79,22 +79,22 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
   border-radius: 18px;
   text-decoration: none !important;
   overflow: hidden;
-  
+
   /* --- 关键：强制硬件加速与过渡动画 --- */
   transform-style: preserve-3d;
   transform: translateZ(0) scale(1); /* 定义初始状态 */
   backface-visibility: hidden; /* 防止渲染闪烁 */
-  
+
   /* 添加更多硬件加速属性 */
   will-change: transform, box-shadow, border-color;
   isolation: isolate;
-  
-  /* 
+
+  /*
      all: 所有属性都参与动画
      0.4s: 动画时长
-     cubic-bezier: 苹果风格的平滑减速曲线 
+     cubic-bezier: 苹果风格的平滑减速曲线
   */
-  transition: 
+  transition:
     transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -104,7 +104,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
 .deploy-option:hover {
   /* 只做上抬效果，不缩放 —— scale 会触发子像素重渲染导致文字虚化 */
   transform: translateY(-6px);
-  
+
   /* 阴影加深，模拟"浮起"感 */
   box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.2);
   border-color: var(--vp-c-brand); /* 边框高亮成品牌色 */

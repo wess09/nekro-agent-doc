@@ -39,7 +39,7 @@ description: 五分钟创建第一个工作区，让 AI 从「聊天」变成「
 
 在「系统配置」→「模型管理」→「CC 模型组」中配置一个可用的模型，然后在工作区设置中选择它。
 
-为了方便用户快速上手配置，系统默认预置了来自 [NekroAI 中转站](https://api.nekro.ai) 的 CC 模型组配置，您可以直接前往 [NekroAI 中转站](https://api.nekro.ai) 注册账号后创建一个密钥分别填入即可开始使用。
+为了方便快速上手，系统默认预置了来自 [NekroAI 中转站](https://api.nekro.ai) 的 CC 模型组配置。您可以前往 [NekroAI 中转站](https://api.nekro.ai) 注册账号并创建 API Key，然后把它填入 CC 模型组的「API 密钥」字段；接入点和模型名称可先使用预置值。
 
 ![工作区选择 CC 模型组](/assets/workspace/quickstart/select_cc_model_group.png)
 

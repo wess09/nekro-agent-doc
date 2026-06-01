@@ -64,22 +64,22 @@ Recommended topics:
 
 #### 📹 Long Videos (≥3 minutes)
 
-Suitable platforms: Bilibili / YouTube / Zhihu Video, etc.  
+Suitable platforms: Bilibili / YouTube / Zhihu Video, etc.
 Content suggestions: complete introduction / installation demonstration / tutorial breakdown / creative gameplay
 
 #### 📱 Short Videos (1-3 minutes)
 
-Suitable platforms: Douyin / Kuaishou / Xiaohongshu / TikTok / Bilibili, etc.  
+Suitable platforms: Douyin / Kuaishou / Xiaohongshu / TikTok / Bilibili, etc.
 Content suggestions: feature overview / quick deployment / interesting interaction demonstrations
 
 ## 💰 Reward Mechanism
 
-> ⚠️ All reward calculations are based on **data screenshots + public links from the 7th day after publication**  
+> ⚠️ All reward calculations are based on **data screenshots + public links from the 7th day after publication**
 > 🚫 Any form of data manipulation is prohibited. If discovered, eligibility will be revoked. Personal community sharing for non-manipulation purposes is allowed
 
 ### 📌 About Interaction Volume
 
-**Interaction Volume = Likes + Comments + Danmaku + Favorites + Shares**  
+**Interaction Volume = Likes + Comments + Danmaku + Favorites + Shares**
 We will **sum the top three dimensions** from each platform's data to ensure fairness across platforms
 
 For example: 120 likes + 90 danmaku + 80 favorites + 30 comments + 40 shares → take top three = 120 + 90 + 80 = **290**
@@ -109,9 +109,9 @@ For example: 120 likes + 90 danmaku + 80 favorites + 30 comments + 40 shares →
 
 ### ✅ Example Reward Calculation
 
-> Type: Bilibili long video  
-> Views: 18,000 → rounded to +360 RMB  
-> Interaction volume (sum of top three): 420 → +60 RMB  
+> Type: Bilibili long video
+> Views: 18,000 → rounded to +360 RMB
+> Interaction volume (sum of top three): 420 → +60 RMB
 > Final reward: 100 (base) + 360 + 60 = **520 RMB**
 
 ### 🏆 Special Contribution Rewards

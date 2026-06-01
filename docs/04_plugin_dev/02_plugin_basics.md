@@ -16,4 +16,4 @@ description: 深入了解 Nekro Agent 插件的核心组成部分，包括插件
 5.  **[提示词注入](./02_plugin_basics/2.5_prompt_injection.md)**：探索如何通过向 AI 注入提示词来影响其行为和提供上下文信息。
 6.  **[Agent 上下文 (AgentCtx)](./02_plugin_basics/2.6_agent_context.md)**：深入了解插件开发中的核心上下文对象，包括文件系统、消息发送、配置访问等功能。
 
-让我们逐一开始吧！ 
+让我们逐一开始吧！

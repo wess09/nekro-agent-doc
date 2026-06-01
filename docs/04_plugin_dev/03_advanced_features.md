@@ -9,7 +9,7 @@ description: 探索 Nekro Agent 插件的高级功能，包括动态路由、文
 
 我们将深入探讨以下主题：
 
-1.  **[Webhook 接入点（弃用）](./03_advanced_features/3.1_webhooks.md)**：即将弃用的功能，建议使用动态路由替代。
+1.  **[Webhook 接入点（已废弃）](./03_advanced_features/3.1_webhooks.md)**：已废弃的旧功能，请使用动态路由替代。
 2.  **[文件交互](./03_advanced_features/3.2_file_interaction.md)**：详细了解在插件中处理文件的新一代 API，实现插件与 AI 之间的高效文件传递。
 3.  **[使用向量数据库](./03_advanced_features/3.3_vector_database.md)**：了解如何利用 Nekro Agent 内置的 Qdrant 向量数据库客户端，为您的插件添加基于向量相似度搜索的强大语义理解能力。
 4.  **[动态路由](./03_advanced_features/3.4_dynamic_router.md)**：学习如何创建强大的 Web API 接入点，支持完整的 RESTful 设计和 FastAPI 功能。

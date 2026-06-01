@@ -99,7 +99,7 @@ After installation is complete, the system will prompt you to restart your compu
 
 ## Install Linux Virtual Machine Using Hyper-V
 ### Install Linux Virtual Machine
-1. Open Hyper-V Manager. Select "Quick Create", then select Ubuntu 22.04 LTS 
+1. Open Hyper-V Manager. Select "Quick Create", then select Ubuntu 22.04 LTS
 
 2. Select "Create Virtual Machine".
 

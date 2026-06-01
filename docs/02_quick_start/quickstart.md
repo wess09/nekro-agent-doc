@@ -99,7 +99,7 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 - [工作区总览](/docs/03_workspace/overview) → [工作区快速上手](/docs/03_workspace/quickstart)：创建第一个工作区
 - [Claude Code 沙盒](/docs/03_workspace/claude_code_sandbox)：理解隔离任务环境
 - [知识库](/docs/03_workspace/knowledge_base) 与 [记忆系统](/docs/03_workspace/memory_system)：长期资料与长期记忆
-::: 
+:::
 
 ## 快速参考
 

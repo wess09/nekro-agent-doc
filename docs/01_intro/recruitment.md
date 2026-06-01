@@ -9,10 +9,10 @@ layout: doc
 ---
 
 <div class="recruit-wrapper">
-  
+
   <div class="rules-container">
     <h2>📋 成员准则</h2>
-    
+
 <div class="VPHome" style="background: transparent;">
 <div class="VPFeatures width-100">
 <div class="container">
@@ -166,18 +166,18 @@ layout: doc
   /* Keep vertical stack but ensure grid has full width */
   .recruit-wrapper {
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
   }
-  
+
   /* QR Card styles for Stacked Layout */
   .recruit-wrapper .qr-card {
-    position: static; 
+    position: static;
     width: 100%;
     max-width: 480px;
     flex-direction: column;
     margin-bottom: 20px;
   }
-  
+
   .recruit-wrapper .rules-container {
     width: 100%;
     padding-top: 0;
@@ -186,7 +186,7 @@ layout: doc
   .recruit-wrapper .rules-container h2 {
     text-align: center;
   }
-  
+
   /* 3 Column Grid for PC */
   .recruit-wrapper .VPFeatures .item.grid-3 {
     width: calc(33.333% - 14px);
