@@ -42,12 +42,12 @@ description: 在 Windows 系统上通过 WSL2 部署 Nekro Agent 的详细步骤
 
 ### 自定义安装路径
 
-默认情况下，WSL 虚拟磁盘文件将安装在 `C:\Users\<你的用户名>\AppData\Local\NekroAgent`。如果您想指定其他安装位置（例如 D 盘），可以在执行脚本时通过 `-InstallPath` 参数指定：
+默认情况下，WSL 虚拟磁盘文件将安装在 `C:\Users\<您的用户名>\AppData\Local\NekroAgent`。如果您想指定其他安装位置（例如 D 盘），可以在执行脚本时通过 `-InstallPath` 参数指定：
 
 ```powershell
-# 将 <你的路径> 替换为你想要的文件夹路径
+# 将 <您的路径> 替换为您想要的文件夹路径
 $scriptContent = irm https://raw.githubusercontent.com/KroMiose/nekro-agent/main/docker/install.ps1
-iex "& { $scriptContent } -InstallPath '<你的路径>'"
+iex "& { $scriptContent } -InstallPath '<您的路径>'"
 ```
 
 ### 网络问题处理

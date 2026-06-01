@@ -26,7 +26,7 @@ description: 使用Nekro-Agent-Toolkit快速部署NekroAgent。
   - 完整的工具箱支持**安装、更新、备份**一条龙工作。
   - 理论上**跨平台**带来统一的用户体验。
 
-* [用户文档(戳我阅读)](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki):如果看不懂，你可能需要沉浸式翻译器等翻译插件。
+* [用户文档(戳我阅读)](https://github.com/greenhandzdl/nekro-agent-toolkit/wiki):如果看不懂，您可能需要沉浸式翻译器等翻译插件。
   
 * 功能介绍：
 

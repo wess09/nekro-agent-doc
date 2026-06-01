@@ -28,7 +28,7 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 ### 环境要求
 
 - Node.js 16.x 或更高版本
-- npm
+- pnpm
 
 ### 开发步骤
 
@@ -42,13 +42,13 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 2. 安装依赖
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. 启动开发服务器
 
    ```bash
-   npm run docs:dev
+   pnpm docs:dev
    ```
 
 4. 在浏览器中访问 `http://localhost:5173` 预览文档站
@@ -56,7 +56,7 @@ Nekro Agent 文档站是基于 VitePress 开发的官方文档网站，旨在提
 ### 构建文档
 
 ```bash
-npm run docs:build
+pnpm docs:build
 ```
 
 构建后的文件将生成在 `.vitepress/dist` 目录中

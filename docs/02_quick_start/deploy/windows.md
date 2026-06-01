@@ -14,7 +14,7 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
   <a class="deploy-option" href="/docs/02_quick_start/deploy/windows/na-for-win">
     <div class="option-header naforwin">
       <span class="option-icon">🖥️</span>
-      <span class="option-title">Nekro-Agent Windows 启动器（推荐）</span>
+      <span class="option-title">NA Windows 启动器（推荐）</span>
     </div>
     <div class="option-desc">一键部署，图形化管理，基于 WSL2 的轻量级方案，开箱即用。</div>
   </a>
@@ -100,47 +100,46 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
     border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* 3. 鼠标悬停 - 放大状态 */
+/* 3. 鼠标悬停 - 抬起 + 高亮（不缩放，避免文字虚化） */
 .deploy-option:hover {
-  /* 放大 1.05 倍，并稍微抬起 */
-  transform: translateZ(0) scale(1.05) translateY(-5px);
+  /* 只做上抬效果，不缩放 —— scale 会触发子像素重渲染导致文字虚化 */
+  transform: translateY(-6px);
   
-  /* 阴影变得很大、很虚，模拟离桌面很高 */
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
-  border-color: var(--vp-c-brand); /* 边框变色 */
+  /* 阴影加深，模拟"浮起"感 */
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.2);
+  border-color: var(--vp-c-brand); /* 边框高亮成品牌色 */
   z-index: 2;
 }
 
-/* 4. 内部元素的 3D 视差效果 (可选，增加了精致感) */
+/* 4. hover 时不再对子元素做 transform —— 子元素的 translateZ 是字体糊化的元凶 */
 .option-header, .option-desc {
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  will-change: transform;
+  /* 留空：不需要 transition / will-change，因为不再做悬停动画 */
 }
 
-/* 悬停时，文字比背景多移动一点点（视差） */
-.deploy-option:hover .option-header {
-  transform: translateZ(20px); /* 标题突起 */
-}
-.deploy-option:hover .option-desc {
-  transform: translateZ(10px); /* 描述突起 */
-}
-
-/* --- 以下是内部布局样式，保持不变 --- */
+/* --- 以下是内部布局样式 --- */
 .option-header {
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 24px 24px 12px 24px;
   background: transparent;
   color: var(--vp-c-text-1);
 }
 
+.option-icon {
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
 .option-title {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  /* 为标题添加硬件加速 */
-  will-change: transform;
-  transform: translateZ(0);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .option-desc {
@@ -150,9 +149,6 @@ description: 在 Windows 系统上部署 Nekro Agent 的详细步骤，包括WSL
   font-size: 0.95rem;
   line-height: 1.5;
   border: none;
-  /* 为描述添加硬件加速 */
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 /* 禁用状态 */

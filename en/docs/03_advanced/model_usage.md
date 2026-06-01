@@ -23,8 +23,6 @@ In the recommended models, we use the following rating standards:
 The following recommendations are for reference only. The same model from different sources may have differences in final performance due to channel conversion strategies, different configuration settings, concurrency situations, current status, etc. We encourage you to try multiple models based on actual usage, including those not in the following form, to choose the model that best suits you!
 
 The models in the following tables are from [NekroAgent Official Relay - Available Model List](https://api.nekro.ai/panel/model_price). If you think there is a significant difference between the following tables and actual experience, you are welcome to contact us for feedback. We will continuously maintain and update the tables to better match actual experience
-
-For information on **deprecated & discontinued** models, please see [Model Deprecations](./model_deprecations.md)
 :::
 
 ## NekroAgent Main Application

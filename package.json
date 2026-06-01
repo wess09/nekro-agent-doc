@@ -15,6 +15,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "@vrcd-community/markdown-it-video": "^1.1.1"
+    "@vrcd-community/markdown-it-video": "^1.1.1",
+    "medium-zoom": "^1.1.0"
   }
 }
