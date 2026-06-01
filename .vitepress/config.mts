@@ -120,18 +120,15 @@ export default defineConfig({
                   text: "快速部署",
                   collapsed: true,
                   items: [
-                    { text: "NA-Tools 部署 (推荐)", link: "/docs/02_quick_start/deploy/na-tools" },
-                    { text: "Linux 部署教程", link: "/docs/02_quick_start/deploy/linux" },
-                    { text: "Windows 部署教程", link: "/docs/02_quick_start/deploy/windows" },
-                    { text: "MacOS 部署教程", link: "/docs/02_quick_start/deploy/macos" }
+                    { text: "Linux / macOS：NA-Tools 部署", link: "/docs/02_quick_start/deploy/na-tools" },
+                    { text: "Windows：启动器部署", link: "/docs/02_quick_start/deploy/windows/na-for-win" }
                   ],
                 },
                 {
-                  text: "社区部署",
+                  text: "社区贡献部署",
                   collapsed: true,
                   items: [
-                    { text: "Nekro-Agent-Toolkit", link: "/docs/community/nekro-agent-toolkit" },
-                    { text: "iStoreOS 部署教程", link: "/docs/community/iStoreOS" }
+                    { text: "iStoreOS 部署（社区贡献）", link: "/docs/community/iStoreOS" }
                   ]
                 },
                 {
@@ -297,20 +294,10 @@ export default defineConfig({
               items: [
                 { text: "Quick Start", link: "/en/docs/02_quick_start/quickstart" },
                 {
-                  text: "Deployment",
-                  collapsed: true,
-                  items: [
-                    { text: "Linux", link: "/en/docs/02_quick_start/deploy/linux" },
-                    { text: "Windows", link: "/en/docs/02_quick_start/deploy/windows" },
-                    { text: "MacOS", link: "/en/docs/02_quick_start/deploy/macos" }
-                  ],
-                },
-                {
                   text: "Community Deployment",
                   collapsed: true,
                   items: [
-                    { text: "Nekro-Agent-Toolkit", link: "/en/docs/community/nekro-agent-toolkit" },
-                    { text: "iStoreOS", link: "/en/docs/community/iStoreOS" }
+                    { text: "iStoreOS (Community)", link: "/en/docs/community/iStoreOS" }
                   ]
                 },
                 {
@@ -440,20 +427,10 @@ export default defineConfig({
               items: [
                 { text: "クイックスタート", link: "/ja/docs/02_quick_start/quickstart" },
                 {
-                  text: "デプロイ",
+                  text: "コミュニティ提供デプロイ",
                   collapsed: true,
                   items: [
-                    { text: "Linux", link: "/ja/docs/02_quick_start/deploy/linux" },
-                    { text: "Windows", link: "/ja/docs/02_quick_start/deploy/windows" },
-                    { text: "MacOS", link: "/ja/docs/02_quick_start/deploy/macos" }
-                  ],
-                },
-                {
-                  text: "コミュニティデプロイ",
-                  collapsed: true,
-                  items: [
-                    { text: "Nekro-Agent-Toolkit", link: "/ja/docs/community/nekro-agent-toolkit" },
-                    { text: "iStoreOS", link: "/ja/docs/community/iStoreOS" }
+                    { text: "iStoreOS（コミュニティ）", link: "/ja/docs/community/iStoreOS" }
                   ]
                 },
                 {

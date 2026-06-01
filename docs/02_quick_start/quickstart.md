@@ -27,27 +27,19 @@ description: 帮助您快速开始使用 Nekro Agent 的指南，包括部署选
 
 ## 官方部署选择
 
-根据您的操作系统选择合适的部署方式：
+根据您的操作系统选择官方推荐的部署方式：
 
-- [NA-Tools 部署 (推荐)](/docs/02_quick_start/deploy/na-tools.md) - 官方 CLI 工具，支持 **Linux/macOS** 一键部署、备份与管理
-- [Linux 部署教程](/docs/02_quick_start/deploy/linux) - 适用于使用 apt 作为包管理器的 Linux 发行版
-- [Windows 启动器部署 (推荐)](/docs/02_quick_start/deploy/windows/na-for-win) - **Windows 10/11** 图形化启动器，基于 WSL2 一键完成部署
-- [Windows 其他部署方式](/docs/02_quick_start/deploy/windows) - Hyper-V / WSL2 / ISO 镜像等可选方案
-- [MacOS 部署教程](/docs/02_quick_start/deploy/macos) - 适用于 MacOS 系统
+- **Linux / macOS**：[NA-Tools 部署](/docs/02_quick_start/deploy/na-tools.md) — 官方 CLI 工具，支持一键部署、备份、恢复和多实例管理
+- **Windows 10/11**：[Windows 启动器部署](/docs/02_quick_start/deploy/windows/na-for-win) — 图形化启动器，基于 WSL2 自动完成部署和管理
 
-## 社区部署方案
+旧版脚本、Hyper-V、WSL2 手动部署和完整镜像文档仍会保留用于历史参考，但不再作为新用户推荐入口。
 
-- [Nekro-Agent-Toolkit](/docs/community/nekro-agent-toolkit) 跨平台部署 Cli 工具
+## 社区贡献部署方案
 
-  - **跨平台**部署方案和便捷式的**安装、备份、恢复**NekroAgent 的方案。
+以下方案来自社区贡献，适合有对应环境或偏好时参考使用：
 
-- [1Panel 应用部署](https://github.com/lgc2333/nekro-agent-deploy-1panel)
-
-  - 基于 **1Panel 面板**的开箱即用一键部署方案，支持纯界面部署操作和 OpenResty 反向代理配置，自动配置 NapCat 协议端。
-
-- [iStoreOS 系统部署](/docs/community/iStoreOS)
-
-  - 在基于 **OpenWRT** 的软路由系统运行 Nekro Agent，提供一键安装脚本。
+- [1Panel 应用部署](https://github.com/lgc2333/nekro-agent-deploy-1panel) — 社区提供的 1Panel 面板部署方案
+- [iStoreOS 系统部署](/docs/community/iStoreOS) — 社区提供的 iStoreOS / OpenWRT 场景部署方案
 
 ## 基本配置
 

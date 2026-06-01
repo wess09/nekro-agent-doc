@@ -7,6 +7,8 @@ description: 通过 MCP 协议为工作区接入外部工具和数据源，让 A
 
 <p style="font-size: 1.2em;"><strong>是否依赖 CC 沙盒：是</strong></p>
 
+<p style="font-size: 1.2em;"><strong>是否必须绑定工作区：是</strong></p>
+
 MCP（Model Context Protocol）让 AI 的能力**突破对话边界**。
 
 通过 MCP 协议，您可以为工作区接入各种外部工具和数据源——数据库查询、API 调用、监控系统、项目管理平台、搜索引擎等。AI 不再局限于文本对话，而是可以**直接操作真实的工具和服务**。

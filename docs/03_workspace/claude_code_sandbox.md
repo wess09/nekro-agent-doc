@@ -7,6 +7,8 @@ description: Claude Code 沙盒是工作区的核心执行引擎，让 AI 真正
 
 <p style="font-size: 1.2em;"><strong>是否依赖 CC 沙盒：是</strong></p>
 
+<p style="font-size: 1.2em;"><strong>是否必须绑定工作区：是</strong></p>
+
 Claude Code 沙盒（CC 沙盒）是工作区的核心执行引擎。
 
 没有它，AI 只能聊天；有了它，AI 可以**写代码、跑脚本、处理文件、操作浏览器、连接外部服务**。如果说工作区是 AI 的办公室，CC 沙盒就是办公桌上的电脑。
