@@ -13,6 +13,72 @@ const llmsIgnoreFiles = [
   "nekro-agent/**",
 ];
 
+const localSearchTranslations = {
+  root: {
+    button: {
+      buttonText: "搜索",
+      buttonAriaLabel: "搜索文档",
+    },
+    modal: {
+      displayDetails: "显示详细列表",
+      resetButtonTitle: "清空搜索",
+      backButtonTitle: "关闭搜索",
+      noResultsText: "没有搜索结果：",
+      footer: {
+        selectText: "选择",
+        selectKeyAriaLabel: "回车",
+        navigateText: "切换",
+        navigateUpKeyAriaLabel: "上箭头",
+        navigateDownKeyAriaLabel: "下箭头",
+        closeText: "关闭",
+        closeKeyAriaLabel: "Esc",
+      },
+    },
+  },
+  en: {
+    button: {
+      buttonText: "Search",
+      buttonAriaLabel: "Search docs",
+    },
+    modal: {
+      displayDetails: "Display detailed list",
+      resetButtonTitle: "Reset search",
+      backButtonTitle: "Close search",
+      noResultsText: "No results for",
+      footer: {
+        selectText: "to select",
+        selectKeyAriaLabel: "enter",
+        navigateText: "to navigate",
+        navigateUpKeyAriaLabel: "up arrow",
+        navigateDownKeyAriaLabel: "down arrow",
+        closeText: "to close",
+        closeKeyAriaLabel: "escape",
+      },
+    },
+  },
+  ja: {
+    button: {
+      buttonText: "検索",
+      buttonAriaLabel: "ドキュメントを検索",
+    },
+    modal: {
+      displayDetails: "詳細リストを表示",
+      resetButtonTitle: "検索をリセット",
+      backButtonTitle: "検索を閉じる",
+      noResultsText: "検索結果がありません：",
+      footer: {
+        selectText: "選択",
+        selectKeyAriaLabel: "Enter",
+        navigateText: "移動",
+        navigateUpKeyAriaLabel: "上矢印",
+        navigateDownKeyAriaLabel: "下矢印",
+        closeText: "閉じる",
+        closeKeyAriaLabel: "Esc",
+      },
+    },
+  },
+}
+
 type ArrayByCopyPrototype = typeof Array.prototype & {
   toReversed?: <T>(this: T[]) => T[];
   toSorted?: <T>(this: T[], compareFn?: (a: T, b: T) => number) => T[];
@@ -839,7 +905,23 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/nekro_agent_logo.webp',
-    search: { provider: 'local' },
+    search: {
+      provider: 'local',
+      options: {
+        translations: localSearchTranslations.root,
+        locales: {
+          root: {
+            translations: localSearchTranslations.root,
+          },
+          en: {
+            translations: localSearchTranslations.en,
+          },
+          ja: {
+            translations: localSearchTranslations.ja,
+          },
+        },
+      },
+    },
 
     // 共享的社交链接
     socialLinks: [
