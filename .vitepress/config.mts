@@ -13,6 +13,37 @@ const llmsIgnoreFiles = [
   "nekro-agent/**",
 ];
 
+type ArrayByCopyPrototype = typeof Array.prototype & {
+  toReversed?: <T>(this: T[]) => T[];
+  toSorted?: <T>(this: T[], compareFn?: (a: T, b: T) => number) => T[];
+};
+
+function installArrayByCopyPolyfills() {
+  const arrayPrototype = Array.prototype as ArrayByCopyPrototype;
+
+  if (!arrayPrototype.toReversed) {
+    Object.defineProperty(arrayPrototype, "toReversed", {
+      configurable: true,
+      value: function toReversed<T>(this: T[]) {
+        return [...this].reverse();
+      },
+      writable: true,
+    });
+  }
+
+  if (!arrayPrototype.toSorted) {
+    Object.defineProperty(arrayPrototype, "toSorted", {
+      configurable: true,
+      value: function toSorted<T>(this: T[], compareFn?: (a: T, b: T) => number) {
+        return [...this].sort(compareFn);
+      },
+      writable: true,
+    });
+  }
+}
+
+installArrayByCopyPolyfills();
+
 function normalizeRequestPath(url = "") {
   try {
     return decodeURIComponent(url.split("?")[0] || "");
@@ -297,6 +328,8 @@ export default defineConfig({
               items: [
                 { text: "概览", link: "/docs/01_intro/overview" },
                 { text: "应用场景", link: "/docs/01_intro/application_scenarios" },
+                { text: "NekroAI 成员招募", link: "/docs/01_intro/recruitment" },
+
               ],
             },
             {
@@ -438,8 +471,7 @@ export default defineConfig({
               items: [
                 { text: "Linux 开发环境准备", link: "/docs/05_app_dev/dev_linux" },
                 { text: "Windows 开发环境准备", link: "/docs/05_app_dev/dev_win" },
-                { text: "MacOS 开发环境准备", link: "/docs/05_app_dev/dev_macos" },
-                { text: "NekroAI 成员招募", link: "/docs/01_intro/recruitment" },
+                { text: "MacOS 开发环境准备", link: "/docs/05_app_dev/dev_macos" }
               ],
             },
             {
