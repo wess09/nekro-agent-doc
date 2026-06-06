@@ -3,26 +3,158 @@ import markdownItVideo from "@vrcd-community/markdown-it-video";
 import llmstxt from "vitepress-plugin-llms";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const configDir = path.dirname(fileURLToPath(import.meta.url));
+const llmsDomain = "https://doc.nekro.ai";
+const llmsTxtTargets = new Set(["/llms.txt", "/llms-full.txt"]);
+const llmsIgnoreFiles = [
+  "README.md",
+  "nekro-agent/**",
+];
+
+function normalizeRequestPath(url = "") {
+  try {
+    return decodeURIComponent(url.split("?")[0] || "");
+  } catch {
+    return url.split("?")[0] || "";
+  }
+}
+
+function readGeneratedLLMTextFile(pathname: string) {
+  const filePath = path.resolve(configDir, "dist", pathname.slice(1));
+  return fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : undefined;
+}
+
+function parseFrontmatter(content: string) {
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/u);
+  if (!match) return { body: content, data: {} as Record<string, string> };
+
+  const data: Record<string, string> = {};
+  for (const line of match[1].split(/\r?\n/u)) {
+    const property = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/u);
+    if (!property) continue;
+
+    data[property[1]] = property[2].trim().replace(/^['"]|['"]$/gu, "");
+  }
+
+  return { body: content.slice(match[0].length), data };
+}
+
+function collectMarkdownFiles(directory: string): string[] {
+  if (!fs.existsSync(directory)) return [];
+
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      if ([".git", ".vitepress", "node_modules", "nekro-agent"].includes(entry.name)) {
+        return [];
+      }
+
+      return collectMarkdownFiles(fullPath);
+    }
+
+    return entry.isFile() && entry.name.endsWith(".md") ? [fullPath] : [];
+  });
+}
+
+function shouldIncludeMarkdownFile(relativePath: string) {
+  const normalizedPath = relativePath.replaceAll("\\", "/");
+  return (
+    normalizedPath !== "README.md" &&
+    normalizedPath !== "index.md" &&
+    !normalizedPath.startsWith("nekro-agent/")
+  );
+}
+
+function markdownPageURL(relativePath: string) {
+  const normalizedPath = relativePath.replaceAll("\\", "/");
+  const withoutExtension = normalizedPath.replace(/\.md$/u, "");
+  const pagePath = withoutExtension.endsWith("/index")
+    ? withoutExtension.slice(0, -"/index".length)
+    : withoutExtension;
+
+  return `${llmsDomain}/${pagePath}.md`;
+}
+
+function collectLLMMarkdownPages() {
+  return collectMarkdownFiles(path.resolve(configDir, ".."))
+    .map((filePath) => {
+      const relativePath = path.relative(path.resolve(configDir, ".."), filePath);
+      return { filePath, relativePath };
+    })
+    .filter(({ relativePath }) => shouldIncludeMarkdownFile(relativePath))
+    .map(({ filePath, relativePath }) => {
+      const rawContent = fs.readFileSync(filePath, "utf8");
+      const { body, data } = parseFrontmatter(rawContent);
+      const heading = body.match(/^#\s+(.+)$/mu)?.[1]?.trim();
+      const title = data.title || heading || path.basename(relativePath, ".md");
+
+      return {
+        content: body.trim(),
+        description: data.description,
+        relativePath,
+        title,
+        url: markdownPageURL(relativePath),
+      };
+    })
+    .sort((a, b) => a.title.localeCompare(b.title, "zh-CN"));
+}
+
+function generateFallbackLLMsTxt() {
+  const links = collectLLMMarkdownPages()
+    .map((page) => `- [${page.title}](${page.url})${page.description ? `: ${page.description}` : ""}`)
+    .join("\n");
+
+  return [
+    "# Nekro Agent",
+    "",
+    "> 新一代智能中枢框架",
+    "",
+    "安全、高效、优雅的智能交互体验",
+    "",
+    "## Docs",
+    "",
+    links,
+    "",
+  ].join("\n");
+}
+
+function generateFallbackLLMsFullTxt() {
+  const pages = collectLLMMarkdownPages()
+    .map((page) => `# ${page.title}\n\nSource: ${page.url}\n\n${page.content}`)
+    .join("\n\n---\n\n");
+
+  return [
+    "# Nekro Agent",
+    "",
+    "> 新一代智能中枢框架",
+    "",
+    pages,
+    "",
+  ].join("\n");
+}
+
+function generateFallbackLLMText(pathname: string) {
+  return pathname === "/llms-full.txt" ? generateFallbackLLMsFullTxt() : generateFallbackLLMsTxt();
+}
 
 function serveGeneratedLLMsTxt() {
   return {
     name: "serve-generated-llms-txt",
+    enforce: "pre",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const pathname = req.url?.split("?")[0];
-        if (pathname !== "/llms.txt" && pathname !== "/llms-full.txt") {
+        const pathname = normalizeRequestPath(req.url);
+        if (!llmsTxtTargets.has(pathname)) {
           next();
           return;
         }
 
-        const filePath = path.resolve(__dirname, "dist", pathname.slice(1));
-        if (!fs.existsSync(filePath)) {
-          next();
-          return;
-        }
-
+        const content = readGeneratedLLMTextFile(pathname) ?? generateFallbackLLMText(pathname);
         res.setHeader("Content-Type", "text/plain; charset=utf-8");
-        res.end(fs.readFileSync(filePath, "utf8"));
+        res.setHeader("Cache-Control", "no-cache");
+        res.end(content);
       });
     },
   };
@@ -34,7 +166,7 @@ export default defineConfig({
     plugins: [
       serveGeneratedLLMsTxt(),
       llmstxt({
-        domain: "https://doc.nekro.ai",
+        domain: llmsDomain,
         injectLLMHint: false,
         customLLMsTxtTemplate: [
           "# {title}",
@@ -47,10 +179,7 @@ export default defineConfig({
           "",
           "{toc}",
         ].join("\n"),
-        ignoreFiles: [
-          "README.md",
-          "nekro-agent/**",
-        ],
+        ignoreFiles: llmsIgnoreFiles,
       }),
     ],
   },
